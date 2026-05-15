@@ -1,0 +1,159 @@
+# Entity: marine
+
+main: kit: entity: marine: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "daily"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "daily_unit"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "generationtime_m"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "hourly"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "hourly_unit"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "latitude"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "longitude"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "timezone"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "timezone_abbreviation"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "utc_offset_second"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "marine"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "daily"
+                orig: "daily"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: 7
+                kind: "query"
+                name: "forecast_day"
+                orig: "forecast_day"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "hourly"
+                orig: "hourly"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "latitude"
+                orig: "latitude"
+                reqd: true
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "longitude"
+                orig: "longitude"
+                reqd: true
+                type: "`$NUMBER`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "past_day"
+                orig: "past_day"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "iso8601"
+                kind: "query"
+                name: "timeformat"
+                orig: "timeformat"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "GMT"
+                kind: "query"
+                name: "timezone"
+                orig: "timezone"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/marine"
+          parts: [
+            "v1"
+            "marine"
+          ]
+          select: {
+            exist: [
+              "daily"
+              "forecast_day"
+              "hourly"
+              "latitude"
+              "longitude"
+              "past_day"
+              "timeformat"
+              "timezone"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

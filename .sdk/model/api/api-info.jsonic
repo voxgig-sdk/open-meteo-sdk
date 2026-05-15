@@ -1,0 +1,27 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://open-meteo.com/en/docs"
+      }
+      description: "Open-Meteo is an open-source weather API and offers free access for non-commercial use. No API key required. Start using it now!"
+      license: {
+        name: "Non-Commercial (Commercial licenses available)"
+        url: "https://open-meteo.com/en/pricing"
+      }
+      servers: [
+        {
+          description: "Open-Meteo API Server"
+          url: "https://api.open-meteo.com"
+        }
+      ]
+      title: "Open Meteo"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

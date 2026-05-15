@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "marine": {
+      "MARINE00": {
+        "daily": {},
+        "daily_unit": {},
+        "generationtime_m": 102,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 105,
+        "longitude": 106,
+        "timezone": "s6b",
+        "timezone_abbreviation": "s6c",
+        "utc_offset_second": "s6d"
+      },
+      "MARINE01": {
+        "daily": {},
+        "daily_unit": {},
+        "generationtime_m": 202,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 205,
+        "longitude": 206,
+        "timezone": "scf",
+        "timezone_abbreviation": "sd0",
+        "utc_offset_second": "sd1"
+      },
+      "MARINE02": {
+        "daily": {},
+        "daily_unit": {},
+        "generationtime_m": 302,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 305,
+        "longitude": 306,
+        "timezone": "s133",
+        "timezone_abbreviation": "s134",
+        "utc_offset_second": "s135"
+      }
+    }
+  },
+  "new": {
+    "marine": {
+      "marine_ref01": {
+        "daily": {},
+        "daily_unit": {},
+        "generationtime_m": 402,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 405,
+        "longitude": 406,
+        "timezone": "s197",
+        "timezone_abbreviation": "s198",
+        "utc_offset_second": "s199"
+      }
+    }
+  }
+}

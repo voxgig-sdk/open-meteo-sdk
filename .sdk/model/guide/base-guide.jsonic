@@ -1,0 +1,26 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 3
+  metrics: count: method: 3
+
+  entity: historical: {
+    path: "/v1/historical": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: marine: {
+    path: "/v1/marine": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: weather_forecast: {
+    path: "/v1/forecast": {
+      op: load: method: *GET
+    }
+  }
+
+}

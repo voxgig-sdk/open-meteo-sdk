@@ -1,0 +1,70 @@
+{
+  "existing": {
+    "weather_forecast": {
+      "WEATHER_FORECAST00": {
+        "current": {},
+        "current_unit": {},
+        "daily": {},
+        "daily_unit": {},
+        "elevation": 134,
+        "generationtime_m": 135,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 138,
+        "longitude": 139,
+        "timezone": "s8c",
+        "timezone_abbreviation": "s8d",
+        "utc_offset_second": "s8e"
+      },
+      "WEATHER_FORECAST01": {
+        "current": {},
+        "current_unit": {},
+        "daily": {},
+        "daily_unit": {},
+        "elevation": 264,
+        "generationtime_m": 265,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 268,
+        "longitude": 269,
+        "timezone": "s10e",
+        "timezone_abbreviation": "s10f",
+        "utc_offset_second": "s110"
+      },
+      "WEATHER_FORECAST02": {
+        "current": {},
+        "current_unit": {},
+        "daily": {},
+        "daily_unit": {},
+        "elevation": 394,
+        "generationtime_m": 395,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 398,
+        "longitude": 399,
+        "timezone": "s190",
+        "timezone_abbreviation": "s191",
+        "utc_offset_second": "s192"
+      }
+    }
+  },
+  "new": {
+    "weather_forecast": {
+      "weather_forecast_ref01": {
+        "current": {},
+        "current_unit": {},
+        "daily": {},
+        "daily_unit": {},
+        "elevation": 524,
+        "generationtime_m": 525,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 528,
+        "longitude": 529,
+        "timezone": "s212",
+        "timezone_abbreviation": "s213",
+        "utc_offset_second": "s214"
+      }
+    }
+  }
+}

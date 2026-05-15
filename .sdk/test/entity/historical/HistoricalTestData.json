@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "historical": {
+      "HISTORICAL00": {
+        "daily": {},
+        "daily_unit": {},
+        "elevation": 112,
+        "generationtime_m": 113,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 116,
+        "longitude": 117,
+        "timezone": "s76",
+        "timezone_abbreviation": "s77",
+        "utc_offset_second": "s78"
+      },
+      "HISTORICAL01": {
+        "daily": {},
+        "daily_unit": {},
+        "elevation": 222,
+        "generationtime_m": 223,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 226,
+        "longitude": 227,
+        "timezone": "se4",
+        "timezone_abbreviation": "se5",
+        "utc_offset_second": "se6"
+      },
+      "HISTORICAL02": {
+        "daily": {},
+        "daily_unit": {},
+        "elevation": 332,
+        "generationtime_m": 333,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 336,
+        "longitude": 337,
+        "timezone": "s152",
+        "timezone_abbreviation": "s153",
+        "utc_offset_second": "s154"
+      }
+    }
+  },
+  "new": {
+    "historical": {
+      "historical_ref01": {
+        "daily": {},
+        "daily_unit": {},
+        "elevation": 442,
+        "generationtime_m": 443,
+        "hourly": {},
+        "hourly_unit": {},
+        "latitude": 446,
+        "longitude": 447,
+        "timezone": "s1c0",
+        "timezone_abbreviation": "s1c1",
+        "utc_offset_second": "s1c2"
+      }
+    }
+  }
+}

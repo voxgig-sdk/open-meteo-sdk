@@ -1,0 +1,957 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Open Meteo",
+    "description": "Open-Meteo is an open-source weather API and offers free access for non-commercial use. No API key required. Start using it now!",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://open-meteo.com/en/docs"
+    },
+    "license": {
+      "name": "Non-Commercial (Commercial licenses available)",
+      "url": "https://open-meteo.com/en/pricing"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://api.open-meteo.com",
+      "description": "Open-Meteo API Server"
+    }
+  ],
+  "paths": {
+    "/v1/forecast": {
+      "get": {
+        "summary": "Weather Forecast",
+        "description": "Get weather forecast data for a specific location. Provides hourly, daily, and current weather conditions with support for multiple weather variables and models.",
+        "operationId": "getWeatherForecast",
+        "tags": [
+          "Weather Forecast"
+        ],
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "Geographical WGS84 latitude of the location. Multiple coordinates can be comma separated.",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "example": 52.52
+            }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "Geographical WGS84 longitude of the location. Multiple coordinates can be comma separated. Use negative values for locations west of Greenwich.",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float",
+              "example": 13.41
+            }
+          },
+          {
+            "name": "elevation",
+            "in": "query",
+            "description": "The elevation used for statistical downscaling. Per default, a 90 meter digital elevation model is used. Set to 'nan' to disable downscaling.",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "hourly",
+            "in": "query",
+            "description": "A list of weather variables which should be returned. Values can be comma separated. Available variables include: temperature_2m, relative_humidity_2m, dewpoint_2m, apparent_temperature, precipitation_probability, precipitation, rain, showers, snowfall, snow_depth, weather_code, pressure_msl, surface_pressure, cloud_cover, cloud_cover_low, cloud_cover_mid, cloud_cover_high, visibility, evapotranspiration, et0_fao_evapotranspiration, vapour_pressure_deficit, wind_speed_10m, wind_speed_80m, wind_speed_120m, wind_speed_180m, wind_direction_10m, wind_direction_80m, wind_direction_120m, wind_direction_180m, wind_gusts_10m, temperature_80m, temperature_120m, temperature_180m, soil_temperature_0cm, soil_temperature_6cm, soil_temperature_18cm, soil_temperature_54cm, soil_moisture_0_1cm, soil_moisture_1_3cm, soil_moisture_3_9cm, soil_moisture_9_27cm, soil_moisture_27_81cm, uv_index, uv_index_clear_sky, is_day, sunshine_duration, cape, lifted_index, convective_inhibition, freezing_level_height, boundary_layer_height, shortwave_radiation, direct_radiation, diffuse_radiation, direct_normal_irradiance, global_tilted_irradiance, terrestrial_radiation, and many more.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "daily",
+            "in": "query",
+            "description": "A list of daily weather variable aggregations which should be returned. Values can be comma separated. Available variables include: weather_code, temperature_2m_max, temperature_2m_min, apparent_temperature_max, apparent_temperature_min, sunrise, sunset, daylight_duration, sunshine_duration, uv_index_max, uv_index_clear_sky_max, precipitation_sum, rain_sum, showers_sum, snowfall_sum, precipitation_hours, precipitation_probability_max, wind_speed_10m_max, wind_gusts_10m_max, wind_direction_10m_dominant, shortwave_radiation_sum, et0_fao_evapotranspiration, and many more.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "current",
+            "in": "query",
+            "description": "A list of weather variables to get current conditions. Based on 15-minutely weather model data. Available variables include: temperature_2m, relative_humidity_2m, apparent_temperature, is_day, precipitation, rain, showers, snowfall, weather_code, cloud_cover, pressure_msl, surface_pressure, wind_speed_10m, wind_direction_10m, wind_gusts_10m.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "temperature_unit",
+            "in": "query",
+            "description": "Temperature unit. Options: celsius, fahrenheit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "celsius",
+                "fahrenheit"
+              ],
+              "default": "celsius"
+            }
+          },
+          {
+            "name": "wind_speed_unit",
+            "in": "query",
+            "description": "Wind speed unit. Options: kmh, ms, mph, kn",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kmh",
+                "ms",
+                "mph",
+                "kn"
+              ],
+              "default": "kmh"
+            }
+          },
+          {
+            "name": "precipitation_unit",
+            "in": "query",
+            "description": "Precipitation unit. Options: mm, inch",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "mm",
+                "inch"
+              ],
+              "default": "mm"
+            }
+          },
+          {
+            "name": "timeformat",
+            "in": "query",
+            "description": "Time format. Options: iso8601, unixtime",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "iso8601",
+                "unixtime"
+              ],
+              "default": "iso8601"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "If timezone is set, all timestamps are returned as local-time. Any time zone name from the time zone database is supported. If 'auto' is set, the coordinates will be automatically resolved to the local time zone. Required if daily weather variables are specified.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "GMT",
+              "example": "auto"
+            }
+          },
+          {
+            "name": "past_days",
+            "in": "query",
+            "description": "If past_days is set, yesterday or the day before yesterday data are also returned.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 92,
+              "default": 0
+            }
+          },
+          {
+            "name": "forecast_days",
+            "in": "query",
+            "description": "Per default, only 7 days are returned. Up to 16 days of forecast are possible.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 16,
+              "default": 7
+            }
+          },
+          {
+            "name": "forecast_hours",
+            "in": "query",
+            "description": "Similar to forecast_days, the number of timesteps of hourly data can be controlled. Instead of using the current day as a reference, the current hour is used.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "forecast_minutely_15",
+            "in": "query",
+            "description": "Similar to forecast_days, the number of timesteps of 15-minutely data can be controlled. Instead of using the current day as a reference, the current 15-minute time-step is used.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "past_hours",
+            "in": "query",
+            "description": "The number of timesteps of past hourly data to return.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "past_minutely_15",
+            "in": "query",
+            "description": "The number of timesteps of past 15-minutely data to return.",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "The start date of the time interval to get weather data. Must be specified as an ISO8601 date (e.g. 2022-06-30).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2022-06-30"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "The end date of the time interval to get weather data. Must be specified as an ISO8601 date (e.g. 2022-06-30).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date",
+              "example": "2022-06-30"
+            }
+          },
+          {
+            "name": "start_hour",
+            "in": "query",
+            "description": "The start time of the time interval to get hourly weather data. Must be specified as an ISO8601 date with time (e.g. 2022-06-30T12:00).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-06-30T12:00"
+            }
+          },
+          {
+            "name": "end_hour",
+            "in": "query",
+            "description": "The end time of the time interval to get hourly weather data. Must be specified as an ISO8601 date with time (e.g. 2022-06-30T12:00).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-06-30T12:00"
+            }
+          },
+          {
+            "name": "start_minutely_15",
+            "in": "query",
+            "description": "The start time of the time interval to get 15-minutely weather data. Must be specified as an ISO8601 date with time (e.g. 2022-06-30T12:00).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-06-30T12:00"
+            }
+          },
+          {
+            "name": "end_minutely_15",
+            "in": "query",
+            "description": "The end time of the time interval to get 15-minutely weather data. Must be specified as an ISO8601 date with time (e.g. 2022-06-30T12:00).",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "format": "date-time",
+              "example": "2022-06-30T12:00"
+            }
+          },
+          {
+            "name": "models",
+            "in": "query",
+            "description": "Manually select one or more weather models. By default the best suitable weather model is selected automatically. Options include: best_match, ecmwf_ifs025, ecmwf_aifs025, cma_grapes_global, bom_access_global, gfs_seamless, gfs_global, gfs_hrrr, gfs_graphcast, jma_seamless, jma_msm, jma_gsm, kma_seamless, icon_seamless, icon_global, icon_eu, icon_d2, gem_seamless, gem_global, gem_regional, gem_hrdps_continental, arpege_seamless, arpege_world, arpege_europe, arome_france, arome_france_hd, meteofrance_seamless, metno_seamless, harmonie_arome_europe, knmi_seamless, dmi_seamless, ukmo_seamless, ukmo_uk2km, iconwave_seamless, iconwave_ch1, iconwave_ch2, and more.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cell_selection",
+            "in": "query",
+            "description": "Set a preference how grid-cells are selected. Options: land, sea, nearest. Default is land, which finds a suitable grid-cell on land with similar elevation to the requested coordinates. Sea prefers grid-cells on sea. Nearest selects the nearest possible grid-cell.",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "land",
+                "sea",
+                "nearest"
+              ],
+              "default": "land"
+            }
+          },
+          {
+            "name": "apikey",
+            "in": "query",
+            "description": "Only required for commercial use to authenticate your API request.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful weather forecast response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WeatherForecastResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/historical": {
+      "get": {
+        "summary": "Historical Weather",
+        "description": "Get historical weather data for a specific location and time period.",
+        "operationId": "getHistoricalWeather",
+        "tags": [
+          "Historical Weather"
+        ],
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "Geographical WGS84 latitude of the location",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "Geographical WGS84 longitude of the location",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "description": "The start date of the historical period (ISO8601 format: YYYY-MM-DD)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "end_date",
+            "in": "query",
+            "description": "The end date of the historical period (ISO8601 format: YYYY-MM-DD)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "hourly",
+            "in": "query",
+            "description": "A list of historical hourly weather variables to return",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "daily",
+            "in": "query",
+            "description": "A list of historical daily weather variables to return",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "temperature_unit",
+            "in": "query",
+            "description": "Temperature unit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "celsius",
+                "fahrenheit"
+              ],
+              "default": "celsius"
+            }
+          },
+          {
+            "name": "wind_speed_unit",
+            "in": "query",
+            "description": "Wind speed unit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "kmh",
+                "ms",
+                "mph",
+                "kn"
+              ],
+              "default": "kmh"
+            }
+          },
+          {
+            "name": "precipitation_unit",
+            "in": "query",
+            "description": "Precipitation unit",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "mm",
+                "inch"
+              ],
+              "default": "mm"
+            }
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "Timezone for timestamps",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "GMT"
+            }
+          },
+          {
+            "name": "timeformat",
+            "in": "query",
+            "description": "Time format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "iso8601",
+                "unixtime"
+              ],
+              "default": "iso8601"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful historical weather response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HistoricalWeatherResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/marine": {
+      "get": {
+        "summary": "Marine Forecast",
+        "description": "Get marine weather forecast including wave height, wave direction, wave period and ocean currents.",
+        "operationId": "getMarineForecast",
+        "tags": [
+          "Marine Forecast"
+        ],
+        "parameters": [
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "Geographical WGS84 latitude of the location",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "Geographical WGS84 longitude of the location",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "hourly",
+            "in": "query",
+            "description": "A list of marine weather variables. Available variables include: wave_height, wave_direction, wave_period, wind_wave_height, wind_wave_direction, wind_wave_period, wind_wave_peak_period, swell_wave_height, swell_wave_direction, swell_wave_period, swell_wave_peak_period, ocean_current_velocity, ocean_current_direction.",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "daily",
+            "in": "query",
+            "description": "A list of daily marine weather variable aggregations",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "style": "form",
+            "explode": false
+          },
+          {
+            "name": "timezone",
+            "in": "query",
+            "description": "Timezone for timestamps",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": "GMT"
+            }
+          },
+          {
+            "name": "timeformat",
+            "in": "query",
+            "description": "Time format",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "iso8601",
+                "unixtime"
+              ],
+              "default": "iso8601"
+            }
+          },
+          {
+            "name": "forecast_days",
+            "in": "query",
+            "description": "Number of forecast days",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 16,
+              "default": 7
+            }
+          },
+          {
+            "name": "past_days",
+            "in": "query",
+            "description": "Number of past days to include",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 92,
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful marine forecast response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarineForecastResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "WeatherForecastResponse": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "float",
+            "description": "WGS84 latitude of the location"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "float",
+            "description": "WGS84 longitude of the location"
+          },
+          "elevation": {
+            "type": "number",
+            "format": "float",
+            "description": "Elevation in meters above sea level"
+          },
+          "generationtime_ms": {
+            "type": "number",
+            "format": "float",
+            "description": "Generation time of the weather data in milliseconds"
+          },
+          "utc_offset_seconds": {
+            "type": "integer",
+            "description": "UTC offset in seconds"
+          },
+          "timezone": {
+            "type": "string",
+            "description": "Timezone identifier"
+          },
+          "timezone_abbreviation": {
+            "type": "string",
+            "description": "Timezone abbreviation"
+          },
+          "hourly": {
+            "type": "object",
+            "description": "Hourly weather data",
+            "properties": {
+              "time": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of timestamps"
+              }
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "hourly_units": {
+            "type": "object",
+            "description": "Units for hourly weather variables",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "daily": {
+            "type": "object",
+            "description": "Daily weather data",
+            "properties": {
+              "time": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "Array of dates"
+              }
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "daily_units": {
+            "type": "object",
+            "description": "Units for daily weather variables",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "current": {
+            "type": "object",
+            "description": "Current weather conditions",
+            "properties": {
+              "time": {
+                "type": "string",
+                "description": "Current timestamp"
+              },
+              "interval": {
+                "type": "integer",
+                "description": "Update interval in seconds"
+              }
+            },
+            "additionalProperties": {
+              "type": "number"
+            }
+          },
+          "current_units": {
+            "type": "object",
+            "description": "Units for current weather variables",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "HistoricalWeatherResponse": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "float"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "float"
+          },
+          "elevation": {
+            "type": "number",
+            "format": "float"
+          },
+          "generationtime_ms": {
+            "type": "number",
+            "format": "float"
+          },
+          "utc_offset_seconds": {
+            "type": "integer"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "timezone_abbreviation": {
+            "type": "string"
+          },
+          "hourly": {
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "hourly_units": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "daily": {
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "daily_units": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "MarineForecastResponse": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "float"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "float"
+          },
+          "generationtime_ms": {
+            "type": "number",
+            "format": "float"
+          },
+          "utc_offset_seconds": {
+            "type": "integer"
+          },
+          "timezone": {
+            "type": "string"
+          },
+          "timezone_abbreviation": {
+            "type": "string"
+          },
+          "hourly": {
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "hourly_units": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "daily": {
+            "type": "object",
+            "properties": {
+              "time": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": {
+              "type": "array",
+              "items": {}
+            }
+          },
+          "daily_units": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "boolean",
+            "example": true
+          },
+          "reason": {
+            "type": "string",
+            "description": "Description of the error"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "query",
+        "name": "apikey",
+        "description": "API key for commercial use. Non-commercial use does not require an API key."
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Weather Forecast",
+      "description": "Weather forecast endpoints for current and future weather data"
+    },
+    {
+      "name": "Historical Weather",
+      "description": "Historical weather data endpoints"
+    },
+    {
+      "name": "Marine Forecast",
+      "description": "Marine weather forecast including wave and ocean data"
+    }
+  ]
+}

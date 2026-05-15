@@ -1,0 +1,56 @@
+package voxgigopenmeteosdk
+
+import (
+	"github.com/voxgig-sdk/open-meteo-sdk/core"
+	"github.com/voxgig-sdk/open-meteo-sdk/entity"
+	"github.com/voxgig-sdk/open-meteo-sdk/feature"
+	_ "github.com/voxgig-sdk/open-meteo-sdk/utility"
+)
+
+// Type aliases preserve external API.
+type OpenMeteoSDK = core.OpenMeteoSDK
+type Context = core.Context
+type Utility = core.Utility
+type Feature = core.Feature
+type Entity = core.Entity
+type OpenMeteoEntity = core.OpenMeteoEntity
+type FetcherFunc = core.FetcherFunc
+type Spec = core.Spec
+type Result = core.Result
+type Response = core.Response
+type Operation = core.Operation
+type Control = core.Control
+type OpenMeteoError = core.OpenMeteoError
+
+// BaseFeature from feature package.
+type BaseFeature = feature.BaseFeature
+
+func init() {
+	core.NewBaseFeatureFunc = func() core.Feature {
+		return feature.NewBaseFeature()
+	}
+	core.NewTestFeatureFunc = func() core.Feature {
+		return feature.NewTestFeature()
+	}
+	core.NewHistoricalEntityFunc = func(client *core.OpenMeteoSDK, entopts map[string]any) core.OpenMeteoEntity {
+		return entity.NewHistoricalEntity(client, entopts)
+	}
+	core.NewMarineEntityFunc = func(client *core.OpenMeteoSDK, entopts map[string]any) core.OpenMeteoEntity {
+		return entity.NewMarineEntity(client, entopts)
+	}
+	core.NewWeatherForecastEntityFunc = func(client *core.OpenMeteoSDK, entopts map[string]any) core.OpenMeteoEntity {
+		return entity.NewWeatherForecastEntity(client, entopts)
+	}
+}
+
+// Constructor re-exports.
+var NewOpenMeteoSDK = core.NewOpenMeteoSDK
+var TestSDK = core.TestSDK
+var NewContext = core.NewContext
+var NewSpec = core.NewSpec
+var NewResult = core.NewResult
+var NewResponse = core.NewResponse
+var NewOperation = core.NewOperation
+var MakeConfig = core.MakeConfig
+var NewBaseFeature = feature.NewBaseFeature
+var NewTestFeature = feature.NewTestFeature

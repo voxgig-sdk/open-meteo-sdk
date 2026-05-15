@@ -1,0 +1,330 @@
+# Entity: weather_forecast
+
+main: kit: entity: weather_forecast: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "current"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "current_unit"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "daily"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "daily_unit"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "elevation"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "generationtime_m"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "hourly"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "hourly_unit"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "latitude"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "longitude"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "timezone"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "timezone_abbreviation"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "utc_offset_second"
+      req: false
+      type: "`$INTEGER`"
+    }
+  ]
+
+  name: "weather_forecast"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "apikey"
+                orig: "apikey"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "land"
+                kind: "query"
+                name: "cell_selection"
+                orig: "cell_selection"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "current"
+                orig: "current"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "daily"
+                orig: "daily"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                kind: "query"
+                name: "elevation"
+                orig: "elevation"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: "2022-06-30"
+                kind: "query"
+                name: "end_date"
+                orig: "end_date"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2022-06-30T12:00"
+                kind: "query"
+                name: "end_hour"
+                orig: "end_hour"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2022-06-30T12:00"
+                kind: "query"
+                name: "end_minutely_15"
+                orig: "end_minutely_15"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 7
+                kind: "query"
+                name: "forecast_day"
+                orig: "forecast_day"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "forecast_hour"
+                orig: "forecast_hour"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "forecast_minutely_15"
+                orig: "forecast_minutely_15"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "hourly"
+                orig: "hourly"
+                reqd: false
+                type: "`$ARRAY`"
+              }
+              {
+                example: 52.52
+                kind: "query"
+                name: "latitude"
+                orig: "latitude"
+                reqd: true
+                type: "`$NUMBER`"
+              }
+              {
+                example: 13.41
+                kind: "query"
+                name: "longitude"
+                orig: "longitude"
+                reqd: true
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "model"
+                orig: "model"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 0
+                kind: "query"
+                name: "past_day"
+                orig: "past_day"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "past_hour"
+                orig: "past_hour"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "past_minutely_15"
+                orig: "past_minutely_15"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: "mm"
+                kind: "query"
+                name: "precipitation_unit"
+                orig: "precipitation_unit"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2022-06-30"
+                kind: "query"
+                name: "start_date"
+                orig: "start_date"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2022-06-30T12:00"
+                kind: "query"
+                name: "start_hour"
+                orig: "start_hour"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "2022-06-30T12:00"
+                kind: "query"
+                name: "start_minutely_15"
+                orig: "start_minutely_15"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "celsius"
+                kind: "query"
+                name: "temperature_unit"
+                orig: "temperature_unit"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "iso8601"
+                kind: "query"
+                name: "timeformat"
+                orig: "timeformat"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "auto"
+                kind: "query"
+                name: "timezone"
+                orig: "timezone"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "kmh"
+                kind: "query"
+                name: "wind_speed_unit"
+                orig: "wind_speed_unit"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/v1/forecast"
+          parts: [
+            "v1"
+            "forecast"
+          ]
+          select: {
+            exist: [
+              "apikey"
+              "cell_selection"
+              "current"
+              "daily"
+              "elevation"
+              "end_date"
+              "end_hour"
+              "end_minutely_15"
+              "forecast_day"
+              "forecast_hour"
+              "forecast_minutely_15"
+              "hourly"
+              "latitude"
+              "longitude"
+              "model"
+              "past_day"
+              "past_hour"
+              "past_minutely_15"
+              "precipitation_unit"
+              "start_date"
+              "start_hour"
+              "start_minutely_15"
+              "temperature_unit"
+              "timeformat"
+              "timezone"
+              "wind_speed_unit"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
