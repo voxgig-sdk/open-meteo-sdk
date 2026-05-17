@@ -12,7 +12,8 @@
         "longitude": 117,
         "timezone": "s76",
         "timezone_abbreviation": "s77",
-        "utc_offset_second": "s78"
+        "utc_offset_second": "s78",
+        "id": "HISTORICAL00"
       },
       "HISTORICAL01": {
         "daily": {},
@@ -25,7 +26,8 @@
         "longitude": 227,
         "timezone": "se4",
         "timezone_abbreviation": "se5",
-        "utc_offset_second": "se6"
+        "utc_offset_second": "se6",
+        "id": "HISTORICAL01"
       },
       "HISTORICAL02": {
         "daily": {},
@@ -38,7 +40,8 @@
         "longitude": 337,
         "timezone": "s152",
         "timezone_abbreviation": "s153",
-        "utc_offset_second": "s154"
+        "utc_offset_second": "s154",
+        "id": "HISTORICAL02"
       }
     }
   },

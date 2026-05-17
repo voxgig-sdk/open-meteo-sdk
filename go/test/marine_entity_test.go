@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/open-meteo-sdk"
-	"github.com/voxgig-sdk/open-meteo-sdk/core"
+	sdk "github.com/voxgig-sdk/open-meteo-sdk/go"
+	"github.com/voxgig-sdk/open-meteo-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/open-meteo-sdk/go/utility/struct"
 )
 
 func TestMarineEntity(t *testing.T) {

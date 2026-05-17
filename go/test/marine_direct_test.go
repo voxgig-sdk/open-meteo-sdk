@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/open-meteo-sdk"
-	"github.com/voxgig-sdk/open-meteo-sdk/core"
+	sdk "github.com/voxgig-sdk/open-meteo-sdk/go"
+	"github.com/voxgig-sdk/open-meteo-sdk/go/core"
 )
 
 func TestMarineDirect(t *testing.T) {

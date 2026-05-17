@@ -14,7 +14,8 @@
         "longitude": 139,
         "timezone": "s8c",
         "timezone_abbreviation": "s8d",
-        "utc_offset_second": "s8e"
+        "utc_offset_second": "s8e",
+        "id": "WEATHER_FORECAST00"
       },
       "WEATHER_FORECAST01": {
         "current": {},
@@ -29,7 +30,8 @@
         "longitude": 269,
         "timezone": "s10e",
         "timezone_abbreviation": "s10f",
-        "utc_offset_second": "s110"
+        "utc_offset_second": "s110",
+        "id": "WEATHER_FORECAST01"
       },
       "WEATHER_FORECAST02": {
         "current": {},
@@ -44,7 +46,8 @@
         "longitude": 399,
         "timezone": "s190",
         "timezone_abbreviation": "s191",
-        "utc_offset_second": "s192"
+        "utc_offset_second": "s192",
+        "id": "WEATHER_FORECAST02"
       }
     }
   },

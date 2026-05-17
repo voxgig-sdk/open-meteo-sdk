@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/open-meteo-sdk/core"
+	"github.com/voxgig-sdk/open-meteo-sdk/go/core"
 )
 
 type BaseFeature struct {

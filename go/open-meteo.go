@@ -1,10 +1,10 @@
 package voxgigopenmeteosdk
 
 import (
-	"github.com/voxgig-sdk/open-meteo-sdk/core"
-	"github.com/voxgig-sdk/open-meteo-sdk/entity"
-	"github.com/voxgig-sdk/open-meteo-sdk/feature"
-	_ "github.com/voxgig-sdk/open-meteo-sdk/utility"
+	"github.com/voxgig-sdk/open-meteo-sdk/go/core"
+	"github.com/voxgig-sdk/open-meteo-sdk/go/entity"
+	"github.com/voxgig-sdk/open-meteo-sdk/go/feature"
+	_ "github.com/voxgig-sdk/open-meteo-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

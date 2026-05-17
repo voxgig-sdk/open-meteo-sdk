@@ -11,7 +11,8 @@
         "longitude": 106,
         "timezone": "s6b",
         "timezone_abbreviation": "s6c",
-        "utc_offset_second": "s6d"
+        "utc_offset_second": "s6d",
+        "id": "MARINE00"
       },
       "MARINE01": {
         "daily": {},
@@ -23,7 +24,8 @@
         "longitude": 206,
         "timezone": "scf",
         "timezone_abbreviation": "sd0",
-        "utc_offset_second": "sd1"
+        "utc_offset_second": "sd1",
+        "id": "MARINE01"
       },
       "MARINE02": {
         "daily": {},
@@ -35,7 +37,8 @@
         "longitude": 306,
         "timezone": "s133",
         "timezone_abbreviation": "s134",
-        "utc_offset_second": "s135"
+        "utc_offset_second": "s135",
+        "id": "MARINE02"
       }
     }
   },

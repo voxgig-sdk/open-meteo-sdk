@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/open-meteo-sdk/core"
+	"github.com/voxgig-sdk/open-meteo-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/open-meteo-sdk/go/utility/struct"
 )
 
 type HistoricalEntity struct {
