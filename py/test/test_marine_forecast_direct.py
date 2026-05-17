@@ -1,4 +1,4 @@
-# Marine direct test
+# MarineForecast direct test
 
 import json
 import pytest
@@ -9,11 +9,11 @@ from core import helpers
 from test import runner
 
 
-class TestMarineDirect:
+class TestMarineForecastDirect:
 
-    def test_should_direct_load_marine(self):
-        setup = _marine_direct_setup({"id": "direct01"})
-        _skip, _reason = runner.is_control_skipped("direct", "direct-load-marine", "live" if setup["live"] else "unit")
+    def test_should_direct_load_marine_forecast(self):
+        setup = _marine_forecast_direct_setup({"id": "direct01"})
+        _skip, _reason = runner.is_control_skipped("direct", "direct-load-marine_forecast", "live" if setup["live"] else "unit")
         if _skip:
             # pytest already imported at module scope
             pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -22,7 +22,7 @@ class TestMarineDirect:
 
 
         result, err = client.direct({
-            "path": "v1/marine",
+            "path": "v1/marine-weather",
             "method": "GET",
             "params": {},
         })
@@ -51,13 +51,13 @@ class TestMarineDirect:
 
 
 
-def _marine_direct_setup(mockres):
+def _marine_forecast_direct_setup(mockres):
     runner.load_env_local()
 
     calls = []
 
     env = runner.env_override({
-        "OPENMETEO_TEST_MARINE_ENTID": {},
+        "OPENMETEO_TEST_MARINE_FORECAST_ENTID": {},
         "OPENMETEO_TEST_LIVE": "FALSE",
         "OPENMETEO_APIKEY": "NONE",
     })

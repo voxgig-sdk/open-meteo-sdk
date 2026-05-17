@@ -1,6 +1,6 @@
-# Entity: marine
+# Entity: marine_forecast
 
-main: kit: entity: marine: {
+main: kit: entity: marine_forecast: {
 
   alias: field: {}
 
@@ -57,7 +57,7 @@ main: kit: entity: marine: {
     }
   ]
 
-  name: "marine"
+  name: "marine_forecast"
   op: {
     load: {
       name: "load"
@@ -128,10 +128,10 @@ main: kit: entity: marine: {
             ]
           }
           method: "GET"
-          orig: "/v1/marine"
+          orig: "/v1/marine-weather"
           parts: [
             "v1"
-            "marine"
+            "marine-weather"
           ]
           select: {
             exist: [

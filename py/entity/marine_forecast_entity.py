@@ -1,10 +1,10 @@
-# OpenMeteo SDK Marine entity
+# OpenMeteo SDK MarineForecast entity
 
 from utility.voxgig_struct import voxgig_struct as vs
 from core import helpers
 
 
-class MarineEntity:
+class MarineForecastEntity:
 
     def __init__(self, client, entopts=None):
         if entopts is None:
@@ -16,7 +16,7 @@ class MarineEntity:
         else:
             entopts["active"] = True
 
-        self._name = "marine"
+        self._name = "marine_forecast"
         self._client = client
         self._utility = client.get_utility()
         self._entopts = entopts
@@ -37,7 +37,7 @@ class MarineEntity:
         opts = {}
         for k, v in self._entopts.items():
             opts[k] = v
-        return MarineEntity(self._client, opts)
+        return MarineForecastEntity(self._client, opts)
 
     def data_set(self, args=None):
         if args is not None:

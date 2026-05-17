@@ -46,9 +46,9 @@ $client = OpenMeteoSDK::test();
 
 Create a new `HistoricalEntity` instance. Pass `null` for no initial data.
 
-#### `Marine($data = null)`
+#### `MarineForecast($data = null)`
 
-Create a new `MarineEntity` instance. Pass `null` for no initial data.
+Create a new `MarineForecastEntity` instance. Pass `null` for no initial data.
 
 #### `WeatherForecast($data = null)`
 
@@ -149,10 +149,10 @@ Return the entity name.
 
 ---
 
-## MarineEntity
+## MarineForecastEntity
 
 ```php
-$marine = $client->Marine();
+$marine_forecast = $client->MarineForecast();
 ```
 
 ### Fields
@@ -177,7 +177,7 @@ $marine = $client->Marine();
 Load a single entity matching the given criteria.
 
 ```php
-[$result, $err] = $client->Marine()->load(["id" => "marine_id"]);
+[$result, $err] = $client->MarineForecast()->load(["id" => "marine_forecast_id"]);
 ```
 
 ### Common Methods
@@ -198,9 +198,9 @@ Get the entity match criteria.
 
 Set the entity match criteria.
 
-#### `make(): MarineEntity`
+#### `make(): MarineForecastEntity`
 
-Create a new `MarineEntity` instance with the same client and
+Create a new `MarineForecastEntity` instance with the same client and
 options.
 
 #### `getName(): string`

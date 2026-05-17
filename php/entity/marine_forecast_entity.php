@@ -1,14 +1,14 @@
 <?php
 declare(strict_types=1);
 
-// OpenMeteo SDK Marine entity
+// OpenMeteo SDK MarineForecast entity
 
 require_once __DIR__ . '/../utility/struct/Struct.php';
 require_once __DIR__ . '/../core/Helpers.php';
 
 use Voxgig\Struct\Struct;
 
-class MarineEntity
+class MarineForecastEntity
 {
     private string $_name;
     private $_client;
@@ -29,7 +29,7 @@ class MarineEntity
             $entopts["active"] = true;
         }
 
-        $this->_name = "marine";
+        $this->_name = "marine_forecast";
         $this->_client = $client;
         $this->_utility = $client->get_utility();
         $this->_entopts = $entopts;
@@ -52,7 +52,7 @@ class MarineEntity
     public function make(): self
     {
         $opts = $this->_entopts;
-        return new MarineEntity($this->_client, $opts);
+        return new MarineForecastEntity($this->_client, $opts);
     }
 
     public function data_set($args): void

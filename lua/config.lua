@@ -22,7 +22,7 @@ local function make_config()
       },
       entity = {
         ["historical"] = {},
-        ["marine"] = {},
+        ["marine_forecast"] = {},
         ["weather_forecast"] = {},
       },
     },
@@ -247,7 +247,7 @@ local function make_config()
           ["ancestors"] = {},
         },
       },
-      ["marine"] = {
+      ["marine_forecast"] = {
         ["fields"] = {
           {
             ["name"] = "daily",
@@ -320,7 +320,7 @@ local function make_config()
             ["index$"] = 9,
           },
         },
-        ["name"] = "marine",
+        ["name"] = "marine_forecast",
         ["op"] = {
           ["load"] = {
             ["name"] = "load",
@@ -399,10 +399,10 @@ local function make_config()
                   },
                 },
                 ["method"] = "GET",
-                ["orig"] = "/v1/marine",
+                ["orig"] = "/v1/marine-weather",
                 ["parts"] = {
                   "v1",
-                  "marine",
+                  "marine-weather",
                 },
                 ["select"] = {
                   ["exist"] = {

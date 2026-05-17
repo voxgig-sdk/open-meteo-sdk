@@ -174,7 +174,7 @@ new OpenMeteoSDK(options?: {
 | `prepare(fetchargs?)` | `Promise<FetchDef>` | Build an HTTP request definition without sending it. |
 | `direct(fetchargs?)` | `Promise<DirectResult>` | Build and send an HTTP request. |
 | `Historical(data?)` | `HistoricalEntity` | Create a Historical entity instance. |
-| `Marine(data?)` | `MarineEntity` | Create a Marine entity instance. |
+| `MarineForecast(data?)` | `MarineForecastEntity` | Create a MarineForecast entity instance. |
 | `WeatherForecast(data?)` | `WeatherForecastEntity` | Create a WeatherForecast entity instance. |
 | `tester(testopts?, sdkopts?)` | `OpenMeteoSDK` | Create a test-mode client instance. |
 
@@ -266,7 +266,7 @@ Operations: load.
 
 API path: `/v1/historical`
 
-#### Marine
+#### MarineForecast
 
 | Field | Description |
 | --- | --- |
@@ -283,7 +283,7 @@ API path: `/v1/historical`
 
 Operations: load.
 
-API path: `/v1/marine`
+API path: `/v1/marine-weather`
 
 #### WeatherForecast
 
@@ -345,9 +345,9 @@ const historical = await client.Historical().load({ id: 'historical_id' })
 ```
 
 
-### Marine
+### MarineForecast
 
-Create an instance: `const marine = client.Marine()`
+Create an instance: `const marine_forecast = client.MarineForecast()`
 
 #### Operations
 
@@ -373,7 +373,7 @@ Create an instance: `const marine = client.Marine()`
 #### Example: Load
 
 ```ts
-const marine = await client.Marine().load({ id: 'marine_id' })
+const marine_forecast = await client.MarineForecast().load({ id: 'marine_forecast_id' })
 ```
 
 

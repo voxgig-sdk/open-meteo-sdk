@@ -6,7 +6,7 @@ import (
 	vs "github.com/voxgig-sdk/open-meteo-sdk/go/utility/struct"
 )
 
-type MarineEntity struct {
+type MarineForecastEntity struct {
 	name    string
 	client  *core.OpenMeteoSDK
 	utility *core.Utility
@@ -16,7 +16,7 @@ type MarineEntity struct {
 	entctx  *core.Context
 }
 
-func NewMarineEntity(client *core.OpenMeteoSDK, entopts map[string]any) *MarineEntity {
+func NewMarineForecastEntity(client *core.OpenMeteoSDK, entopts map[string]any) *MarineForecastEntity {
 	if entopts == nil {
 		entopts = map[string]any{}
 	}
@@ -28,8 +28,8 @@ func NewMarineEntity(client *core.OpenMeteoSDK, entopts map[string]any) *MarineE
 		entopts["active"] = true
 	}
 
-	e := &MarineEntity{
-		name:    "marine",
+	e := &MarineForecastEntity{
+		name:    "marine_forecast",
 		client:  client,
 		utility: client.GetUtility(),
 		entopts: entopts,
@@ -47,17 +47,17 @@ func NewMarineEntity(client *core.OpenMeteoSDK, entopts map[string]any) *MarineE
 	return e
 }
 
-func (e *MarineEntity) GetName() string { return e.name }
+func (e *MarineForecastEntity) GetName() string { return e.name }
 
-func (e *MarineEntity) Make() core.Entity {
+func (e *MarineForecastEntity) Make() core.Entity {
 	opts := map[string]any{}
 	for k, v := range e.entopts {
 		opts[k] = v
 	}
-	return NewMarineEntity(e.client, opts)
+	return NewMarineForecastEntity(e.client, opts)
 }
 
-func (e *MarineEntity) Data(args ...any) any {
+func (e *MarineForecastEntity) Data(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.data = core.ToMapAny(vs.Clone(args[0]))
 		if e.data == nil {
@@ -71,7 +71,7 @@ func (e *MarineEntity) Data(args ...any) any {
 	return out
 }
 
-func (e *MarineEntity) Match(args ...any) any {
+func (e *MarineForecastEntity) Match(args ...any) any {
 	if len(args) > 0 && args[0] != nil {
 		e.match = core.ToMapAny(vs.Clone(args[0]))
 		if e.match == nil {
@@ -86,7 +86,7 @@ func (e *MarineEntity) Match(args ...any) any {
 }
 
 
-func (e *MarineEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *MarineForecastEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
 		"opname":   "load",
@@ -113,27 +113,27 @@ func (e *MarineEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, 
 
 
 
-func (e *MarineEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+func (e *MarineForecastEntity) List(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("list", e.name)
 }
 
 
-func (e *MarineEntity) Create(_ map[string]any, _ map[string]any) (any, error) {
+func (e *MarineForecastEntity) Create(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("create", e.name)
 }
 
 
-func (e *MarineEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
+func (e *MarineForecastEntity) Update(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("update", e.name)
 }
 
 
-func (e *MarineEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
+func (e *MarineForecastEntity) Remove(_ map[string]any, _ map[string]any) (any, error) {
 	return core.UnsupportedOp("remove", e.name)
 }
 
 
-func (e *MarineEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
+func (e *MarineForecastEntity) runOp(ctx *core.Context, postDone func()) (any, error) {
 	utility := e.utility
 
 	utility.FeatureHook(ctx, "PrePoint")

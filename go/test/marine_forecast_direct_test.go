@@ -10,14 +10,14 @@ import (
 	"github.com/voxgig-sdk/open-meteo-sdk/go/core"
 )
 
-func TestMarineDirect(t *testing.T) {
-	t.Run("direct-load-marine", func(t *testing.T) {
-		setup := marineDirectSetup(map[string]any{"id": "direct01"})
+func TestMarineForecastDirect(t *testing.T) {
+	t.Run("direct-load-marine_forecast", func(t *testing.T) {
+		setup := marine_forecastDirectSetup(map[string]any{"id": "direct01"})
 		_mode := "unit"
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-load-marine", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-load-marine_forecast", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
@@ -28,7 +28,7 @@ func TestMarineDirect(t *testing.T) {
 
 
 		result, err := client.Direct(map[string]any{
-			"path":   "v1/marine",
+			"path":   "v1/marine-weather",
 			"method": "GET",
 			"params": map[string]any{},
 		})
@@ -84,20 +84,20 @@ func TestMarineDirect(t *testing.T) {
 
 }
 
-type marineDirectSetupResult struct {
+type marine_forecastDirectSetupResult struct {
 	client *sdk.OpenMeteoSDK
 	calls  *[]map[string]any
 	live   bool
 	idmap  map[string]any
 }
 
-func marineDirectSetup(mockres any) *marineDirectSetupResult {
+func marine_forecastDirectSetup(mockres any) *marine_forecastDirectSetupResult {
 	loadEnvLocal()
 
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"OPENMETEO_TEST_MARINE_ENTID": map[string]any{},
+		"OPENMETEO_TEST_MARINE_FORECAST_ENTID": map[string]any{},
 		"OPENMETEO_TEST_LIVE":    "FALSE",
 		"OPENMETEO_APIKEY":       "NONE",
 	})
@@ -111,7 +111,7 @@ func marineDirectSetup(mockres any) *marineDirectSetupResult {
 		client := sdk.NewOpenMeteoSDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["OPENMETEO_TEST_MARINE_ENTID"]; ok {
+		if entidRaw, ok := env["OPENMETEO_TEST_MARINE_FORECAST_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {
@@ -119,7 +119,7 @@ func marineDirectSetup(mockres any) *marineDirectSetupResult {
 			}
 		}
 
-		return &marineDirectSetupResult{client: client, calls: calls, live: true, idmap: idmap}
+		return &marine_forecastDirectSetupResult{client: client, calls: calls, live: true, idmap: idmap}
 	}
 
 	mockFetch := func(url string, init map[string]any) (map[string]any, error) {
@@ -144,7 +144,7 @@ func marineDirectSetup(mockres any) *marineDirectSetupResult {
 		},
 	})
 
-	return &marineDirectSetupResult{client: client, calls: calls, live: false, idmap: map[string]any{}}
+	return &marine_forecastDirectSetupResult{client: client, calls: calls, live: false, idmap: map[string]any{}}
 }
 
 var _ = os.Getenv

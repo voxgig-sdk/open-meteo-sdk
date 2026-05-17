@@ -1,19 +1,19 @@
 <?php
 declare(strict_types=1);
 
-// Marine direct test
+// MarineForecast direct test
 
 require_once __DIR__ . '/../openmeteo_sdk.php';
 require_once __DIR__ . '/Runner.php';
 
 use PHPUnit\Framework\TestCase;
 
-class MarineDirectTest extends TestCase
+class MarineForecastDirectTest extends TestCase
 {
-    public function test_direct_load_marine(): void
+    public function test_direct_load_marine_forecast(): void
     {
-        $setup = marine_direct_setup(["id" => "direct01"]);
-        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-load-marine", $setup["live"] ? "live" : "unit");
+        $setup = marine_forecast_direct_setup(["id" => "direct01"]);
+        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-load-marine_forecast", $setup["live"] ? "live" : "unit");
         if ($_shouldSkip) {
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
@@ -22,7 +22,7 @@ class MarineDirectTest extends TestCase
 
 
         [$result, $err] = $client->direct([
-            "path" => "v1/marine",
+            "path" => "v1/marine-weather",
             "method" => "GET",
             "params" => [],
         ]);
@@ -58,14 +58,14 @@ class MarineDirectTest extends TestCase
 }
 
 
-function marine_direct_setup($mockres)
+function marine_forecast_direct_setup($mockres)
 {
     Runner::load_env_local();
 
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "OPENMETEO_TEST_MARINE_ENTID" => [],
+        "OPENMETEO_TEST_MARINE_FORECAST_ENTID" => [],
         "OPENMETEO_TEST_LIVE" => "FALSE",
         "OPENMETEO_APIKEY" => "NONE",
     ]);

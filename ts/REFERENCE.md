@@ -61,9 +61,9 @@ Create a new `Historical` entity instance.
 
 **Returns:** `HistoricalEntity` instance.
 
-#### `Marine(data?: object)`
+#### `MarineForecast(data?: object)`
 
-Create a new `Marine` entity instance.
+Create a new `MarineForecast` entity instance.
 
 **Parameters:**
 
@@ -71,7 +71,7 @@ Create a new `Marine` entity instance.
 | --- | --- | --- |
 | `data` | `object` | Initial entity data. |
 
-**Returns:** `MarineEntity` instance.
+**Returns:** `MarineForecastEntity` instance.
 
 #### `WeatherForecast(data?: object)`
 
@@ -191,10 +191,10 @@ Return a copy of the entity options.
 
 ---
 
-## MarineEntity
+## MarineForecastEntity
 
 ```ts
-const marine = client.Marine()
+const marine_forecast = client.MarineForecast()
 ```
 
 ### Fields
@@ -219,7 +219,7 @@ const marine = client.Marine()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Marine().load({ id: 'marine_id' })
+const result = await client.MarineForecast().load({ id: 'marine_forecast_id' })
 ```
 
 ### Common Methods
@@ -236,7 +236,7 @@ Get or set the entity match criteria. Works the same as `data()`.
 
 #### `make()`
 
-Create a new `MarineEntity` instance with the same client and
+Create a new `MarineForecastEntity` instance with the same client and
 options.
 
 #### `client()`

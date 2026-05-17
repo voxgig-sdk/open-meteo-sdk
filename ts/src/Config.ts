@@ -51,7 +51,7 @@ class Config {
       historical: {
       },
 
-      marine: {
+      marine_forecast: {
       },
 
       weather_forecast: {
@@ -282,7 +282,7 @@ class Config {
         "ancestors": []
       }
     },
-    "marine": {
+    "marine_forecast": {
       "fields": [
         {
           "name": "daily",
@@ -355,7 +355,7 @@ class Config {
           "index$": 9
         }
       ],
-      "name": "marine",
+      "name": "marine_forecast",
       "op": {
         "load": {
           "name": "load",
@@ -434,10 +434,10 @@ class Config {
                 ]
               },
               "method": "GET",
-              "orig": "/v1/marine",
+              "orig": "/v1/marine-weather",
               "parts": [
                 "v1",
-                "marine"
+                "marine-weather"
               ],
               "select": {
                 "exist": [

@@ -1,0 +1,28 @@
+# BasicMarineForecastFlow
+
+main: kit: flow: BasicMarineForecastFlow:
+{
+  entity: "marine_forecast",
+  kind: "basic",
+  name: "BasicMarineForecastFlow",
+  step: [
+    {
+      input: {
+        ref: "marine_forecast_ref01",
+        srcdatavar: "marine_forecast_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-marine_forecast_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMarineForecastFlow"
+}

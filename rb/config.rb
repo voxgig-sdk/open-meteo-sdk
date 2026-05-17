@@ -23,7 +23,7 @@ module OpenMeteoConfig
         },
         "entity" => {
           "historical" => {},
-          "marine" => {},
+          "marine_forecast" => {},
           "weather_forecast" => {},
         },
       },
@@ -248,7 +248,7 @@ module OpenMeteoConfig
             "ancestors" => [],
           },
         },
-        "marine" => {
+        "marine_forecast" => {
           "fields" => [
             {
               "name" => "daily",
@@ -321,7 +321,7 @@ module OpenMeteoConfig
               "index$" => 9,
             },
           ],
-          "name" => "marine",
+          "name" => "marine_forecast",
           "op" => {
             "load" => {
               "name" => "load",
@@ -400,10 +400,10 @@ module OpenMeteoConfig
                     ],
                   },
                   "method" => "GET",
-                  "orig" => "/v1/marine",
+                  "orig" => "/v1/marine-weather",
                   "parts" => [
                     "v1",
-                    "marine",
+                    "marine-weather",
                   ],
                   "select" => {
                     "exist" => [

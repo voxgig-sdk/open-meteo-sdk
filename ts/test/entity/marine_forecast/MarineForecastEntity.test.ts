@@ -23,7 +23,7 @@ import {
 } from '../../utility'
 
 
-describe('MarineEntity', async () => {
+describe('MarineForecastEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
   // `test.live.delayMs`; only sleeps when OPENMETEO_TEST_LIVE=TRUE.
@@ -31,7 +31,7 @@ describe('MarineEntity', async () => {
 
   test('instance', async () => {
     const testsdk = OpenMeteoSDK.test()
-    const ent = testsdk.Marine()
+    const ent = testsdk.MarineForecast()
     assert(null != ent)
   })
 
@@ -40,7 +40,7 @@ describe('MarineEntity', async () => {
 
     const live = 'TRUE' === process.env.OPEN_METEO_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'marine.' + op, live)) return
+      if (maybeSkipControl(t, 'entityOp', 'marine_forecast.' + op, live)) return
     }
 
     const setup = basicSetup()
@@ -48,7 +48,7 @@ describe('MarineEntity', async () => {
     // fixture (entity TestData.json). Those don't exist on the live API.
     // Skip live runs unless the user provided a real ENTID env override.
     if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set OPEN_METEO_TEST_MARINE_ENTID JSON to run live')
+      t.skip('live entity test uses synthetic IDs from fixture — set OPEN_METEO_TEST_MARINE_FORECAST_ENTID JSON to run live')
       return
     }
     const client = setup.client
@@ -57,13 +57,13 @@ describe('MarineEntity', async () => {
     const isempty = struct.isempty
     const select = struct.select
 
-    let marine_ref01_data = Object.values(setup.data.existing.marine)[0] as any
+    let marine_forecast_ref01_data = Object.values(setup.data.existing.marine_forecast)[0] as any
 
     // LOAD
-    const marine_ref01_ent = client.Marine()
-    const marine_ref01_match_dt0: any = {}
-    const marine_ref01_data_dt0 = await marine_ref01_ent.load(marine_ref01_match_dt0)
-    assert(null != marine_ref01_data_dt0)
+    const marine_forecast_ref01_ent = client.MarineForecast()
+    const marine_forecast_ref01_match_dt0: any = {}
+    const marine_forecast_ref01_data_dt0 = await marine_forecast_ref01_ent.load(marine_forecast_ref01_match_dt0)
+    assert(null != marine_forecast_ref01_data_dt0)
 
 
   })
@@ -78,7 +78,7 @@ function basicSetup(extra?: any) {
   // TODO: needs test utility to resolve path
   const entityDataFile =
     Path.resolve(__dirname, 
-      '../../../../.sdk/test/entity/marine/MarineTestData.json')
+      '../../../../.sdk/test/entity/marine_forecast/MarineForecastTestData.json')
 
   // TODO: file ready util needed?
   const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
@@ -94,7 +94,7 @@ function basicSetup(extra?: any) {
   const transform = struct.transform
 
   let idmap = transform(
-    ['marine01','marine02','marine03'],
+    ['marine_forecast01','marine_forecast02','marine_forecast03'],
     {
       '`$PACK`': ['', {
         '`$KEY`': '`$COPY`',
@@ -106,17 +106,17 @@ function basicSetup(extra?: any) {
   // basic flow consumes synthetic IDs from the fixture file; without an
   // override those synthetic IDs reach the live API and 4xx. Surface this
   // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['OPEN_METEO_TEST_MARINE_ENTID']
+  const idmapEnvVal = process.env['OPEN_METEO_TEST_MARINE_FORECAST_ENTID']
   const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
 
   const env = envOverride({
-    'OPEN_METEO_TEST_MARINE_ENTID': idmap,
+    'OPEN_METEO_TEST_MARINE_FORECAST_ENTID': idmap,
     'OPEN_METEO_TEST_LIVE': 'FALSE',
     'OPEN_METEO_TEST_EXPLAIN': 'FALSE',
     'OPEN_METEO_APIKEY': 'NONE',
   })
 
-  idmap = env['OPEN_METEO_TEST_MARINE_ENTID']
+  idmap = env['OPEN_METEO_TEST_MARINE_FORECAST_ENTID']
 
   const live = 'TRUE' === env.OPEN_METEO_TEST_LIVE
 

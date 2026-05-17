@@ -88,8 +88,8 @@ func entityFor(client *sdk.OpenMeteoSDK, name string) (sdk.OpenMeteoEntity, erro
 	switch strings.ToLower(name) {
 	case "historical":
 		return client.Historical(nil), nil
-	case "marine":
-		return client.Marine(nil), nil
+	case "marine_forecast":
+		return client.MarineForecast(nil), nil
 	case "weather_forecast":
 		return client.WeatherForecast(nil), nil
 

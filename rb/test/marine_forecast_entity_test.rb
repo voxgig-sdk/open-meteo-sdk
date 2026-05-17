@@ -1,23 +1,23 @@
-# Marine entity test
+# MarineForecast entity test
 
 require "minitest/autorun"
 require "json"
 require_relative "../OpenMeteo_sdk"
 require_relative "runner"
 
-class MarineEntityTest < Minitest::Test
+class MarineForecastEntityTest < Minitest::Test
   def test_create_instance
     testsdk = OpenMeteoSDK.test(nil, nil)
-    ent = testsdk.Marine(nil)
+    ent = testsdk.MarineForecast(nil)
     assert !ent.nil?
   end
 
   def test_basic_flow
-    setup = marine_basic_setup(nil)
+    setup = marine_forecast_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
     ["load"].each do |_op|
-      _should_skip, _reason = Runner.is_control_skipped("entityOp", "marine." + _op, _live ? "live" : "unit")
+      _should_skip, _reason = Runner.is_control_skipped("entityOp", "marine_forecast." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
         return
@@ -26,33 +26,33 @@ class MarineEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set OPENMETEO_TEST_MARINE_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set OPENMETEO_TEST_MARINE_FORECAST_ENTID JSON to run live"
       return
     end
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
-    marine_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.marine")))
-    marine_ref01_data = nil
-    if marine_ref01_data_raw.length > 0
-      marine_ref01_data = Helpers.to_map(marine_ref01_data_raw[0][1])
+    marine_forecast_ref01_data_raw = Vs.items(Helpers.to_map(
+      Vs.getpath(setup[:data], "existing.marine_forecast")))
+    marine_forecast_ref01_data = nil
+    if marine_forecast_ref01_data_raw.length > 0
+      marine_forecast_ref01_data = Helpers.to_map(marine_forecast_ref01_data_raw[0][1])
     end
 
     # LOAD
-    marine_ref01_ent = client.Marine(nil)
-    marine_ref01_match_dt0 = {}
-    marine_ref01_data_dt0_loaded, err = marine_ref01_ent.load(marine_ref01_match_dt0, nil)
+    marine_forecast_ref01_ent = client.MarineForecast(nil)
+    marine_forecast_ref01_match_dt0 = {}
+    marine_forecast_ref01_data_dt0_loaded, err = marine_forecast_ref01_ent.load(marine_forecast_ref01_match_dt0, nil)
     assert_nil err
-    assert !marine_ref01_data_dt0_loaded.nil?
+    assert !marine_forecast_ref01_data_dt0_loaded.nil?
 
   end
 end
 
-def marine_basic_setup(extra)
+def marine_forecast_basic_setup(extra)
   Runner.load_env_local
 
-  entity_data_file = File.join(__dir__, "..", "..", ".sdk", "test", "entity", "marine", "MarineTestData.json")
+  entity_data_file = File.join(__dir__, "..", "..", ".sdk", "test", "entity", "marine_forecast", "MarineForecastTestData.json")
   entity_data_source = File.read(entity_data_file)
   entity_data = JSON.parse(entity_data_source)
 
@@ -63,7 +63,7 @@ def marine_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["marine01", "marine02", "marine03"],
+    ["marine_forecast01", "marine_forecast02", "marine_forecast03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",
@@ -75,18 +75,18 @@ def marine_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["OPENMETEO_TEST_MARINE_ENTID"]
+  entid_env_raw = ENV["OPENMETEO_TEST_MARINE_FORECAST_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "OPENMETEO_TEST_MARINE_ENTID" => idmap,
+    "OPENMETEO_TEST_MARINE_FORECAST_ENTID" => idmap,
     "OPENMETEO_TEST_LIVE" => "FALSE",
     "OPENMETEO_TEST_EXPLAIN" => "FALSE",
     "OPENMETEO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["OPENMETEO_TEST_MARINE_ENTID"])
+    env["OPENMETEO_TEST_MARINE_FORECAST_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end

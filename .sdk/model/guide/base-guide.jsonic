@@ -11,8 +11,8 @@ guide: {
     }
   }
 
-  entity: marine: {
-    path: "/v1/marine": {
+  entity: marine_forecast: {
+    path: "/v1/marine-weather": {
       op: load: method: *GET
     }
   }

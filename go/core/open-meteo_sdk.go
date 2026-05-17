@@ -250,8 +250,8 @@ func (sdk *OpenMeteoSDK) Historical(data map[string]any) OpenMeteoEntity {
 }
 
 
-func (sdk *OpenMeteoSDK) Marine(data map[string]any) OpenMeteoEntity {
-	return NewMarineEntityFunc(sdk, data)
+func (sdk *OpenMeteoSDK) MarineForecast(data map[string]any) OpenMeteoEntity {
+	return NewMarineForecastEntityFunc(sdk, data)
 }
 
 

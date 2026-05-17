@@ -250,8 +250,8 @@ function OpenMeteoSDK:Historical(data)
 end
 
 
-function OpenMeteoSDK:Marine(data)
-  local EntityMod = require("entity.marine_entity")
+function OpenMeteoSDK:MarineForecast(data)
+  local EntityMod = require("entity.marine_forecast_entity")
   return EntityMod.new(self, data)
 end
 

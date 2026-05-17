@@ -1,5 +1,5 @@
 # Entity Models
 
 @"historical.jsonic"
-@"marine.jsonic"
+@"marine_forecast.jsonic"
 @"weather_forecast.jsonic"

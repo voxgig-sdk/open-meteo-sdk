@@ -46,9 +46,9 @@ client = OpenMeteoSDK.test()
 
 Create a new `HistoricalEntity` instance. Pass `None` for no initial data.
 
-#### `Marine(data=None)`
+#### `MarineForecast(data=None)`
 
-Create a new `MarineEntity` instance. Pass `None` for no initial data.
+Create a new `MarineForecastEntity` instance. Pass `None` for no initial data.
 
 #### `WeatherForecast(data=None)`
 
@@ -147,10 +147,10 @@ Return the entity name.
 
 ---
 
-## MarineEntity
+## MarineForecastEntity
 
 ```python
-marine = client.Marine()
+marine_forecast = client.MarineForecast()
 ```
 
 ### Fields
@@ -175,7 +175,7 @@ marine = client.Marine()
 Load a single entity matching the given criteria.
 
 ```python
-result, err = client.Marine().load({"id": "marine_id"})
+result, err = client.MarineForecast().load({"id": "marine_forecast_id"})
 ```
 
 ### Common Methods
@@ -198,7 +198,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `MarineEntity` instance with the same options.
+Create a new `MarineForecastEntity` instance with the same options.
 
 #### `get_name() -> str`
 

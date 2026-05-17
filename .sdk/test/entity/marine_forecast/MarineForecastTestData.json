@@ -1,7 +1,7 @@
 {
   "existing": {
-    "marine": {
-      "MARINE00": {
+    "marine_forecast": {
+      "MARINE_FORECAST00": {
         "daily": {},
         "daily_unit": {},
         "generationtime_m": 102,
@@ -12,9 +12,9 @@
         "timezone": "s6b",
         "timezone_abbreviation": "s6c",
         "utc_offset_second": "s6d",
-        "id": "MARINE00"
+        "id": "MARINE_FORECAST00"
       },
-      "MARINE01": {
+      "MARINE_FORECAST01": {
         "daily": {},
         "daily_unit": {},
         "generationtime_m": 202,
@@ -25,9 +25,9 @@
         "timezone": "scf",
         "timezone_abbreviation": "sd0",
         "utc_offset_second": "sd1",
-        "id": "MARINE01"
+        "id": "MARINE_FORECAST01"
       },
-      "MARINE02": {
+      "MARINE_FORECAST02": {
         "daily": {},
         "daily_unit": {},
         "generationtime_m": 302,
@@ -38,13 +38,13 @@
         "timezone": "s133",
         "timezone_abbreviation": "s134",
         "utc_offset_second": "s135",
-        "id": "MARINE02"
+        "id": "MARINE_FORECAST02"
       }
     }
   },
   "new": {
-    "marine": {
-      "marine_ref01": {
+    "marine_forecast": {
+      "marine_forecast_ref01": {
         "daily": {},
         "daily_unit": {},
         "generationtime_m": 402,

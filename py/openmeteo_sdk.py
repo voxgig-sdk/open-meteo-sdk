@@ -218,9 +218,9 @@ class OpenMeteoSDK:
         return HistoricalEntity(self, data)
 
 
-    def Marine(self, data=None):
-        from entity.marine_entity import MarineEntity
-        return MarineEntity(self, data)
+    def MarineForecast(self, data=None):
+        from entity.marine_forecast_entity import MarineForecastEntity
+        return MarineForecastEntity(self, data)
 
 
     def WeatherForecast(self, data=None):

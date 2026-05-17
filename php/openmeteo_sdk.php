@@ -230,10 +230,10 @@ class OpenMeteoSDK
     }
 
 
-    public function Marine($data = null)
+    public function MarineForecast($data = null)
     {
-        require_once __DIR__ . '/entity/marine_entity.php';
-        return new MarineEntity($this, $data);
+        require_once __DIR__ . '/entity/marine_forecast_entity.php';
+        return new MarineForecastEntity($this, $data);
     }
 
 

@@ -45,9 +45,9 @@ local client = sdk.test(nil, nil)
 
 Create a new `Historical` entity instance. Pass `nil` for no initial data.
 
-#### `Marine(data)`
+#### `MarineForecast(data)`
 
-Create a new `Marine` entity instance. Pass `nil` for no initial data.
+Create a new `MarineForecast` entity instance. Pass `nil` for no initial data.
 
 #### `WeatherForecast(data)`
 
@@ -151,10 +151,10 @@ Return the entity name.
 
 ---
 
-## MarineEntity
+## MarineForecastEntity
 
 ```lua
-local marine = client:Marine(nil)
+local marine_forecast = client:MarineForecast(nil)
 ```
 
 ### Fields
@@ -179,7 +179,7 @@ local marine = client:Marine(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Marine(nil):load({ id = "marine_id" }, nil)
+local result, err = client:MarineForecast(nil):load({ id = "marine_forecast_id" }, nil)
 ```
 
 ### Common Methods
@@ -202,7 +202,7 @@ Set the entity match criteria.
 
 #### `make() -> Entity`
 
-Create a new `MarineEntity` instance with the same client and
+Create a new `MarineForecastEntity` instance with the same client and
 options.
 
 #### `get_name() -> string`

@@ -22,7 +22,7 @@ func MakeConfig() map[string]any {
 			},
 			"entity": map[string]any{
 				"historical": map[string]any{},
-				"marine": map[string]any{},
+				"marine_forecast": map[string]any{},
 				"weather_forecast": map[string]any{},
 			},
 		},
@@ -247,7 +247,7 @@ func MakeConfig() map[string]any {
 					"ancestors": []any{},
 				},
 			},
-			"marine": map[string]any{
+			"marine_forecast": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "daily",
@@ -320,7 +320,7 @@ func MakeConfig() map[string]any {
 						"index$": 9,
 					},
 				},
-				"name": "marine",
+				"name": "marine_forecast",
 				"op": map[string]any{
 					"load": map[string]any{
 						"name": "load",
@@ -399,10 +399,10 @@ func MakeConfig() map[string]any {
 									},
 								},
 								"method": "GET",
-								"orig": "/v1/marine",
+								"orig": "/v1/marine-weather",
 								"parts": []any{
 									"v1",
-									"marine",
+									"marine-weather",
 								},
 								"select": map[string]any{
 									"exist": []any{

@@ -242,7 +242,7 @@
             "ancestors": []
           }
         },
-        "marine": {
+        "marine_forecast": {
           "alias": {
             "field": {}
           },
@@ -308,7 +308,7 @@
               "active": true
             }
           ],
-          "name": "marine",
+          "name": "marine_forecast",
           "op": {
             "load": {
               "name": "load",
@@ -387,10 +387,10 @@
                     ]
                   },
                   "method": "GET",
-                  "orig": "/v1/marine",
+                  "orig": "/v1/marine-weather",
                   "parts": [
                     "v1",
-                    "marine"
+                    "marine-weather"
                   ],
                   "select": {
                     "exist": [
@@ -908,15 +908,15 @@
           "active": true,
           "param": {}
         },
-        "BasicMarineFlow": {
-          "entity": "marine",
+        "BasicMarineForecastFlow": {
+          "entity": "marine_forecast",
           "kind": "basic",
-          "name": "BasicMarineFlow",
+          "name": "BasicMarineForecastFlow",
           "step": [
             {
               "input": {
-                "ref": "marine_ref01",
-                "srcdatavar": "marine_ref01_data",
+                "ref": "marine_forecast_ref01",
+                "srcdatavar": "marine_forecast_ref01_data",
                 "suffix": "_dt0"
               },
               "op": "load",
@@ -924,7 +924,7 @@
                 {
                   "apply": "TextFieldMark",
                   "def": {
-                    "mark": "Mark01-marine_ref01"
+                    "mark": "Mark01-marine_forecast_ref01"
                   }
                 }
               ],
@@ -934,7 +934,7 @@
               "spec": []
             }
           ],
-          "key$": "BasicMarineFlow",
+          "key$": "BasicMarineForecastFlow",
           "active": true,
           "param": {}
         },

@@ -12,7 +12,7 @@ The API exposes 3 entities:
 | Entity | Description | API path |
 | --- | --- | --- |
 | **Historical** |  | `/v1/historical` |
-| **Marine** |  | `/v1/marine` |
+| **MarineForecast** |  | `/v1/marine-weather` |
 | **WeatherForecast** |  | `/v1/forecast` |
 
 Each entity supports the following operations where available: **load**, **list**, **create**,

@@ -1,7 +1,7 @@
 // OpenMeteo Ts SDK
 
 import { HistoricalEntity } from './entity/HistoricalEntity'
-import { MarineEntity } from './entity/MarineEntity'
+import { MarineForecastEntity } from './entity/MarineForecastEntity'
 import { WeatherForecastEntity } from './entity/WeatherForecastEntity'
 
 
@@ -210,9 +210,9 @@ class OpenMeteoSDK {
   }
 
 
-  Marine(data?: any) {
+  MarineForecast(data?: any) {
     const self = this
-    return new MarineEntity(self,data)
+    return new MarineForecastEntity(self,data)
   }
 
 

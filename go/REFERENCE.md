@@ -44,9 +44,9 @@ client := sdk.TestSDK(nil, nil)
 
 Create a new `Historical` entity instance. Pass `nil` for no initial data.
 
-#### `Marine(data map[string]any) OpenMeteoEntity`
+#### `MarineForecast(data map[string]any) OpenMeteoEntity`
 
-Create a new `Marine` entity instance. Pass `nil` for no initial data.
+Create a new `MarineForecast` entity instance. Pass `nil` for no initial data.
 
 #### `WeatherForecast(data map[string]any) OpenMeteoEntity`
 
@@ -144,10 +144,10 @@ Return the entity name.
 
 ---
 
-## MarineEntity
+## MarineForecastEntity
 
 ```go
-marine := client.Marine(nil)
+marine_forecast := client.MarineForecast(nil)
 ```
 
 ### Fields
@@ -172,7 +172,7 @@ marine := client.Marine(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Marine(nil).Load(map[string]any{"id": "marine_id"}, nil)
+result, err := client.MarineForecast(nil).Load(map[string]any{"id": "marine_forecast_id"}, nil)
 ```
 
 ### Common Methods
@@ -189,7 +189,7 @@ Get or set the entity match criteria. Works the same as `Data()`.
 
 #### `Make() Entity`
 
-Create a new `MarineEntity` instance with the same client and
+Create a new `MarineForecastEntity` instance with the same client and
 options.
 
 #### `GetName() string`

@@ -205,9 +205,9 @@ class OpenMeteoSDK
   end
 
 
-  def Marine(data = nil)
-    require_relative 'entity/marine_entity'
-    MarineEntity.new(self, data)
+  def MarineForecast(data = nil)
+    require_relative 'entity/marine_forecast_entity'
+    MarineForecastEntity.new(self, data)
   end
 
 

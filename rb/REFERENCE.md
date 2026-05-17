@@ -46,9 +46,9 @@ client = OpenMeteoSDK.test
 
 Create a new `Historical` entity instance. Pass `nil` for no initial data.
 
-#### `Marine(data = nil)`
+#### `MarineForecast(data = nil)`
 
-Create a new `Marine` entity instance. Pass `nil` for no initial data.
+Create a new `MarineForecast` entity instance. Pass `nil` for no initial data.
 
 #### `WeatherForecast(data = nil)`
 
@@ -152,10 +152,10 @@ Return the entity name.
 
 ---
 
-## MarineEntity
+## MarineForecastEntity
 
 ```ruby
-marine = client.Marine
+marine_forecast = client.MarineForecast
 ```
 
 ### Fields
@@ -180,7 +180,7 @@ marine = client.Marine
 Load a single entity matching the given criteria.
 
 ```ruby
-result, err = client.Marine.load({ "id" => "marine_id" })
+result, err = client.MarineForecast.load({ "id" => "marine_forecast_id" })
 ```
 
 ### Common Methods
@@ -203,7 +203,7 @@ Set the entity match criteria.
 
 #### `make -> Entity`
 
-Create a new `MarineEntity` instance with the same client and
+Create a new `MarineForecastEntity` instance with the same client and
 options.
 
 #### `get_name -> String`

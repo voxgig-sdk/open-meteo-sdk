@@ -16,18 +16,18 @@ import type {
 
 
 // TODO: needs Entity superclass
-class MarineEntity extends OpenMeteoEntityBase {
+class MarineForecastEntity extends OpenMeteoEntityBase {
 
   constructor(client: OpenMeteoSDK, entopts: any) {
     super(client, entopts)
-    this.name = 'marine'
-    this.name_ = 'marine'
-    this.Name = 'Marine'
+    this.name = 'marine_forecast'
+    this.name_ = 'marine_forecast'
+    this.Name = 'MarineForecast'
   }
 
 
-  make(this: MarineEntity) {
-    return new MarineEntity(this._client, this.entopts())
+  make(this: MarineForecastEntity) {
+    return new MarineForecastEntity(this._client, this.entopts())
   }
 
 
@@ -150,5 +150,5 @@ class MarineEntity extends OpenMeteoEntityBase {
 
 
 export {
-  MarineEntity
+  MarineForecastEntity
 }

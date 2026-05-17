@@ -35,8 +35,8 @@ func init() {
 	core.NewHistoricalEntityFunc = func(client *core.OpenMeteoSDK, entopts map[string]any) core.OpenMeteoEntity {
 		return entity.NewHistoricalEntity(client, entopts)
 	}
-	core.NewMarineEntityFunc = func(client *core.OpenMeteoSDK, entopts map[string]any) core.OpenMeteoEntity {
-		return entity.NewMarineEntity(client, entopts)
+	core.NewMarineForecastEntityFunc = func(client *core.OpenMeteoSDK, entopts map[string]any) core.OpenMeteoEntity {
+		return entity.NewMarineForecastEntity(client, entopts)
 	}
 	core.NewWeatherForecastEntityFunc = func(client *core.OpenMeteoSDK, entopts map[string]any) core.OpenMeteoEntity {
 		return entity.NewWeatherForecastEntity(client, entopts)

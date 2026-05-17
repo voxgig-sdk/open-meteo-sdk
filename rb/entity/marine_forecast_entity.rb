@@ -1,9 +1,9 @@
-# OpenMeteo SDK Marine entity
+# OpenMeteo SDK MarineForecast entity
 
 require_relative '../utility/struct/voxgig_struct'
 require_relative '../core/helpers'
 
-class MarineEntity
+class MarineForecastEntity
   def initialize(client, entopts = nil)
     entopts ||= {}
     if entopts["active"].nil?
@@ -14,7 +14,7 @@ class MarineEntity
       entopts["active"] = true
     end
 
-    @_name = "marine"
+    @_name = "marine_forecast"
     @_client = client
     @_utility = client.get_utility
     @_entopts = entopts
@@ -35,7 +35,7 @@ class MarineEntity
 
   def make
     opts = @_entopts.dup
-    MarineEntity.new(@_client, opts)
+    MarineForecastEntity.new(@_client, opts)
   end
 
   def data_set(args)

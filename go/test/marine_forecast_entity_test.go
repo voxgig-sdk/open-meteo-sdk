@@ -15,17 +15,17 @@ import (
 	vs "github.com/voxgig-sdk/open-meteo-sdk/go/utility/struct"
 )
 
-func TestMarineEntity(t *testing.T) {
+func TestMarineForecastEntity(t *testing.T) {
 	t.Run("instance", func(t *testing.T) {
 		testsdk := sdk.TestSDK(nil, nil)
-		ent := testsdk.Marine(nil)
+		ent := testsdk.MarineForecast(nil)
 		if ent == nil {
-			t.Fatal("expected non-nil MarineEntity")
+			t.Fatal("expected non-nil MarineForecastEntity")
 		}
 	})
 
 	t.Run("basic", func(t *testing.T) {
-		setup := marineBasicSetup(nil)
+		setup := marine_forecastBasicSetup(nil)
 		// Per-op sdk-test-control.json skip — basic test exercises a flow
 		// with multiple ops; skipping any op skips the whole flow.
 		_mode := "unit"
@@ -33,7 +33,7 @@ func TestMarineEntity(t *testing.T) {
 			_mode = "live"
 		}
 		for _, _op := range []string{"load"} {
-			if _shouldSkip, _reason := isControlSkipped("entityOp", "marine." + _op, _mode); _shouldSkip {
+			if _shouldSkip, _reason := isControlSkipped("entityOp", "marine_forecast." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
 				}
@@ -44,51 +44,51 @@ func TestMarineEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set OPENMETEO_TEST_MARINE_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set OPENMETEO_TEST_MARINE_FORECAST_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		marineRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.marine", setup.data)))
-		var marineRef01Data map[string]any
-		if len(marineRef01DataRaw) > 0 {
-			marineRef01Data = core.ToMapAny(marineRef01DataRaw[0][1])
+		marineForecastRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.marine_forecast", setup.data)))
+		var marineForecastRef01Data map[string]any
+		if len(marineForecastRef01DataRaw) > 0 {
+			marineForecastRef01Data = core.ToMapAny(marineForecastRef01DataRaw[0][1])
 		}
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = marineRef01Data
+		_ = marineForecastRef01Data
 
 		// LOAD
-		marineRef01Ent := client.Marine(nil)
-		marineRef01MatchDt0 := map[string]any{}
-		marineRef01DataDt0Loaded, err := marineRef01Ent.Load(marineRef01MatchDt0, nil)
+		marineForecastRef01Ent := client.MarineForecast(nil)
+		marineForecastRef01MatchDt0 := map[string]any{}
+		marineForecastRef01DataDt0Loaded, err := marineForecastRef01Ent.Load(marineForecastRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		if marineRef01DataDt0Loaded == nil {
+		if marineForecastRef01DataDt0Loaded == nil {
 			t.Fatal("expected load result to be non-nil")
 		}
 
 	})
 }
 
-func marineBasicSetup(extra map[string]any) *entityTestSetup {
+func marine_forecastBasicSetup(extra map[string]any) *entityTestSetup {
 	loadEnvLocal()
 
 	_, filename, _, _ := runtime.Caller(0)
 	dir := filepath.Dir(filename)
 
-	entityDataFile := filepath.Join(dir, "..", "..", ".sdk", "test", "entity", "marine", "MarineTestData.json")
+	entityDataFile := filepath.Join(dir, "..", "..", ".sdk", "test", "entity", "marine_forecast", "MarineForecastTestData.json")
 
 	entityDataSource, err := os.ReadFile(entityDataFile)
 	if err != nil {
-		panic("failed to read marine test data: " + err.Error())
+		panic("failed to read marine_forecast test data: " + err.Error())
 	}
 
 	var entityData map[string]any
 	if err := json.Unmarshal(entityDataSource, &entityData); err != nil {
-		panic("failed to parse marine test data: " + err.Error())
+		panic("failed to parse marine_forecast test data: " + err.Error())
 	}
 
 	options := map[string]any{}
@@ -98,7 +98,7 @@ func marineBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap := vs.Transform(
-		[]any{"marine01", "marine02", "marine03"},
+		[]any{"marine_forecast01", "marine_forecast02", "marine_forecast03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",
@@ -110,17 +110,17 @@ func marineBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("OPENMETEO_TEST_MARINE_ENTID")
+	entidEnvRaw := os.Getenv("OPENMETEO_TEST_MARINE_FORECAST_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"OPENMETEO_TEST_MARINE_ENTID": idmap,
+		"OPENMETEO_TEST_MARINE_FORECAST_ENTID": idmap,
 		"OPENMETEO_TEST_LIVE":      "FALSE",
 		"OPENMETEO_TEST_EXPLAIN":   "FALSE",
 		"OPENMETEO_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["OPENMETEO_TEST_MARINE_ENTID"])
+	idmapResolved := core.ToMapAny(env["OPENMETEO_TEST_MARINE_FORECAST_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}

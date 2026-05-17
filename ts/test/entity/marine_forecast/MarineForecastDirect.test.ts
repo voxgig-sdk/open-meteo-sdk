@@ -16,7 +16,7 @@ import {
 } from '../../utility'
 
 
-describe('MarineDirect', async () => {
+describe('MarineForecastDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
   // `test.live.delayMs`; only sleeps when OPENMETEO_TEST_LIVE=TRUE.
@@ -31,9 +31,9 @@ describe('MarineDirect', async () => {
   })
 
 
-  test('direct-load-marine', async (t: any) => {
+  test('direct-load-marine_forecast', async (t: any) => {
     const setup = directSetup({ id: 'direct01' })
-    if (maybeSkipControl(t, 'direct', 'direct-load-marine', setup.live)) return
+    if (maybeSkipControl(t, 'direct', 'direct-load-marine_forecast', setup.live)) return
     const { client, calls } = setup
 
     const params: any = {}
@@ -41,7 +41,7 @@ describe('MarineDirect', async () => {
 
 
     const result: any = await client.direct({
-      path: 'v1/marine',
+      path: 'v1/marine-weather',
       method: 'GET',
       params,
       query,
@@ -72,7 +72,7 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'OPENMETEO_TEST_MARINE_ENTID': {},
+    'OPENMETEO_TEST_MARINE_FORECAST_ENTID': {},
     'OPENMETEO_TEST_LIVE': 'FALSE',
     'OPENMETEO_APIKEY': 'NONE',
   })
@@ -84,7 +84,7 @@ function directSetup(mockres?: any) {
       apikey: env.OPENMETEO_APIKEY,
     })
 
-    let idmap: any = env['OPENMETEO_TEST_MARINE_ENTID']
+    let idmap: any = env['OPENMETEO_TEST_MARINE_FORECAST_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

@@ -187,7 +187,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `Prepare` | `(fetchargs map[string]any) (map[string]any, error)` | Build an HTTP request definition without sending. |
 | `Direct` | `(fetchargs map[string]any) (map[string]any, error)` | Build and send an HTTP request. |
 | `Historical` | `(data map[string]any) OpenMeteoEntity` | Create a Historical entity instance. |
-| `Marine` | `(data map[string]any) OpenMeteoEntity` | Create a Marine entity instance. |
+| `MarineForecast` | `(data map[string]any) OpenMeteoEntity` | Create a MarineForecast entity instance. |
 | `WeatherForecast` | `(data map[string]any) OpenMeteoEntity` | Create a WeatherForecast entity instance. |
 
 ### Entity interface (OpenMeteoEntity)
@@ -242,7 +242,7 @@ Operations: Load.
 
 API path: `/v1/historical`
 
-#### Marine
+#### MarineForecast
 
 | Field | Description |
 | --- | --- |
@@ -259,7 +259,7 @@ API path: `/v1/historical`
 
 Operations: Load.
 
-API path: `/v1/marine`
+API path: `/v1/marine-weather`
 
 #### WeatherForecast
 
@@ -321,9 +321,9 @@ result, err := client.Historical(nil).Load(map[string]any{"id": "historical_id"}
 ```
 
 
-### Marine
+### MarineForecast
 
-Create an instance: `marine := client.Marine(nil)`
+Create an instance: `marine_forecast := client.MarineForecast(nil)`
 
 #### Operations
 
@@ -349,7 +349,7 @@ Create an instance: `marine := client.Marine(nil)`
 #### Example: Load
 
 ```go
-result, err := client.Marine(nil).Load(map[string]any{"id": "marine_id"}, nil)
+result, err := client.MarineForecast(nil).Load(map[string]any{"id": "marine_forecast_id"}, nil)
 ```
 
 

@@ -529,7 +529,7 @@
         }
       }
     },
-    "/v1/marine": {
+    "/v1/marine-weather": {
       "get": {
         "summary": "Marine Forecast",
         "description": "Get marine weather forecast including wave height, wave direction, wave period and ocean currents.",

@@ -1,4 +1,4 @@
--- Marine direct test
+-- MarineForecast direct test
 
 local json = require("dkjson")
 local vs = require("utility.struct.struct")
@@ -6,10 +6,10 @@ local sdk = require("open-meteo_sdk")
 local helpers = require("core.helpers")
 local runner = require("test.runner")
 
-describe("MarineDirect", function()
-  it("should direct-load-marine", function()
-    local setup = marine_direct_setup({ id = "direct01" })
-    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-load-marine", setup.live and "live" or "unit")
+describe("MarineForecastDirect", function()
+  it("should direct-load-marine_forecast", function()
+    local setup = marine_forecast_direct_setup({ id = "direct01" })
+    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-load-marine_forecast", setup.live and "live" or "unit")
     if _should_skip then
       pending(_reason or "skipped via sdk-test-control.json")
       return
@@ -18,7 +18,7 @@ describe("MarineDirect", function()
 
 
     local result, err = client:direct({
-      path = "v1/marine",
+      path = "v1/marine-weather",
       method = "GET",
       params = {},
     })
@@ -54,13 +54,13 @@ describe("MarineDirect", function()
 end)
 
 
-function marine_direct_setup(mockres)
+function marine_forecast_direct_setup(mockres)
   runner.load_env_local()
 
   local calls = {}
 
   local env = runner.env_override({
-    ["OPENMETEO_TEST_MARINE_ENTID"] = {},
+    ["OPENMETEO_TEST_MARINE_FORECAST_ENTID"] = {},
     ["OPENMETEO_TEST_LIVE"] = "FALSE",
     ["OPENMETEO_APIKEY"] = "NONE",
   })

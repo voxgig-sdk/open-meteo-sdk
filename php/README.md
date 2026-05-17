@@ -161,7 +161,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `Historical` | `($data): HistoricalEntity` | Create a Historical entity instance. |
-| `Marine` | `($data): MarineEntity` | Create a Marine entity instance. |
+| `MarineForecast` | `($data): MarineForecastEntity` | Create a MarineForecast entity instance. |
 | `WeatherForecast` | `($data): WeatherForecastEntity` | Create a WeatherForecast entity instance. |
 
 ### Entity interface
@@ -218,7 +218,7 @@ Operations: Load.
 
 API path: `/v1/historical`
 
-#### Marine
+#### MarineForecast
 
 | Field | Description |
 | --- | --- |
@@ -235,7 +235,7 @@ API path: `/v1/historical`
 
 Operations: Load.
 
-API path: `/v1/marine`
+API path: `/v1/marine-weather`
 
 #### WeatherForecast
 
@@ -297,9 +297,9 @@ const historical = await client.Historical().load({ id: 'historical_id' })
 ```
 
 
-### Marine
+### MarineForecast
 
-Create an instance: `const marine = client.Marine()`
+Create an instance: `const marine_forecast = client.MarineForecast()`
 
 #### Operations
 
@@ -325,7 +325,7 @@ Create an instance: `const marine = client.Marine()`
 #### Example: Load
 
 ```ts
-const marine = await client.Marine().load({ id: 'marine_id' })
+const marine_forecast = await client.MarineForecast().load({ id: 'marine_forecast_id' })
 ```
 
 

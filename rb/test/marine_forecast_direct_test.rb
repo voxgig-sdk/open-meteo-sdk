@@ -1,14 +1,14 @@
-# Marine direct test
+# MarineForecast direct test
 
 require "minitest/autorun"
 require "json"
 require_relative "../OpenMeteo_sdk"
 require_relative "runner"
 
-class MarineDirectTest < Minitest::Test
-  def test_direct_load_marine
-    setup = marine_direct_setup({ "id" => "direct01" })
-    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-load-marine", setup[:live] ? "live" : "unit")
+class MarineForecastDirectTest < Minitest::Test
+  def test_direct_load_marine_forecast
+    setup = marine_forecast_direct_setup({ "id" => "direct01" })
+    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-load-marine_forecast", setup[:live] ? "live" : "unit")
     if _should_skip
       skip(_reason || "skipped via sdk-test-control.json")
       return
@@ -17,7 +17,7 @@ class MarineDirectTest < Minitest::Test
 
 
     result, err = client.direct({
-      "path" => "v1/marine",
+      "path" => "v1/marine-weather",
       "method" => "GET",
       "params" => {},
     })
@@ -53,13 +53,13 @@ class MarineDirectTest < Minitest::Test
 end
 
 
-def marine_direct_setup(mockres)
+def marine_forecast_direct_setup(mockres)
   Runner.load_env_local
 
   calls = []
 
   env = Runner.env_override({
-    "OPENMETEO_TEST_MARINE_ENTID" => {},
+    "OPENMETEO_TEST_MARINE_FORECAST_ENTID" => {},
     "OPENMETEO_TEST_LIVE" => "FALSE",
     "OPENMETEO_APIKEY" => "NONE",
   })
