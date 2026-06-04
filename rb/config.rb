@@ -15,9 +15,6 @@ module OpenMeteoConfig
       },
       "options" => {
         "base" => "https://api.open-meteo.com",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },

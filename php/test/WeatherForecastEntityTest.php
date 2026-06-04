@@ -85,7 +85,6 @@ function weather_forecast_basic_setup($extra)
         "OPENMETEO_TEST_WEATHER_FORECAST_ENTID" => $idmap,
         "OPENMETEO_TEST_LIVE" => "FALSE",
         "OPENMETEO_TEST_EXPLAIN" => "FALSE",
-        "OPENMETEO_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +96,6 @@ function weather_forecast_basic_setup($extra)
     if ($env["OPENMETEO_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["OPENMETEO_APIKEY"],
             ],
             $extra ?? [],
         ]);

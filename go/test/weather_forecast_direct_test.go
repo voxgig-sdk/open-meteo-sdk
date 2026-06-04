@@ -106,14 +106,12 @@ func weather_forecastDirectSetup(mockres any) *weather_forecastDirectSetupResult
 	env := envOverride(map[string]any{
 		"OPENMETEO_TEST_WEATHER_FORECAST_ENTID": map[string]any{},
 		"OPENMETEO_TEST_LIVE":    "FALSE",
-		"OPENMETEO_APIKEY":       "NONE",
 	})
 
 	live := env["OPENMETEO_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["OPENMETEO_APIKEY"],
 		}
 		client := sdk.NewOpenMeteoSDK(mergedOpts)
 
