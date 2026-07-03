@@ -1,21 +1,8 @@
 # OpenMeteo SDK
 
-Free, key-less weather data combining national forecast models into gap-free hourly timeseries
+Open Meteo client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Open Meteo
-
-[Open-Meteo](https://open-meteo.com) is an open-source weather API that stitches together high-resolution forecast models from national meteorological services into continuous, gap-free hourly timeseries. It is community-run and aimed at developers who want a single coordinate-based endpoint instead of integrating each national service directly. No API key is required for non-commercial use.
-
-**What you get from the API:**
-- Hourly forecast variables such as `temperature_2m`, `relative_humidity_2m`, `dew_point_2m`, `apparent_temperature`, `precipitation`, `rain`, `showers`, `snowfall`, `precipitation_probability`, `pressure_msl`, `cloud_cover`, `visibility`, `weather_code`, `wind_speed_10m`, `wind_direction_10m`, `wind_gusts_10m` (with 80m/120m/180m wind variants) and `shortwave_radiation` / `direct_radiation` / `diffuse_radiation`.
-- Soil variables (`soil_temperature`, `soil_moisture`) at multiple depths.
-- Forecast horizon up to 16 days (default 7); historical archive from 1940 to present via reanalysis datasets.
-- Marine variables including wave height, direction and period, plus wind-wave and swell components, sea-surface temperature, ocean currents and sea level height.
-- Configurable units (Celsius/Fahrenheit, km/h/mph, mm/inches).
-
-Data is sourced from agencies including DWD (Germany), NOAA (USA), ECMWF, Meteo-France, UK Met Office, JMA, KMA, MeteoSwiss, MET Norway, Environment Canada, Australian BOM, CMA, KNMI and DMI. Historical data uses ERA5, ERA5-Land, ERA5-Ensemble, ECMWF IFS and CERRA. No API key is required on the free tier; usage is capped at 10,000 calls/day (and 600/minute, 5,000/hour, 300,000/month).
 
 ## Try it
 
@@ -49,27 +36,31 @@ gem install open-meteo-sdk
 luarocks install open-meteo-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { OpenMeteoSDK } from 'open-meteo'
 
-const client = new OpenMeteoSDK({})
+const client = new OpenMeteoSDK({
+  apikey: process.env.OPEN-METEO_APIKEY,
+})
 
+// Load historical data
+const historical = await client.Historical().load({})
+console.log(historical.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Historical** | Gap-free historical weather timeseries from 1940 to the present via `/v1/archive`, sourced from ERA5, ERA5-Land, ECMWF IFS and CERRA reanalysis datasets. | `/v1/historical` |
-| **MarineForecast** | Hourly marine forecast for a coastal coordinate via `/v1/marine`, returning wave height/direction/period plus wind-wave and swell components, ocean currents and sea-surface temperature. | `/v1/marine-weather` |
-| **WeatherForecast** | Hourly and daily weather forecast (up to 16 days) for a latitude/longitude via `/v1/forecast`, covering temperature, precipitation, wind, radiation, pressure, cloud cover and soil variables. | `/v1/forecast` |
+| **Historical** |  | `/v1/historical` |
+| **MarineForecast** |  | `/v1/marine-weather` |
+| **WeatherForecast** |  | `/v1/forecast` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -111,15 +102,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from openmeteo_sdk import OpenMeteoSDK
 
-client = OpenMeteoSDK({})
+client = OpenMeteoSDK({
+    "apikey": os.environ.get("OPEN-METEO_APIKEY"),
+})
 
 
 # Load a specific historical
-historical, err = client.Historical(None).load(
-    {"id": "example_id"}, None
-)
+historical, err = client.Historical().load({"id": "example_id"})
+print(historical)
 ```
 
 ### PHP
@@ -128,13 +121,14 @@ historical, err = client.Historical(None).load(
 <?php
 require_once 'openmeteo_sdk.php';
 
-$client = new OpenMeteoSDK([]);
+$client = new OpenMeteoSDK([
+    "apikey" => getenv("OPEN-METEO_APIKEY"),
+]);
 
 
 // Load a specific historical
-[$historical, $err] = $client->Historical(null)->load(
-    ["id" => "example_id"], null
-);
+[$historical, $err] = $client->Historical()->load(["id" => "example_id"]);
+print_r($historical);
 ```
 
 ### Golang
@@ -142,8 +136,13 @@ $client = new OpenMeteoSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/open-meteo-sdk/go"
 
-client := sdk.NewOpenMeteoSDK(map[string]any{})
+client := sdk.NewOpenMeteoSDK(map[string]any{
+    "apikey": os.Getenv("OPEN-METEO_APIKEY"),
+})
 
+// Load historical data
+historical, err := client.Historical(nil).Load(map[string]any{}, nil)
+fmt.Println(historical)
 ```
 
 ### Ruby
@@ -151,13 +150,14 @@ client := sdk.NewOpenMeteoSDK(map[string]any{})
 ```ruby
 require_relative "OpenMeteo_sdk"
 
-client = OpenMeteoSDK.new({})
+client = OpenMeteoSDK.new({
+  "apikey" => ENV["OPEN-METEO_APIKEY"],
+})
 
 
 # Load a specific historical
-historical, err = client.Historical(nil).load(
-  { "id" => "example_id" }, nil
-)
+historical, err = client.Historical().load({ "id" => "example_id" })
+puts historical
 ```
 
 ### Lua
@@ -165,13 +165,14 @@ historical, err = client.Historical(nil).load(
 ```lua
 local sdk = require("open-meteo_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("OPEN-METEO_APIKEY"),
+})
 
 
 -- Load a specific historical
-local historical, err = client:Historical(nil):load(
-  { id = "example_id" }, nil
-)
+local historical, err = client:Historical():load({ id = "example_id" })
+print(historical)
 ```
 
 ## Unit testing in offline mode
@@ -190,25 +191,21 @@ const result = await client.Historical().load({ id: 'test01' })
 ### Python
 
 ```python
-client = OpenMeteoSDK.test(None, None)
-result, err = client.Historical(None).load(
-    {"id": "test01"}, None
-)
+client = OpenMeteoSDK.test()
+result, err = client.Historical().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = OpenMeteoSDK::test(null, null);
-[$result, $err] = $client->Historical(null)->load(
-    ["id" => "test01"], null
-);
+$client = OpenMeteoSDK::test();
+[$result, $err] = $client->Historical()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Historical(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -217,19 +214,15 @@ result, err := client.Historical(nil).Load(
 ### Ruby
 
 ```ruby
-client = OpenMeteoSDK.test(nil, nil)
-result, err = client.Historical(nil).load(
-  { "id" => "test01" }, nil
-)
+client = OpenMeteoSDK.test
+result, err = client.Historical().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Historical(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Historical():load({ id = "test01" })
 ```
 
 ## How it works
@@ -333,16 +326,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Open Meteo
-
-- Upstream: [https://open-meteo.com](https://open-meteo.com)
-- API docs: [https://open-meteo.com/en/docs](https://open-meteo.com/en/docs)
-
-- Weather data is published under **CC BY 4.0** — attribution is required, including for paid commercial use.
-- Credit **Open-Meteo** and the underlying national weather services whose models are used (e.g. DWD, NOAA, ECMWF, Meteo-France, UK Met Office, JMA, MeteoSwiss, MET Norway).
-- The free API tier is **non-commercial only**; commercial use requires a paid plan via a dedicated customer endpoint — see https://open-meteo.com/en/pricing.
-- Free-tier request caps: 600/minute, 5,000/hour, 10,000/day, 300,000/month.
 
 ---
 

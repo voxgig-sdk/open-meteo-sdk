@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'OPEN_METEO_TEST_HISTORICAL_ENTID': idmap,
     'OPEN_METEO_TEST_LIVE': 'FALSE',
     'OPEN_METEO_TEST_EXPLAIN': 'FALSE',
+    'OPEN_METEO_APIKEY': 'NONE',
   })
 
   idmap = env['OPEN_METEO_TEST_HISTORICAL_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new OpenMeteoSDK(merge([
       {
+        apikey: env.OPEN_METEO_APIKEY,
       },
       extra
     ]))

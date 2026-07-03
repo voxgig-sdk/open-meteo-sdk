@@ -74,12 +74,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'OPENMETEO_TEST_HISTORICAL_ENTID': {},
     'OPENMETEO_TEST_LIVE': 'FALSE',
+    'OPENMETEO_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.OPENMETEO_TEST_LIVE
 
   if (live) {
     const client = new OpenMeteoSDK({
+      apikey: env.OPENMETEO_APIKEY,
     })
 
     let idmap: any = env['OPENMETEO_TEST_HISTORICAL_ENTID']

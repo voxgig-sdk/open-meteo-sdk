@@ -59,12 +59,14 @@ def _marine_forecast_direct_setup(mockres):
     env = runner.env_override({
         "OPENMETEO_TEST_MARINE_FORECAST_ENTID": {},
         "OPENMETEO_TEST_LIVE": "FALSE",
+        "OPENMETEO_APIKEY": "NONE",
     })
 
     live = env.get("OPENMETEO_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("OPENMETEO_APIKEY"),
         }
         client = OpenMeteoSDK(merged_opts)
         return {

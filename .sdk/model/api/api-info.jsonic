@@ -20,30 +20,7 @@ main: {
       ]
       title: "Open Meteo"
       version: "1.0.0"
-      tagline: "Free, key-less weather data combining national forecast models into gap-free hourly timeseries"
-      homepage: "https://open-meteo.com"
-      docs_url: "https://open-meteo.com/en/docs"
-      license_short: "CC BY 4.0 for weather data; free tier is non-commercial, commercial licences available"
-      license_md: `- Weather data is published under **CC BY 4.0** — attribution is required, including for paid commercial use.
-- Credit **Open-Meteo** and the underlying national weather services whose models are used (e.g. DWD, NOAA, ECMWF, Meteo-France, UK Met Office, JMA, MeteoSwiss, MET Norway).
-- The free API tier is **non-commercial only**; commercial use requires a paid plan via a dedicated customer endpoint — see https://open-meteo.com/en/pricing.
-- Free-tier request caps: 600/minute, 5,000/hour, 10,000/day, 300,000/month.`
-      about_md: `[Open-Meteo](https://open-meteo.com) is an open-source weather API that stitches together high-resolution forecast models from national meteorological services into continuous, gap-free hourly timeseries. It is community-run and aimed at developers who want a single coordinate-based endpoint instead of integrating each national service directly. No API key is required for non-commercial use.
-
-**What you get from the API:**
-- Hourly forecast variables such as \`temperature_2m\`, \`relative_humidity_2m\`, \`dew_point_2m\`, \`apparent_temperature\`, \`precipitation\`, \`rain\`, \`showers\`, \`snowfall\`, \`precipitation_probability\`, \`pressure_msl\`, \`cloud_cover\`, \`visibility\`, \`weather_code\`, \`wind_speed_10m\`, \`wind_direction_10m\`, \`wind_gusts_10m\` (with 80m/120m/180m wind variants) and \`shortwave_radiation\` / \`direct_radiation\` / \`diffuse_radiation\`.
-- Soil variables (\`soil_temperature\`, \`soil_moisture\`) at multiple depths.
-- Forecast horizon up to 16 days (default 7); historical archive from 1940 to present via reanalysis datasets.
-- Marine variables including wave height, direction and period, plus wind-wave and swell components, sea-surface temperature, ocean currents and sea level height.
-- Configurable units (Celsius/Fahrenheit, km/h/mph, mm/inches).
-
-Data is sourced from agencies including DWD (Germany), NOAA (USA), ECMWF, Meteo-France, UK Met Office, JMA, KMA, MeteoSwiss, MET Norway, Environment Canada, Australian BOM, CMA, KNMI and DMI. Historical data uses ERA5, ERA5-Land, ERA5-Ensemble, ECMWF IFS and CERRA. No API key is required on the free tier; usage is capped at 10,000 calls/day (and 600/minute, 5,000/hour, 300,000/month).`
-      entity_desc: {
-        historical: "Gap-free historical weather timeseries from 1940 to the present via `/v1/archive`, sourced from ERA5, ERA5-Land, ECMWF IFS and CERRA reanalysis datasets."
-        marine_forecast: "Hourly marine forecast for a coastal coordinate via `/v1/marine`, returning wave height/direction/period plus wind-wave and swell components, ocean currents and sea-surface temperature."
-        weather_forecast: "Hourly and daily weather forecast (up to 16 days) for a latitude/longitude via `/v1/forecast`, covering temperature, precipitation, wind, radiation, pressure, cloud cover and soil variables."
-      }
-      auth: false
     }
   }
 }
+
