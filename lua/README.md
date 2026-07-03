@@ -10,7 +10,7 @@ The Lua SDK for the OpenMeteo API — an entity-oriented client using Lua conven
 
 ## Install
 ```bash
-luarocks install open-meteo-sdk
+luarocks install voxgig-sdk-open-meteo
 ```
 
 If the module is not yet published, add the source directory to

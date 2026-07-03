@@ -10,13 +10,13 @@ The Ruby SDK for the OpenMeteo API — an entity-oriented client using idiomatic
 
 ## Install
 ```bash
-gem install open-meteo-sdk
+gem install voxgig-sdk-open-meteo
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "open-meteo-sdk"
+gem "voxgig-sdk-open-meteo"
 ```
 
 Then run:

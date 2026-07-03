@@ -10,7 +10,7 @@ The TypeScript SDK for the OpenMeteo API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install open-meteo
+npm install @voxgig-sdk/open-meteo
 ```
 ## Tutorial: your first API call
 

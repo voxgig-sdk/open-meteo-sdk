@@ -10,7 +10,7 @@ The Python SDK for the OpenMeteo API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install open-meteo-sdk
+pip install voxgig-sdk-open-meteo
 ```
 
 Or install from source:

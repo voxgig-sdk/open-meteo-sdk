@@ -2,9 +2,17 @@ Gem::Specification.new do |spec|
   spec.name          = "voxgig-sdk-open-meteo"
   spec.version       = "0.0.1"
   spec.authors       = ["Voxgig"]
-  spec.summary       = "OpenMeteo SDK for Ruby"
+  spec.summary       = "Unofficial generated Ruby SDK for the Open Meteo public API. Not affiliated with or endorsed by the upstream API provider."
+  spec.description   = "Unofficial generated Ruby SDK for the Open Meteo public API. Not affiliated with or endorsed by the upstream API provider."
   spec.license       = "MIT"
   spec.homepage      = "https://github.com/voxgig-sdk/open-meteo-sdk"
+  spec.metadata      = {
+    "homepage_uri"          => "https://github.com/voxgig-sdk/open-meteo-sdk",
+    "source_code_uri"       => "https://github.com/voxgig-sdk/open-meteo-sdk",
+    "bug_tracker_uri"       => "https://github.com/voxgig-sdk/open-meteo-sdk/issues",
+    "changelog_uri"         => "https://github.com/voxgig-sdk/open-meteo-sdk/blob/main/CHANGELOG.md",
+    "rubygems_mfa_required" => "true"
+  }
 
   spec.files         = Dir["lib/**/*.rb", "*.rb"]
   spec.require_paths = ["."]

@@ -10,7 +10,7 @@ The PHP SDK for the OpenMeteo API — an entity-oriented client using PHP conven
 
 ## Install
 ```bash
-composer require voxgig/open-meteo-sdk
+composer require voxgig-sdk/open-meteo
 ```
 
 
