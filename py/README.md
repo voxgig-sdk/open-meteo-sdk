@@ -36,10 +36,12 @@ client = OpenMeteoSDK({
 
 ### 3. Load a historical
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.historical.load({"id": "example_id"})
-    print(result)
+    historical = client.Historical().load({"id": "example_id"})
+    print(historical)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -87,8 +89,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = OpenMeteoSDK.test()
 
-result = client.historical.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+historical = client.Historical().load({"id": "test01"})
+# historical contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -276,7 +279,7 @@ API path: `/v1/forecast`
 
 ### Historical
 
-Create an instance: `const historical = client.historical`
+Create an instance: `historical = client.Historical()`
 
 #### Operations
 
@@ -302,14 +305,14 @@ Create an instance: `const historical = client.historical`
 
 #### Example: Load
 
-```ts
-const historical = await client.historical.load({ id: 'historical_id' })
+```python
+historical = client.Historical().load({"id": "historical_id"})
 ```
 
 
 ### MarineForecast
 
-Create an instance: `const marine_forecast = client.marine_forecast`
+Create an instance: `marine_forecast = client.MarineForecast()`
 
 #### Operations
 
@@ -334,14 +337,14 @@ Create an instance: `const marine_forecast = client.marine_forecast`
 
 #### Example: Load
 
-```ts
-const marine_forecast = await client.marine_forecast.load({ id: 'marine_forecast_id' })
+```python
+marine_forecast = client.MarineForecast().load({"id": "marine_forecast_id"})
 ```
 
 
 ### WeatherForecast
 
-Create an instance: `const weather_forecast = client.weather_forecast`
+Create an instance: `weather_forecast = client.WeatherForecast()`
 
 #### Operations
 
@@ -369,8 +372,8 @@ Create an instance: `const weather_forecast = client.weather_forecast`
 
 #### Example: Load
 
-```ts
-const weather_forecast = await client.weather_forecast.load({ id: 'weather_forecast_id' })
+```python
+weather_forecast = client.WeatherForecast().load({"id": "weather_forecast_id"})
 ```
 
 
@@ -444,7 +447,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-historical = client.historical
+historical = client.Historical()
 historical.load({"id": "example_id"})
 
 # historical.data_get() now returns the loaded historical data

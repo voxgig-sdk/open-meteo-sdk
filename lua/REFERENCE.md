@@ -92,7 +92,7 @@ same parameters as `direct()`.
 ## HistoricalEntity
 
 ```lua
-local historical = client:historical(nil)
+local historical = client:Historical(nil)
 ```
 
 ### Fields
@@ -118,7 +118,7 @@ local historical = client:historical(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:historical():load({ id = "historical_id" })
+local result, err = client:Historical():load({ id = "historical_id" })
 ```
 
 ### Common Methods
@@ -154,7 +154,7 @@ Return the entity name.
 ## MarineForecastEntity
 
 ```lua
-local marine_forecast = client:marine_forecast(nil)
+local marine_forecast = client:MarineForecast(nil)
 ```
 
 ### Fields
@@ -179,7 +179,7 @@ local marine_forecast = client:marine_forecast(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:marine_forecast():load({ id = "marine_forecast_id" })
+local result, err = client:MarineForecast():load({ id = "marine_forecast_id" })
 ```
 
 ### Common Methods
@@ -215,7 +215,7 @@ Return the entity name.
 ## WeatherForecastEntity
 
 ```lua
-local weather_forecast = client:weather_forecast(nil)
+local weather_forecast = client:WeatherForecast(nil)
 ```
 
 ### Fields
@@ -243,7 +243,7 @@ local weather_forecast = client:weather_forecast(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:weather_forecast():load({ id = "weather_forecast_id" })
+local result, err = client:WeatherForecast():load({ id = "weather_forecast_id" })
 ```
 
 ### Common Methods

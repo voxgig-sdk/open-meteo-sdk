@@ -208,39 +208,21 @@ class OpenMeteoSDK
   end
 
 
-  # Idiomatic facade: client.historical.list / client.historical.load({ "id" => ... })
-  def historical
-    require_relative 'entity/historical_entity'
-    @historical ||= HistoricalEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.historical instead.
+  # Canonical facade: client.Historical.list / client.Historical.load({ "id" => ... })
   def Historical(data = nil)
     require_relative 'entity/historical_entity'
     HistoricalEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.marine_forecast.list / client.marine_forecast.load({ "id" => ... })
-  def marine_forecast
-    require_relative 'entity/marine_forecast_entity'
-    @marine_forecast ||= MarineForecastEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.marine_forecast instead.
+  # Canonical facade: client.MarineForecast.list / client.MarineForecast.load({ "id" => ... })
   def MarineForecast(data = nil)
     require_relative 'entity/marine_forecast_entity'
     MarineForecastEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.weather_forecast.list / client.weather_forecast.load({ "id" => ... })
-  def weather_forecast
-    require_relative 'entity/weather_forecast_entity'
-    @weather_forecast ||= WeatherForecastEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.weather_forecast instead.
+  # Canonical facade: client.WeatherForecast.list / client.WeatherForecast.load({ "id" => ... })
   def WeatherForecast(data = nil)
     require_relative 'entity/weather_forecast_entity'
     WeatherForecastEntity.new(self, data)

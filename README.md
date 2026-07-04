@@ -28,9 +28,9 @@ const client = new OpenMeteoSDK({
   apikey: process.env.OPEN_METEO_APIKEY,
 })
 
-// Load historical data
-const historical = await client.historical.load({})
-console.log(historical.data)
+// Load historical data (returns a Historical)
+const historical = await client.Historical().load()
+console.log(historical)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -91,8 +91,8 @@ client = OpenMeteoSDK({
 })
 
 
-# Load a specific historical
-historical = client.historical.load({"id": "example_id"})
+# Load a specific historical (returns the record, raises on error)
+historical = client.Historical().load({"id": "example_id"})
 print(historical)
 ```
 
@@ -107,8 +107,8 @@ $client = new OpenMeteoSDK([
 ]);
 
 
-// Load a specific historical
-$historical = $client->historical()->load(["id" => "example_id"]);
+// Load a specific historical (returns the bare record; throws on error)
+$historical = $client->Historical()->load(["id" => "example_id"]);
 print_r($historical);
 ```
 
@@ -136,8 +136,8 @@ client = OpenMeteoSDK.new({
 })
 
 
-# Load a specific historical
-historical = client.historical.load({ "id" => "example_id" })
+# Load a specific historical (returns the bare record; raises on error)
+historical = client.Historical.load({ "id" => "example_id" })
 puts historical
 ```
 
@@ -152,7 +152,7 @@ local client = sdk.new({
 
 
 -- Load a specific historical
-local historical, err = client:historical():load({ id = "example_id" })
+local historical, err = client:Historical():load({ id = "example_id" })
 print(historical)
 ```
 
@@ -165,22 +165,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = OpenMeteoSDK.test()
-const result = await client.historical.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const historical = await client.Historical().load({ id: 'test01' })
+// historical is a bare Historical populated with mock data
+console.log(historical)
 ```
 
 ### Python
 
 ```python
 client = OpenMeteoSDK.test()
-result = client.historical.load({"id": "test01"})
+historical = client.Historical().load({"id": "test01"})
+print(historical)
 ```
 
 ### PHP
 
 ```php
-$client = OpenMeteoSDK::test();
-$result = $client->historical()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = OpenMeteoSDK::test([
+    "entity" => ["historical" => ["test01" => ["id" => "test01"]]],
+]);
+$historical = $client->Historical()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -195,15 +200,18 @@ result, err := client.Historical(nil).Load(
 ### Ruby
 
 ```ruby
-client = OpenMeteoSDK.test
-result = client.historical.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = OpenMeteoSDK.test({
+  "entity" => { "historical" => { "test01" => { "id" => "test01" } } },
+})
+historical = client.Historical.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:historical():load({ id = "test01" })
+local result, err = client:Historical():load({ id = "test01" })
 ```
 
 ## How it works
@@ -251,6 +259,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -220,57 +220,27 @@ class OpenMeteoSDK:
         }
 
 
-    @property
-    def historical(self):
-        """Idiomatic facade: client.historical.list() / client.historical.load({"id": ...})."""
-        from entity.historical_entity import HistoricalEntity
-        cached = getattr(self, "_historical", None)
-        if cached is None:
-            cached = HistoricalEntity(self, None)
-            self._historical = cached
-        return cached
-
-    def Historical(self, data=None):
-        # Deprecated: use client.historical instead.
+    def Historical(self, data=None) -> "HistoricalEntity":
+        """Entity factory: client.Historical().list({}) / client.Historical().load({"id": ...})."""
         from entity.historical_entity import HistoricalEntity
         return HistoricalEntity(self, data)
 
 
-    @property
-    def marine_forecast(self):
-        """Idiomatic facade: client.marine_forecast.list() / client.marine_forecast.load({"id": ...})."""
-        from entity.marine_forecast_entity import MarineForecastEntity
-        cached = getattr(self, "_marine_forecast", None)
-        if cached is None:
-            cached = MarineForecastEntity(self, None)
-            self._marine_forecast = cached
-        return cached
-
-    def MarineForecast(self, data=None):
-        # Deprecated: use client.marine_forecast instead.
+    def MarineForecast(self, data=None) -> "MarineForecastEntity":
+        """Entity factory: client.MarineForecast().list({}) / client.MarineForecast().load({"id": ...})."""
         from entity.marine_forecast_entity import MarineForecastEntity
         return MarineForecastEntity(self, data)
 
 
-    @property
-    def weather_forecast(self):
-        """Idiomatic facade: client.weather_forecast.list() / client.weather_forecast.load({"id": ...})."""
-        from entity.weather_forecast_entity import WeatherForecastEntity
-        cached = getattr(self, "_weather_forecast", None)
-        if cached is None:
-            cached = WeatherForecastEntity(self, None)
-            self._weather_forecast = cached
-        return cached
-
-    def WeatherForecast(self, data=None):
-        # Deprecated: use client.weather_forecast instead.
+    def WeatherForecast(self, data=None) -> "WeatherForecastEntity":
+        """Entity factory: client.WeatherForecast().list({}) / client.WeatherForecast().load({"id": ...})."""
         from entity.weather_forecast_entity import WeatherForecastEntity
         return WeatherForecastEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "OpenMeteoSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class OpenMeteoSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.historical_entity import HistoricalEntity
+    from entity.marine_forecast_entity import MarineForecastEntity
+    from entity.weather_forecast_entity import WeatherForecastEntity

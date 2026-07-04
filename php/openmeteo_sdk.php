@@ -233,10 +233,10 @@ class OpenMeteoSDK
 
     private $_historical = null;
 
-    // Idiomatic facade: $client->historical()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Historical() (PHP method
-    // names are case-insensitive).
-    public function historical($data = null)
+    // Canonical facade: $client->Historical()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->historical()
+    // resolves here too.
+    public function Historical($data = null)
     {
         require_once __DIR__ . '/entity/historical_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class OpenMeteoSDK
 
     private $_marine_forecast = null;
 
-    // Idiomatic facade: $client->marine_forecast()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias MarineForecast() (PHP method
-    // names are case-insensitive).
-    public function marine_forecast($data = null)
+    // Canonical facade: $client->MarineForecast()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->marine_forecast()
+    // resolves here too.
+    public function MarineForecast($data = null)
     {
         require_once __DIR__ . '/entity/marine_forecast_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class OpenMeteoSDK
 
     private $_weather_forecast = null;
 
-    // Idiomatic facade: $client->weather_forecast()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias WeatherForecast() (PHP method
-    // names are case-insensitive).
-    public function weather_forecast($data = null)
+    // Canonical facade: $client->WeatherForecast()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->weather_forecast()
+    // resolves here too.
+    public function WeatherForecast($data = null)
     {
         require_once __DIR__ . '/entity/weather_forecast_entity.php';
         if ($data === null) {

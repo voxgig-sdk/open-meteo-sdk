@@ -36,9 +36,9 @@ local client = sdk.new({
 ### 3. Load a historical
 
 ```lua
-local result, err = client:historical():load({ id = "example_id" })
+local historical, err = client:Historical():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(historical)
 ```
 
 
@@ -84,8 +84,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:historical():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Historical():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -189,17 +189,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local historical, err = client:Historical():load({ id = "example_id" })
+    if err then error(err) end
+    -- historical is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -271,7 +276,7 @@ API path: `/v1/forecast`
 
 ### Historical
 
-Create an instance: `const historical = client.historical`
+Create an instance: `local historical = client:Historical(nil)`
 
 #### Operations
 
@@ -297,14 +302,14 @@ Create an instance: `const historical = client.historical`
 
 #### Example: Load
 
-```ts
-const historical = await client.historical.load({ id: 'historical_id' })
+```lua
+local historical, err = client:Historical():load({ id = "historical_id" })
 ```
 
 
 ### MarineForecast
 
-Create an instance: `const marine_forecast = client.marine_forecast`
+Create an instance: `local marine_forecast = client:MarineForecast(nil)`
 
 #### Operations
 
@@ -329,14 +334,14 @@ Create an instance: `const marine_forecast = client.marine_forecast`
 
 #### Example: Load
 
-```ts
-const marine_forecast = await client.marine_forecast.load({ id: 'marine_forecast_id' })
+```lua
+local marine_forecast, err = client:MarineForecast():load({ id = "marine_forecast_id" })
 ```
 
 
 ### WeatherForecast
 
-Create an instance: `const weather_forecast = client.weather_forecast`
+Create an instance: `local weather_forecast = client:WeatherForecast(nil)`
 
 #### Operations
 
@@ -364,8 +369,8 @@ Create an instance: `const weather_forecast = client.weather_forecast`
 
 #### Example: Load
 
-```ts
-const weather_forecast = await client.weather_forecast.load({ id: 'weather_forecast_id' })
+```lua
+local weather_forecast, err = client:WeatherForecast():load({ id = "weather_forecast_id" })
 ```
 
 
@@ -440,7 +445,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local historical = client:historical()
+local historical = client:Historical()
 historical:load({ id = "example_id" })
 
 -- historical:data_get() now returns the loaded historical data

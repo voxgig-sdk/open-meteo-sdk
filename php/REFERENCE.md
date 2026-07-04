@@ -94,7 +94,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## HistoricalEntity
 
 ```php
-$historical = $client->historical();
+$historical = $client->Historical();
 ```
 
 ### Fields
@@ -120,7 +120,7 @@ $historical = $client->historical();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->historical()->load(["id" => "historical_id"]);
+$result = $client->Historical()->load(["id" => "historical_id"]);
 ```
 
 ### Common Methods
@@ -156,7 +156,7 @@ Return the entity name.
 ## MarineForecastEntity
 
 ```php
-$marine_forecast = $client->marine_forecast();
+$marine_forecast = $client->MarineForecast();
 ```
 
 ### Fields
@@ -181,7 +181,7 @@ $marine_forecast = $client->marine_forecast();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->marine_forecast()->load(["id" => "marine_forecast_id"]);
+$result = $client->MarineForecast()->load(["id" => "marine_forecast_id"]);
 ```
 
 ### Common Methods
@@ -217,7 +217,7 @@ Return the entity name.
 ## WeatherForecastEntity
 
 ```php
-$weather_forecast = $client->weather_forecast();
+$weather_forecast = $client->WeatherForecast();
 ```
 
 ### Fields
@@ -245,7 +245,7 @@ $weather_forecast = $client->weather_forecast();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->weather_forecast()->load(["id" => "weather_forecast_id"]);
+$result = $client->WeatherForecast()->load(["id" => "weather_forecast_id"]);
 ```
 
 ### Common Methods

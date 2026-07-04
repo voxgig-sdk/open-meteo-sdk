@@ -35,9 +35,10 @@ $client = new OpenMeteoSDK([
 
 ```php
 try {
-    $result = $client->historical()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Historical record (throws on error).
+    $historical = $client->Historical()->load(["id" => "example_id"]);
+    print_r($historical);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -83,13 +84,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = OpenMeteoSDK::test();
+$client = OpenMeteoSDK::test([
+    "entity" => ["historical" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->historical()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$historical = $client->Historical()->load(["id" => "test01"]);
+print_r($historical);
 ```
 
 ### Use a custom fetch function
@@ -280,7 +285,7 @@ API path: `/v1/forecast`
 
 ### Historical
 
-Create an instance: `const historical = client.historical`
+Create an instance: `$historical = $client->Historical();`
 
 #### Operations
 
@@ -306,14 +311,15 @@ Create an instance: `const historical = client.historical`
 
 #### Example: Load
 
-```ts
-const historical = await client.historical.load({ id: 'historical_id' })
+```php
+// load() returns the bare Historical record (throws on error).
+$historical = $client->Historical()->load(["id" => "historical_id"]);
 ```
 
 
 ### MarineForecast
 
-Create an instance: `const marine_forecast = client.marine_forecast`
+Create an instance: `$marine_forecast = $client->MarineForecast();`
 
 #### Operations
 
@@ -338,14 +344,15 @@ Create an instance: `const marine_forecast = client.marine_forecast`
 
 #### Example: Load
 
-```ts
-const marine_forecast = await client.marine_forecast.load({ id: 'marine_forecast_id' })
+```php
+// load() returns the bare MarineForecast record (throws on error).
+$marine_forecast = $client->MarineForecast()->load(["id" => "marine_forecast_id"]);
 ```
 
 
 ### WeatherForecast
 
-Create an instance: `const weather_forecast = client.weather_forecast`
+Create an instance: `$weather_forecast = $client->WeatherForecast();`
 
 #### Operations
 
@@ -373,8 +380,9 @@ Create an instance: `const weather_forecast = client.weather_forecast`
 
 #### Example: Load
 
-```ts
-const weather_forecast = await client.weather_forecast.load({ id: 'weather_forecast_id' })
+```php
+// load() returns the bare WeatherForecast record (throws on error).
+$weather_forecast = $client->WeatherForecast()->load(["id" => "weather_forecast_id"]);
 ```
 
 
@@ -449,7 +457,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$historical = $client->historical();
+$historical = $client->Historical();
 $historical->load(["id" => "example_id"]);
 
 // $historical->dataGet() now returns the loaded historical data

@@ -134,7 +134,7 @@ Alias for `OpenMeteoSDK.test()`.
 ## HistoricalEntity
 
 ```ts
-const historical = client.historical
+const historical = client.Historical()
 ```
 
 ### Fields
@@ -160,7 +160,7 @@ const historical = client.historical
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.historical.load({ id: 'historical_id' })
+const result = await client.Historical().load({ id: 'historical_id' })
 ```
 
 ### Common Methods
@@ -194,7 +194,7 @@ Return a copy of the entity options.
 ## MarineForecastEntity
 
 ```ts
-const marine_forecast = client.marine_forecast
+const marine_forecast = client.MarineForecast()
 ```
 
 ### Fields
@@ -219,7 +219,7 @@ const marine_forecast = client.marine_forecast
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.marine_forecast.load({ id: 'marine_forecast_id' })
+const result = await client.MarineForecast().load({ id: 'marine_forecast_id' })
 ```
 
 ### Common Methods
@@ -253,7 +253,7 @@ Return a copy of the entity options.
 ## WeatherForecastEntity
 
 ```ts
-const weather_forecast = client.weather_forecast
+const weather_forecast = client.WeatherForecast()
 ```
 
 ### Fields
@@ -281,7 +281,7 @@ const weather_forecast = client.weather_forecast
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.weather_forecast.load({ id: 'weather_forecast_id' })
+const result = await client.WeatherForecast().load({ id: 'weather_forecast_id' })
 ```
 
 ### Common Methods

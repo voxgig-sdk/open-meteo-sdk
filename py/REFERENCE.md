@@ -89,7 +89,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## HistoricalEntity
 
 ```python
-historical = client.historical
+historical = client.Historical()
 ```
 
 ### Fields
@@ -115,7 +115,7 @@ historical = client.historical
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.historical.load({"id": "historical_id"})
+result = client.Historical().load({"id": "historical_id"})
 ```
 
 ### Common Methods
@@ -150,7 +150,7 @@ Return the entity name.
 ## MarineForecastEntity
 
 ```python
-marine_forecast = client.marine_forecast
+marine_forecast = client.MarineForecast()
 ```
 
 ### Fields
@@ -175,7 +175,7 @@ marine_forecast = client.marine_forecast
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.marine_forecast.load({"id": "marine_forecast_id"})
+result = client.MarineForecast().load({"id": "marine_forecast_id"})
 ```
 
 ### Common Methods
@@ -210,7 +210,7 @@ Return the entity name.
 ## WeatherForecastEntity
 
 ```python
-weather_forecast = client.weather_forecast
+weather_forecast = client.WeatherForecast()
 ```
 
 ### Fields
@@ -238,7 +238,7 @@ weather_forecast = client.weather_forecast
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.weather_forecast.load({"id": "weather_forecast_id"})
+result = client.WeatherForecast().load({"id": "weather_forecast_id"})
 ```
 
 ### Common Methods
