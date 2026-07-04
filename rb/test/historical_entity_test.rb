@@ -42,8 +42,7 @@ class HistoricalEntityTest < Minitest::Test
     # LOAD
     historical_ref01_ent = client.Historical(nil)
     historical_ref01_match_dt0 = {}
-    historical_ref01_data_dt0_loaded, err = historical_ref01_ent.load(historical_ref01_match_dt0, nil)
-    assert_nil err
+    historical_ref01_data_dt0_loaded = historical_ref01_ent.load(historical_ref01_match_dt0, nil)
     assert !historical_ref01_data_dt0_loaded.nil?
 
   end

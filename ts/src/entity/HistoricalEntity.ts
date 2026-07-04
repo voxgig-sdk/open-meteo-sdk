@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Historical,
+  HistoricalLoadMatch,
+} from '../OpenMeteoTypes'
 
 // TODO: needs Entity superclass
-class HistoricalEntity extends OpenMeteoEntityBase {
+class HistoricalEntity extends OpenMeteoEntityBase<Historical> {
 
   constructor(client: OpenMeteoSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class HistoricalEntity extends OpenMeteoEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: HistoricalLoadMatch, ctrl?: Control): Promise<Historical> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class HistoricalEntity extends OpenMeteoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Historical> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  MarineForecast,
+  MarineForecastLoadMatch,
+} from '../OpenMeteoTypes'
 
 // TODO: needs Entity superclass
-class MarineForecastEntity extends OpenMeteoEntityBase {
+class MarineForecastEntity extends OpenMeteoEntityBase<MarineForecast> {
 
   constructor(client: OpenMeteoSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class MarineForecastEntity extends OpenMeteoEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: MarineForecastLoadMatch, ctrl?: Control): Promise<MarineForecast> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class MarineForecastEntity extends OpenMeteoEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<MarineForecast> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

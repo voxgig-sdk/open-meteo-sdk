@@ -245,16 +245,25 @@ func (sdk *OpenMeteoSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// Historical returns a Historical entity bound to this client.
+// Idiomatic usage: client.Historical(nil).List(nil, nil) or
+// client.Historical(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenMeteoSDK) Historical(data map[string]any) OpenMeteoEntity {
 	return NewHistoricalEntityFunc(sdk, data)
 }
 
 
+// MarineForecast returns a MarineForecast entity bound to this client.
+// Idiomatic usage: client.MarineForecast(nil).List(nil, nil) or
+// client.MarineForecast(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenMeteoSDK) MarineForecast(data map[string]any) OpenMeteoEntity {
 	return NewMarineForecastEntityFunc(sdk, data)
 }
 
 
+// WeatherForecast returns a WeatherForecast entity bound to this client.
+// Idiomatic usage: client.WeatherForecast(nil).List(nil, nil) or
+// client.WeatherForecast(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *OpenMeteoSDK) WeatherForecast(data map[string]any) OpenMeteoEntity {
 	return NewWeatherForecastEntityFunc(sdk, data)
 }

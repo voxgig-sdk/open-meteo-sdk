@@ -144,16 +144,23 @@ class OpenMeteoSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class OpenMeteoSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class OpenMeteoSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def historical(self):
+        """Idiomatic facade: client.historical.list() / client.historical.load({"id": ...})."""
+        from entity.historical_entity import HistoricalEntity
+        cached = getattr(self, "_historical", None)
+        if cached is None:
+            cached = HistoricalEntity(self, None)
+            self._historical = cached
+        return cached
 
     def Historical(self, data=None):
+        # Deprecated: use client.historical instead.
         from entity.historical_entity import HistoricalEntity
         return HistoricalEntity(self, data)
 
 
+    @property
+    def marine_forecast(self):
+        """Idiomatic facade: client.marine_forecast.list() / client.marine_forecast.load({"id": ...})."""
+        from entity.marine_forecast_entity import MarineForecastEntity
+        cached = getattr(self, "_marine_forecast", None)
+        if cached is None:
+            cached = MarineForecastEntity(self, None)
+            self._marine_forecast = cached
+        return cached
+
     def MarineForecast(self, data=None):
+        # Deprecated: use client.marine_forecast instead.
         from entity.marine_forecast_entity import MarineForecastEntity
         return MarineForecastEntity(self, data)
 
 
+    @property
+    def weather_forecast(self):
+        """Idiomatic facade: client.weather_forecast.list() / client.weather_forecast.load({"id": ...})."""
+        from entity.weather_forecast_entity import WeatherForecastEntity
+        cached = getattr(self, "_weather_forecast", None)
+        if cached is None:
+            cached = WeatherForecastEntity(self, None)
+            self._weather_forecast = cached
+        return cached
+
     def WeatherForecast(self, data=None):
+        # Deprecated: use client.weather_forecast instead.
         from entity.weather_forecast_entity import WeatherForecastEntity
         return WeatherForecastEntity(self, data)
 

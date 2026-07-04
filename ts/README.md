@@ -9,9 +9,12 @@ The TypeScript SDK for the OpenMeteo API — a type-safe, entity-oriented client
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/open-meteo
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/open-meteo-sdk/releases](https://github.com/voxgig-sdk/open-meteo-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { OpenMeteoSDK } from 'open-meteo'
+import { OpenMeteoSDK } from '@voxgig-sdk/open-meteo'
 
 const client = new OpenMeteoSDK({
-  apikey: process.env.OPEN-METEO_APIKEY,
+  apikey: process.env.OPEN_METEO_APIKEY,
 })
 ```
 
 ### 3. Load a historical
 
 ```ts
-const result = await client.Historical().load({ id: 'example_id' })
+const result = await client.historical.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = OpenMeteoSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.historical.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -96,7 +99,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.historical
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -133,8 +136,8 @@ const client = new OpenMeteoSDK({
 Create a `.env.local` file at the project root:
 
 ```
-OPEN-METEO_TEST_LIVE=TRUE
-OPEN-METEO_APIKEY=<your-key>
+OPEN_METEO_TEST_LIVE=TRUE
+OPEN_METEO_APIKEY=<your-key>
 ```
 
 Then run:
@@ -319,7 +322,7 @@ API path: `/v1/forecast`
 
 ### Historical
 
-Create an instance: `const historical = client.Historical()`
+Create an instance: `const historical = client.historical`
 
 #### Operations
 
@@ -346,13 +349,13 @@ Create an instance: `const historical = client.Historical()`
 #### Example: Load
 
 ```ts
-const historical = await client.Historical().load({ id: 'historical_id' })
+const historical = await client.historical.load({ id: 'historical_id' })
 ```
 
 
 ### MarineForecast
 
-Create an instance: `const marine_forecast = client.MarineForecast()`
+Create an instance: `const marine_forecast = client.marine_forecast`
 
 #### Operations
 
@@ -378,13 +381,13 @@ Create an instance: `const marine_forecast = client.MarineForecast()`
 #### Example: Load
 
 ```ts
-const marine_forecast = await client.MarineForecast().load({ id: 'marine_forecast_id' })
+const marine_forecast = await client.marine_forecast.load({ id: 'marine_forecast_id' })
 ```
 
 
 ### WeatherForecast
 
-Create an instance: `const weather_forecast = client.WeatherForecast()`
+Create an instance: `const weather_forecast = client.weather_forecast`
 
 #### Operations
 
@@ -413,7 +416,7 @@ Create an instance: `const weather_forecast = client.WeatherForecast()`
 #### Example: Load
 
 ```ts
-const weather_forecast = await client.WeatherForecast().load({ id: 'weather_forecast_id' })
+const weather_forecast = await client.weather_forecast.load({ id: 'weather_forecast_id' })
 ```
 
 
@@ -474,7 +477,7 @@ open-meteo/
 Import the SDK from the package root:
 
 ```ts
-import { OpenMeteoSDK } from 'open-meteo'
+import { OpenMeteoSDK } from '@voxgig-sdk/open-meteo'
 ```
 
 ### Entity state
@@ -484,11 +487,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const historical = client.historical
+await historical.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// historical.data() now returns the loaded historical data
+// historical.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

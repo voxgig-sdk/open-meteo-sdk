@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch MarineForecastLoadMatch
+---@param ctrl? table
+---@return MarineForecast
+---@return string? err
 function MarineForecastEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

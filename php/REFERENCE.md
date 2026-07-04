@@ -64,7 +64,10 @@ Return a copy of the SDK utility object.
 
 #### `direct(array $fetchargs = []): array`
 
-Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
+Make a direct HTTP request to any API endpoint. This is the raw-HTTP escape
+hatch: it does **not** throw. It returns a result array
+`["ok" => bool, "status" => int, "headers" => array, "data" => mixed]`, or
+`["ok" => false, "err" => \Exception]` on failure. Branch on `$result["ok"]`.
 
 **Parameters:**
 
@@ -78,11 +81,12 @@ Make a direct HTTP request to any API endpoint. Returns `[$result, $err]`.
 | `$fetchargs["body"]` | `mixed` | Request body (arrays are JSON-serialized). |
 | `$fetchargs["ctrl"]` | `array` | Control options. |
 
-**Returns:** `array [$result, $err]`
+**Returns:** `array` — the result dict (see above); never throws.
 
-#### `prepare(array $fetchargs = []): array`
+#### `prepare(array $fetchargs = []): mixed`
 
-Prepare a fetch definition without sending the request. Returns `[$fetchdef, $err]`.
+Prepare a fetch definition without sending the request. Returns the
+`$fetchdef` array. Throws on error.
 
 
 ---
@@ -90,7 +94,7 @@ Prepare a fetch definition without sending the request. Returns `[$fetchdef, $er
 ## HistoricalEntity
 
 ```php
-$historical = $client->Historical();
+$historical = $client->historical();
 ```
 
 ### Fields
@@ -111,12 +115,12 @@ $historical = $client->Historical();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->Historical()->load(["id" => "historical_id"]);
+$result = $client->historical()->load(["id" => "historical_id"]);
 ```
 
 ### Common Methods
@@ -152,7 +156,7 @@ Return the entity name.
 ## MarineForecastEntity
 
 ```php
-$marine_forecast = $client->MarineForecast();
+$marine_forecast = $client->marine_forecast();
 ```
 
 ### Fields
@@ -172,12 +176,12 @@ $marine_forecast = $client->MarineForecast();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->MarineForecast()->load(["id" => "marine_forecast_id"]);
+$result = $client->marine_forecast()->load(["id" => "marine_forecast_id"]);
 ```
 
 ### Common Methods
@@ -213,7 +217,7 @@ Return the entity name.
 ## WeatherForecastEntity
 
 ```php
-$weather_forecast = $client->WeatherForecast();
+$weather_forecast = $client->weather_forecast();
 ```
 
 ### Fields
@@ -236,12 +240,12 @@ $weather_forecast = $client->WeatherForecast();
 
 ### Operations
 
-#### `load(array $reqmatch, ?array $ctrl = null): array`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Throws on error.
 
 ```php
-[$result, $err] = $client->WeatherForecast()->load(["id" => "weather_forecast_id"]);
+$result = $client->weather_forecast()->load(["id" => "weather_forecast_id"]);
 ```
 
 ### Common Methods

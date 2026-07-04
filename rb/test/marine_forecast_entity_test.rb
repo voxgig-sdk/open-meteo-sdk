@@ -42,8 +42,7 @@ class MarineForecastEntityTest < Minitest::Test
     # LOAD
     marine_forecast_ref01_ent = client.MarineForecast(nil)
     marine_forecast_ref01_match_dt0 = {}
-    marine_forecast_ref01_data_dt0_loaded, err = marine_forecast_ref01_ent.load(marine_forecast_ref01_match_dt0, nil)
-    assert_nil err
+    marine_forecast_ref01_data_dt0_loaded = marine_forecast_ref01_ent.load(marine_forecast_ref01_match_dt0, nil)
     assert !marine_forecast_ref01_data_dt0_loaded.nil?
 
   end

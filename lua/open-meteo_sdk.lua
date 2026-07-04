@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:historical():list() / client:historical():load({ id = ... })
+function OpenMeteoSDK:historical(data)
+  local EntityMod = require("entity.historical_entity")
+  if data == nil then
+    if self._historical == nil then
+      self._historical = EntityMod.new(self, nil)
+    end
+    return self._historical
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:historical() instead.
 function OpenMeteoSDK:Historical(data)
   local EntityMod = require("entity.historical_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:marine_forecast():list() / client:marine_forecast():load({ id = ... })
+function OpenMeteoSDK:marine_forecast(data)
+  local EntityMod = require("entity.marine_forecast_entity")
+  if data == nil then
+    if self._marine_forecast == nil then
+      self._marine_forecast = EntityMod.new(self, nil)
+    end
+    return self._marine_forecast
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:marine_forecast() instead.
 function OpenMeteoSDK:MarineForecast(data)
   local EntityMod = require("entity.marine_forecast_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:weather_forecast():list() / client:weather_forecast():load({ id = ... })
+function OpenMeteoSDK:weather_forecast(data)
+  local EntityMod = require("entity.weather_forecast_entity")
+  if data == nil then
+    if self._weather_forecast == nil then
+      self._weather_forecast = EntityMod.new(self, nil)
+    end
+    return self._weather_forecast
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:weather_forecast() instead.
 function OpenMeteoSDK:WeatherForecast(data)
   local EntityMod = require("entity.weather_forecast_entity")
   return EntityMod.new(self, data)

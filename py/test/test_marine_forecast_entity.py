@@ -49,8 +49,7 @@ class TestMarineForecastEntity:
         # LOAD
         marine_forecast_ref01_ent = client.MarineForecast(None)
         marine_forecast_ref01_match_dt0 = {}
-        marine_forecast_ref01_data_dt0_loaded, err = marine_forecast_ref01_ent.load(marine_forecast_ref01_match_dt0, None)
-        assert err is None
+        marine_forecast_ref01_data_dt0_loaded = marine_forecast_ref01_ent.load(marine_forecast_ref01_match_dt0, None)
         assert marine_forecast_ref01_data_dt0_loaded is not None
 
 

@@ -49,8 +49,7 @@ class HistoricalEntityTest extends TestCase
         // LOAD
         $historical_ref01_ent = $client->Historical(null);
         $historical_ref01_match_dt0 = [];
-        [$historical_ref01_data_dt0_loaded, $err] = $historical_ref01_ent->load($historical_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $historical_ref01_data_dt0_loaded = $historical_ref01_ent->load($historical_ref01_match_dt0, null);
         $this->assertNotNull($historical_ref01_data_dt0_loaded);
 
     }

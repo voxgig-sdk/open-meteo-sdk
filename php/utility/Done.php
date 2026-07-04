@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 class OpenMeteoDone
 {
-    public static function call(OpenMeteoContext $ctx): array
+    public static function call(OpenMeteoContext $ctx): mixed
     {
         if ($ctx->ctrl->explain) {
             $ctx->ctrl->explain = ($ctx->utility->clean)($ctx, $ctx->ctrl->explain);
@@ -19,7 +19,7 @@ class OpenMeteoDone
             if (is_object($resdata)) {
                 $resdata = (array)$resdata;
             }
-            return [$resdata, null];
+            return $resdata;
         }
         return ($ctx->utility->make_error)($ctx, null);
     }

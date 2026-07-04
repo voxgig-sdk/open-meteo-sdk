@@ -42,8 +42,7 @@ class WeatherForecastEntityTest < Minitest::Test
     # LOAD
     weather_forecast_ref01_ent = client.WeatherForecast(nil)
     weather_forecast_ref01_match_dt0 = {}
-    weather_forecast_ref01_data_dt0_loaded, err = weather_forecast_ref01_ent.load(weather_forecast_ref01_match_dt0, nil)
-    assert_nil err
+    weather_forecast_ref01_data_dt0_loaded = weather_forecast_ref01_ent.load(weather_forecast_ref01_match_dt0, nil)
     assert !weather_forecast_ref01_data_dt0_loaded.nil?
 
   end
