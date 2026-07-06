@@ -221,19 +221,19 @@ class OpenMeteoSDK:
 
 
     def Historical(self, data=None) -> "HistoricalEntity":
-        """Entity factory: client.Historical().list({}) / client.Historical().load({"id": ...})."""
+        """Entity factory: client.Historical().list() / client.Historical().load({"id": ...})."""
         from entity.historical_entity import HistoricalEntity
         return HistoricalEntity(self, data)
 
 
     def MarineForecast(self, data=None) -> "MarineForecastEntity":
-        """Entity factory: client.MarineForecast().list({}) / client.MarineForecast().load({"id": ...})."""
+        """Entity factory: client.MarineForecast().list() / client.MarineForecast().load({"id": ...})."""
         from entity.marine_forecast_entity import MarineForecastEntity
         return MarineForecastEntity(self, data)
 
 
     def WeatherForecast(self, data=None) -> "WeatherForecastEntity":
-        """Entity factory: client.WeatherForecast().list({}) / client.WeatherForecast().load({"id": ...})."""
+        """Entity factory: client.WeatherForecast().list() / client.WeatherForecast().load({"id": ...})."""
         from entity.weather_forecast_entity import WeatherForecastEntity
         return WeatherForecastEntity(self, data)
 

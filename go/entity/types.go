@@ -23,8 +23,7 @@ type Historical struct {
 	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
 }
 
-// HistoricalLoadMatch mirrors the historical fields as an all-optional match
-// filter (Go analog of Partial<Historical>).
+// HistoricalLoadMatch is the typed request payload for Historical.LoadTyped.
 type HistoricalLoadMatch struct {
 	Daily *map[string]any `json:"daily,omitempty"`
 	DailyUnit *map[string]any `json:"daily_unit,omitempty"`
@@ -53,8 +52,7 @@ type MarineForecast struct {
 	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
 }
 
-// MarineForecastLoadMatch mirrors the marine_forecast fields as an all-optional match
-// filter (Go analog of Partial<MarineForecast>).
+// MarineForecastLoadMatch is the typed request payload for MarineForecast.LoadTyped.
 type MarineForecastLoadMatch struct {
 	Daily *map[string]any `json:"daily,omitempty"`
 	DailyUnit *map[string]any `json:"daily_unit,omitempty"`
@@ -85,8 +83,7 @@ type WeatherForecast struct {
 	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
 }
 
-// WeatherForecastLoadMatch mirrors the weather_forecast fields as an all-optional match
-// filter (Go analog of Partial<WeatherForecast>).
+// WeatherForecastLoadMatch is the typed request payload for WeatherForecast.LoadTyped.
 type WeatherForecastLoadMatch struct {
 	Current *map[string]any `json:"current,omitempty"`
 	CurrentUnit *map[string]any `json:"current_unit,omitempty"`

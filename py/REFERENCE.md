@@ -8,7 +8,7 @@ Complete API reference for the OpenMeteo Python SDK.
 ### Constructor
 
 ```python
-from open-meteo_sdk import OpenMeteoSDK
+from openmeteo_sdk import OpenMeteoSDK
 
 client = OpenMeteoSDK(options)
 ```
@@ -96,17 +96,17 @@ historical = client.Historical()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `daily` | `dict` | No |  |
+| `daily_unit` | `dict` | No |  |
+| `elevation` | `float` | No |  |
+| `generationtime_m` | `float` | No |  |
+| `hourly` | `dict` | No |  |
+| `hourly_unit` | `dict` | No |  |
+| `latitude` | `float` | No |  |
+| `longitude` | `float` | No |  |
+| `timezone` | `str` | No |  |
+| `timezone_abbreviation` | `str` | No |  |
+| `utc_offset_second` | `int` | No |  |
 
 ### Operations
 
@@ -115,7 +115,7 @@ historical = client.Historical()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Historical().load({"id": "historical_id"})
+result = client.Historical().load()
 ```
 
 ### Common Methods
@@ -157,16 +157,16 @@ marine_forecast = client.MarineForecast()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `daily` | `dict` | No |  |
+| `daily_unit` | `dict` | No |  |
+| `generationtime_m` | `float` | No |  |
+| `hourly` | `dict` | No |  |
+| `hourly_unit` | `dict` | No |  |
+| `latitude` | `float` | No |  |
+| `longitude` | `float` | No |  |
+| `timezone` | `str` | No |  |
+| `timezone_abbreviation` | `str` | No |  |
+| `utc_offset_second` | `int` | No |  |
 
 ### Operations
 
@@ -175,7 +175,7 @@ marine_forecast = client.MarineForecast()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.MarineForecast().load({"id": "marine_forecast_id"})
+result = client.MarineForecast().load()
 ```
 
 ### Common Methods
@@ -217,19 +217,19 @@ weather_forecast = client.WeatherForecast()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `dict` | No |  |
+| `current_unit` | `dict` | No |  |
+| `daily` | `dict` | No |  |
+| `daily_unit` | `dict` | No |  |
+| `elevation` | `float` | No |  |
+| `generationtime_m` | `float` | No |  |
+| `hourly` | `dict` | No |  |
+| `hourly_unit` | `dict` | No |  |
+| `latitude` | `float` | No |  |
+| `longitude` | `float` | No |  |
+| `timezone` | `str` | No |  |
+| `timezone_abbreviation` | `str` | No |  |
+| `utc_offset_second` | `int` | No |  |
 
 ### Operations
 
@@ -238,7 +238,7 @@ weather_forecast = client.WeatherForecast()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.WeatherForecast().load({"id": "weather_forecast_id"})
+result = client.WeatherForecast().load()
 ```
 
 ### Common Methods

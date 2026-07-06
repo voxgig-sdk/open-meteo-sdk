@@ -99,17 +99,17 @@ local historical = client:Historical(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `daily` | `table` | No |  |
+| `daily_unit` | `table` | No |  |
+| `elevation` | `number` | No |  |
+| `generationtime_m` | `number` | No |  |
+| `hourly` | `table` | No |  |
+| `hourly_unit` | `table` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `number` | No |  |
 
 ### Operations
 
@@ -118,7 +118,7 @@ local historical = client:Historical(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Historical():load({ id = "historical_id" })
+local result, err = client:Historical():load()
 ```
 
 ### Common Methods
@@ -161,16 +161,16 @@ local marine_forecast = client:MarineForecast(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `daily` | `table` | No |  |
+| `daily_unit` | `table` | No |  |
+| `generationtime_m` | `number` | No |  |
+| `hourly` | `table` | No |  |
+| `hourly_unit` | `table` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `number` | No |  |
 
 ### Operations
 
@@ -179,7 +179,7 @@ local marine_forecast = client:MarineForecast(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:MarineForecast():load({ id = "marine_forecast_id" })
+local result, err = client:MarineForecast():load()
 ```
 
 ### Common Methods
@@ -222,19 +222,19 @@ local weather_forecast = client:WeatherForecast(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `table` | No |  |
+| `current_unit` | `table` | No |  |
+| `daily` | `table` | No |  |
+| `daily_unit` | `table` | No |  |
+| `elevation` | `number` | No |  |
+| `generationtime_m` | `number` | No |  |
+| `hourly` | `table` | No |  |
+| `hourly_unit` | `table` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `number` | No |  |
 
 ### Operations
 
@@ -243,7 +243,7 @@ local weather_forecast = client:WeatherForecast(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:WeatherForecast():load({ id = "weather_forecast_id" })
+local result, err = client:WeatherForecast():load()
 ```
 
 ### Common Methods

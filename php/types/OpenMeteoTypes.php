@@ -28,7 +28,7 @@ class Historical
     public ?int $utc_offset_second = null;
 }
 
-/** Match filter for Historical#load (any subset of Historical fields). */
+/** Request payload for Historical#load. */
 class HistoricalLoadMatch
 {
     public ?array $daily = null;
@@ -59,7 +59,7 @@ class MarineForecast
     public ?int $utc_offset_second = null;
 }
 
-/** Match filter for MarineForecast#load (any subset of MarineForecast fields). */
+/** Request payload for MarineForecast#load. */
 class MarineForecastLoadMatch
 {
     public ?array $daily = null;
@@ -92,7 +92,7 @@ class WeatherForecast
     public ?int $utc_offset_second = null;
 }
 
-/** Match filter for WeatherForecast#load (any subset of WeatherForecast fields). */
+/** Request payload for WeatherForecast#load. */
 class WeatherForecastLoadMatch
 {
     public ?array $current = null;

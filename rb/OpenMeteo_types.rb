@@ -57,7 +57,7 @@ Historical = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Historical#load (any subset of Historical fields).
+# Request payload for Historical#load.
 #
 # @!attribute [rw] daily
 #   @return [Hash, nil]
@@ -151,7 +151,7 @@ MarineForecast = Struct.new(
   keyword_init: true
 )
 
-# Match filter for MarineForecast#load (any subset of MarineForecast fields).
+# Request payload for MarineForecast#load.
 #
 # @!attribute [rw] daily
 #   @return [Hash, nil]
@@ -253,7 +253,7 @@ WeatherForecast = Struct.new(
   keyword_init: true
 )
 
-# Match filter for WeatherForecast#load (any subset of WeatherForecast fields).
+# Request payload for WeatherForecast#load.
 #
 # @!attribute [rw] current
 #   @return [Hash, nil]

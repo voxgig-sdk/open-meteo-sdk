@@ -19,7 +19,19 @@ export interface Historical {
   utc_offset_second?: number
 }
 
-export type HistoricalLoadMatch = Partial<Historical>
+export interface HistoricalLoadMatch {
+  daily?: Record<string, any>
+  daily_unit?: Record<string, any>
+  elevation?: number
+  generationtime_m?: number
+  hourly?: Record<string, any>
+  hourly_unit?: Record<string, any>
+  latitude?: number
+  longitude?: number
+  timezone?: string
+  timezone_abbreviation?: string
+  utc_offset_second?: number
+}
 
 export interface MarineForecast {
   daily?: Record<string, any>
@@ -34,7 +46,18 @@ export interface MarineForecast {
   utc_offset_second?: number
 }
 
-export type MarineForecastLoadMatch = Partial<MarineForecast>
+export interface MarineForecastLoadMatch {
+  daily?: Record<string, any>
+  daily_unit?: Record<string, any>
+  generationtime_m?: number
+  hourly?: Record<string, any>
+  hourly_unit?: Record<string, any>
+  latitude?: number
+  longitude?: number
+  timezone?: string
+  timezone_abbreviation?: string
+  utc_offset_second?: number
+}
 
 export interface WeatherForecast {
   current?: Record<string, any>
@@ -52,5 +75,19 @@ export interface WeatherForecast {
   utc_offset_second?: number
 }
 
-export type WeatherForecastLoadMatch = Partial<WeatherForecast>
+export interface WeatherForecastLoadMatch {
+  current?: Record<string, any>
+  current_unit?: Record<string, any>
+  daily?: Record<string, any>
+  daily_unit?: Record<string, any>
+  elevation?: number
+  generationtime_m?: number
+  hourly?: Record<string, any>
+  hourly_unit?: Record<string, any>
+  latitude?: number
+  longitude?: number
+  timezone?: string
+  timezone_abbreviation?: string
+  utc_offset_second?: number
+}
 

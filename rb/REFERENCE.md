@@ -8,7 +8,7 @@ Complete API reference for the OpenMeteo Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'open-meteo_sdk'
+require_relative 'OpenMeteo_sdk'
 
 client = OpenMeteoSDK.new(options)
 ```
@@ -102,17 +102,17 @@ historical = client.Historical
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `daily` | `Hash` | No |  |
+| `daily_unit` | `Hash` | No |  |
+| `elevation` | `Float` | No |  |
+| `generationtime_m` | `Float` | No |  |
+| `hourly` | `Hash` | No |  |
+| `hourly_unit` | `Hash` | No |  |
+| `latitude` | `Float` | No |  |
+| `longitude` | `Float` | No |  |
+| `timezone` | `String` | No |  |
+| `timezone_abbreviation` | `String` | No |  |
+| `utc_offset_second` | `Integer` | No |  |
 
 ### Operations
 
@@ -121,7 +121,7 @@ historical = client.Historical
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Historical.load({ "id" => "historical_id" })
+result = client.Historical.load()
 ```
 
 ### Common Methods
@@ -164,16 +164,16 @@ marine_forecast = client.MarineForecast
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `daily` | `Hash` | No |  |
+| `daily_unit` | `Hash` | No |  |
+| `generationtime_m` | `Float` | No |  |
+| `hourly` | `Hash` | No |  |
+| `hourly_unit` | `Hash` | No |  |
+| `latitude` | `Float` | No |  |
+| `longitude` | `Float` | No |  |
+| `timezone` | `String` | No |  |
+| `timezone_abbreviation` | `String` | No |  |
+| `utc_offset_second` | `Integer` | No |  |
 
 ### Operations
 
@@ -182,7 +182,7 @@ marine_forecast = client.MarineForecast
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.MarineForecast.load({ "id" => "marine_forecast_id" })
+result = client.MarineForecast.load()
 ```
 
 ### Common Methods
@@ -225,19 +225,19 @@ weather_forecast = client.WeatherForecast
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `Hash` | No |  |
+| `current_unit` | `Hash` | No |  |
+| `daily` | `Hash` | No |  |
+| `daily_unit` | `Hash` | No |  |
+| `elevation` | `Float` | No |  |
+| `generationtime_m` | `Float` | No |  |
+| `hourly` | `Hash` | No |  |
+| `hourly_unit` | `Hash` | No |  |
+| `latitude` | `Float` | No |  |
+| `longitude` | `Float` | No |  |
+| `timezone` | `String` | No |  |
+| `timezone_abbreviation` | `String` | No |  |
+| `utc_offset_second` | `Integer` | No |  |
 
 ### Operations
 
@@ -246,7 +246,7 @@ weather_forecast = client.WeatherForecast
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.WeatherForecast.load({ "id" => "weather_forecast_id" })
+result = client.WeatherForecast.load()
 ```
 
 ### Common Methods

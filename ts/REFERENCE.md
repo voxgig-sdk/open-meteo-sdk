@@ -141,17 +141,17 @@ const historical = client.Historical()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `daily` | `Record<string, any>` | No |  |
+| `daily_unit` | `Record<string, any>` | No |  |
+| `elevation` | `number` | No |  |
+| `generationtime_m` | `number` | No |  |
+| `hourly` | `Record<string, any>` | No |  |
+| `hourly_unit` | `Record<string, any>` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `number` | No |  |
 
 ### Operations
 
@@ -160,7 +160,7 @@ const historical = client.Historical()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Historical().load({ id: 'historical_id' })
+const result = await client.Historical().load()
 ```
 
 ### Common Methods
@@ -201,16 +201,16 @@ const marine_forecast = client.MarineForecast()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `daily` | `Record<string, any>` | No |  |
+| `daily_unit` | `Record<string, any>` | No |  |
+| `generationtime_m` | `number` | No |  |
+| `hourly` | `Record<string, any>` | No |  |
+| `hourly_unit` | `Record<string, any>` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `number` | No |  |
 
 ### Operations
 
@@ -219,7 +219,7 @@ const marine_forecast = client.MarineForecast()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.MarineForecast().load({ id: 'marine_forecast_id' })
+const result = await client.MarineForecast().load()
 ```
 
 ### Common Methods
@@ -260,19 +260,19 @@ const weather_forecast = client.WeatherForecast()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `current_unit` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `daily_unit` | ``$OBJECT`` | No |  |
-| `elevation` | ``$NUMBER`` | No |  |
-| `generationtime_m` | ``$NUMBER`` | No |  |
-| `hourly` | ``$OBJECT`` | No |  |
-| `hourly_unit` | ``$OBJECT`` | No |  |
-| `latitude` | ``$NUMBER`` | No |  |
-| `longitude` | ``$NUMBER`` | No |  |
-| `timezone` | ``$STRING`` | No |  |
-| `timezone_abbreviation` | ``$STRING`` | No |  |
-| `utc_offset_second` | ``$INTEGER`` | No |  |
+| `current` | `Record<string, any>` | No |  |
+| `current_unit` | `Record<string, any>` | No |  |
+| `daily` | `Record<string, any>` | No |  |
+| `daily_unit` | `Record<string, any>` | No |  |
+| `elevation` | `number` | No |  |
+| `generationtime_m` | `number` | No |  |
+| `hourly` | `Record<string, any>` | No |  |
+| `hourly_unit` | `Record<string, any>` | No |  |
+| `latitude` | `number` | No |  |
+| `longitude` | `number` | No |  |
+| `timezone` | `string` | No |  |
+| `timezone_abbreviation` | `string` | No |  |
+| `utc_offset_second` | `number` | No |  |
 
 ### Operations
 
@@ -281,7 +281,7 @@ const weather_forecast = client.WeatherForecast()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.WeatherForecast().load({ id: 'weather_forecast_id' })
+const result = await client.WeatherForecast().load()
 ```
 
 ### Common Methods
