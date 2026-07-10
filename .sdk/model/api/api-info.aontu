@@ -12,15 +12,22 @@ main: {
         name: "Non-Commercial (Commercial licenses available)"
         url: "https://open-meteo.com/en/pricing"
       }
+      security: {
+        in: "query"
+        name: "apikey"
+        prefix: ""
+        scheme: "ApiKeyAuth"
+        type: "apiKey"
+      }
       servers: [
         {
           description: "Open-Meteo API Server"
           url: "https://api.open-meteo.com"
         }
       ]
+      summary: "Open-Meteo is an open-source weather API and offers free access for non-commercial use."
       title: "Open Meteo"
       version: "1.0.0"
+      website: "https://open-meteo.com"
     }
   }
-}
-

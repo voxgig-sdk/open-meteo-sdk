@@ -366,7 +366,7 @@ fmt.Println(historical) // the loaded record
 
 ### MarineForecast
 
-Create an instance: `marine_forecast := client.MarineForecast(nil)`
+Create an instance: `marineForecast := client.MarineForecast(nil)`
 
 #### Operations
 
@@ -392,17 +392,17 @@ Create an instance: `marine_forecast := client.MarineForecast(nil)`
 #### Example: Load
 
 ```go
-marine_forecast, err := client.MarineForecast(nil).Load(nil, nil)
+marineForecast, err := client.MarineForecast(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(marine_forecast) // the loaded record
+fmt.Println(marineForecast) // the loaded record
 ```
 
 
 ### WeatherForecast
 
-Create an instance: `weather_forecast := client.WeatherForecast(nil)`
+Create an instance: `weatherForecast := client.WeatherForecast(nil)`
 
 #### Operations
 
@@ -431,11 +431,11 @@ Create an instance: `weather_forecast := client.WeatherForecast(nil)`
 #### Example: Load
 
 ```go
-weather_forecast, err := client.WeatherForecast(nil).Load(nil, nil)
+weatherForecast, err := client.WeatherForecast(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(weather_forecast) // the loaded record
+fmt.Println(weatherForecast) // the loaded record
 ```
 
 

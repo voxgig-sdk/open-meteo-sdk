@@ -100,6 +100,7 @@ same parameters as `Direct()`.
 
 ```go
 historical := client.Historical(nil)
+fmt.Println(historical.GetName()) // "historical"
 ```
 
 ### Fields
@@ -126,6 +127,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Historical(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -155,7 +160,8 @@ Return the entity name.
 ## MarineForecastEntity
 
 ```go
-marine_forecast := client.MarineForecast(nil)
+marineForecast := client.MarineForecast(nil)
+fmt.Println(marineForecast.GetName()) // "marine_forecast"
 ```
 
 ### Fields
@@ -181,6 +187,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.MarineForecast(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -210,7 +220,8 @@ Return the entity name.
 ## WeatherForecastEntity
 
 ```go
-weather_forecast := client.WeatherForecast(nil)
+weatherForecast := client.WeatherForecast(nil)
+fmt.Println(weatherForecast.GetName()) // "weather_forecast"
 ```
 
 ### Fields
@@ -239,6 +250,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.WeatherForecast(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
