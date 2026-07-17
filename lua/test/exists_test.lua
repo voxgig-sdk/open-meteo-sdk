@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- OpenMeteo SDK exists test
 
 local sdk = require("open-meteo_sdk")
 
