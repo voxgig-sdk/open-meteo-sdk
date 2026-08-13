@@ -44,7 +44,7 @@ func TestWeatherForecastEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set OPENMETEO_TEST_WEATHER_FORECAST_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set OPEN_METEO_TEST_WEATHER_FORECAST_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -110,38 +110,38 @@ func weather_forecastBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("OPENMETEO_TEST_WEATHER_FORECAST_ENTID")
+	entidEnvRaw := os.Getenv("OPEN_METEO_TEST_WEATHER_FORECAST_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"OPENMETEO_TEST_WEATHER_FORECAST_ENTID": idmap,
-		"OPENMETEO_TEST_LIVE":      "FALSE",
-		"OPENMETEO_TEST_EXPLAIN":   "FALSE",
-		"OPENMETEO_APIKEY":         "NONE",
+		"OPEN_METEO_TEST_WEATHER_FORECAST_ENTID": idmap,
+		"OPEN_METEO_TEST_LIVE":      "FALSE",
+		"OPEN_METEO_TEST_EXPLAIN":   "FALSE",
+		"OPEN_METEO_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["OPENMETEO_TEST_WEATHER_FORECAST_ENTID"])
+	idmapResolved := core.ToMapAny(env["OPEN_METEO_TEST_WEATHER_FORECAST_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["OPENMETEO_TEST_LIVE"] == "TRUE" {
+	if env["OPEN_METEO_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["OPENMETEO_APIKEY"],
+				"apikey": env["OPEN_METEO_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewOpenMeteoSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["OPENMETEO_TEST_LIVE"] == "TRUE"
+	live := env["OPEN_METEO_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["OPENMETEO_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["OPEN_METEO_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

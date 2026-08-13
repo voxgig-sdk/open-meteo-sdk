@@ -60,16 +60,16 @@ function historical_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["OPENMETEO_TEST_HISTORICAL_ENTID"] = {},
-    ["OPENMETEO_TEST_LIVE"] = "FALSE",
-    ["OPENMETEO_APIKEY"] = "NONE",
+    ["OPEN_METEO_TEST_HISTORICAL_ENTID"] = {},
+    ["OPEN_METEO_TEST_LIVE"] = "FALSE",
+    ["OPEN_METEO_APIKEY"] = "NONE",
   })
 
-  local live = env["OPENMETEO_TEST_LIVE"] == "TRUE"
+  local live = env["OPEN_METEO_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["OPENMETEO_APIKEY"],
+      apikey = env["OPEN_METEO_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

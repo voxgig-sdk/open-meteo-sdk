@@ -11,7 +11,7 @@ main: kit: entity: weather_forecast: {
       type: "`$OBJECT`"
     }
     {
-      name: "current_unit"
+      name: "current_units"
       req: false
       type: "`$OBJECT`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: weather_forecast: {
       type: "`$OBJECT`"
     }
     {
-      name: "daily_unit"
+      name: "daily_units"
       req: false
       type: "`$OBJECT`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: weather_forecast: {
       type: "`$NUMBER`"
     }
     {
-      name: "generationtime_m"
+      name: "generationtime_ms"
       req: false
       type: "`$NUMBER`"
     }
@@ -41,7 +41,7 @@ main: kit: entity: weather_forecast: {
       type: "`$OBJECT`"
     }
     {
-      name: "hourly_unit"
+      name: "hourly_units"
       req: false
       type: "`$OBJECT`"
     }
@@ -66,7 +66,7 @@ main: kit: entity: weather_forecast: {
       type: "`$STRING`"
     }
     {
-      name: "utc_offset_second"
+      name: "utc_offset_seconds"
       req: false
       type: "`$INTEGER`"
     }

@@ -55,8 +55,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const historical = await client.Historical().load()
-  console.log(historical)
+  const marineforecast = await client.MarineForecast().load()
+  console.log(marineforecast)
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -122,9 +122,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = OpenMeteoSDK.test()
 
-const historical = await client.Historical().load()
-// historical is a bare entity populated with mock response data
-console.log(historical)
+const marineforecast = await client.MarineForecast().load()
+// marineforecast is the entity, populated with mock response data
+// — call marineforecast.data() for the record itself
+console.log(marineforecast)
 ```
 
 You can also use the instance method:
@@ -139,7 +140,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Historical()
+const entity = client.MarineForecast()
 
 // First call runs the operation and stores its result
 await entity.load()
@@ -293,16 +294,16 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: load.
 
@@ -313,15 +314,15 @@ API path: `/v1/historical`
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
-| `generationtime_m` |  |
+| `daily_units` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: load.
 
@@ -332,18 +333,18 @@ API path: `/v1/marine-weather`
 | Field | Description |
 | --- | --- |
 | `current` |  |
-| `current_unit` |  |
+| `current_units` |  |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: load.
 
@@ -369,16 +370,16 @@ Create an instance: `const historical = client.Historical()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `Record<string, any>` |  |
-| `daily_unit` | `Record<string, any>` |  |
+| `daily_units` | `Record<string, any>` |  |
 | `elevation` | `number` |  |
-| `generationtime_m` | `number` |  |
+| `generationtime_ms` | `number` |  |
 | `hourly` | `Record<string, any>` |  |
-| `hourly_unit` | `Record<string, any>` |  |
+| `hourly_units` | `Record<string, any>` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `number` |  |
+| `utc_offset_seconds` | `number` |  |
 
 #### Example: Load
 
@@ -402,15 +403,15 @@ Create an instance: `const marine_forecast = client.MarineForecast()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `Record<string, any>` |  |
-| `daily_unit` | `Record<string, any>` |  |
-| `generationtime_m` | `number` |  |
+| `daily_units` | `Record<string, any>` |  |
+| `generationtime_ms` | `number` |  |
 | `hourly` | `Record<string, any>` |  |
-| `hourly_unit` | `Record<string, any>` |  |
+| `hourly_units` | `Record<string, any>` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `number` |  |
+| `utc_offset_seconds` | `number` |  |
 
 #### Example: Load
 
@@ -434,18 +435,18 @@ Create an instance: `const weather_forecast = client.WeatherForecast()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `Record<string, any>` |  |
-| `current_unit` | `Record<string, any>` |  |
+| `current_units` | `Record<string, any>` |  |
 | `daily` | `Record<string, any>` |  |
-| `daily_unit` | `Record<string, any>` |  |
+| `daily_units` | `Record<string, any>` |  |
 | `elevation` | `number` |  |
-| `generationtime_m` | `number` |  |
+| `generationtime_ms` | `number` |  |
 | `hourly` | `Record<string, any>` |  |
-| `hourly_unit` | `Record<string, any>` |  |
+| `hourly_units` | `Record<string, any>` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `number` |  |
+| `utc_offset_seconds` | `number` |  |
 
 #### Example: Load
 
@@ -523,11 +524,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const historical = client.Historical()
-await historical.load()
+const marineforecast = client.MarineForecast()
+await marineforecast.load()
 
-// historical.data() now returns the historical data from the last `load`
-// historical.match() returns the last match criteria
+// marineforecast.data() now returns the marineforecast data from the last `load`
+// marineforecast.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

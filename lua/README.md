@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local historical, err = client:Historical():load()
+local marineforecast, err = client:MarineForecast():load()
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Historical():load()
+local result, err = client:MarineForecast():load()
 -- result is the returned data; err is set on failure
 ```
 
@@ -232,16 +232,16 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -252,15 +252,15 @@ API path: `/v1/historical`
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
-| `generationtime_m` |  |
+| `daily_units` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -271,18 +271,18 @@ API path: `/v1/marine-weather`
 | Field | Description |
 | --- | --- |
 | `current` |  |
-| `current_unit` |  |
+| `current_units` |  |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -308,16 +308,16 @@ Create an instance: `local historical = client:Historical(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `table` |  |
-| `daily_unit` | `table` |  |
+| `daily_units` | `table` |  |
 | `elevation` | `number` |  |
-| `generationtime_m` | `number` |  |
+| `generationtime_ms` | `number` |  |
 | `hourly` | `table` |  |
-| `hourly_unit` | `table` |  |
+| `hourly_units` | `table` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `number` |  |
+| `utc_offset_seconds` | `number` |  |
 
 #### Example: Load
 
@@ -341,15 +341,15 @@ Create an instance: `local marine_forecast = client:MarineForecast(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `table` |  |
-| `daily_unit` | `table` |  |
-| `generationtime_m` | `number` |  |
+| `daily_units` | `table` |  |
+| `generationtime_ms` | `number` |  |
 | `hourly` | `table` |  |
-| `hourly_unit` | `table` |  |
+| `hourly_units` | `table` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `number` |  |
+| `utc_offset_seconds` | `number` |  |
 
 #### Example: Load
 
@@ -373,18 +373,18 @@ Create an instance: `local weather_forecast = client:WeatherForecast(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `table` |  |
-| `current_unit` | `table` |  |
+| `current_units` | `table` |  |
 | `daily` | `table` |  |
-| `daily_unit` | `table` |  |
+| `daily_units` | `table` |  |
 | `elevation` | `number` |  |
-| `generationtime_m` | `number` |  |
+| `generationtime_ms` | `number` |  |
 | `hourly` | `table` |  |
-| `hourly_unit` | `table` |  |
+| `hourly_units` | `table` |  |
 | `latitude` | `number` |  |
 | `longitude` | `number` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `number` |  |
+| `utc_offset_seconds` | `number` |  |
 
 #### Example: Load
 
@@ -469,11 +469,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local historical = client:Historical()
-historical:load()
+local marineforecast = client:MarineForecast()
+marineforecast:load()
 
--- historical:data_get() now returns the historical data from the last load
--- historical:match_get() returns the last match criteria
+-- marineforecast:data_get() now returns the marineforecast data from the last load
+-- marineforecast:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

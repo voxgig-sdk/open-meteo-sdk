@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from openmeteo_sdk.utility.voxgig_struct import voxgig_struct as vs
 from openmeteo_sdk import OpenMeteoSDK
-from core import helpers
+from openmeteo_sdk.core import helpers
 from test import runner
 
 
@@ -56,16 +56,16 @@ def _historical_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "OPENMETEO_TEST_HISTORICAL_ENTID": {},
-        "OPENMETEO_TEST_LIVE": "FALSE",
-        "OPENMETEO_APIKEY": "NONE",
+        "OPEN_METEO_TEST_HISTORICAL_ENTID": {},
+        "OPEN_METEO_TEST_LIVE": "FALSE",
+        "OPEN_METEO_APIKEY": "NONE",
     })
 
-    live = env.get("OPENMETEO_TEST_LIVE") == "TRUE"
+    live = env.get("OPEN_METEO_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("OPENMETEO_APIKEY"),
+            "apikey": env.get("OPEN_METEO_APIKEY"),
         }
         client = OpenMeteoSDK(merged_opts)
         return {

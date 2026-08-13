@@ -37,7 +37,7 @@ $client = new OpenMeteoSDK([
 
 ```php
 try {
-    // load() returns the bare Historical record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Historical record (throws on error).
     $historical = $client->Historical()->load();
     print_r($historical);
 } catch (\Throwable $err) {
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $historical = $client->Historical()->load();
+    $marineforecast = $client->MarineForecast()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = OpenMeteoSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$historical = $client->Historical()->load();
-print_r($historical);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$marineforecast = $client->MarineForecast()->load();
+print_r($marineforecast);
 ```
 
 ### Use a custom fetch function
@@ -228,7 +229,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -251,16 +252,16 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -271,15 +272,15 @@ API path: `/v1/historical`
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
-| `generationtime_m` |  |
+| `daily_units` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -290,18 +291,18 @@ API path: `/v1/marine-weather`
 | Field | Description |
 | --- | --- |
 | `current` |  |
-| `current_unit` |  |
+| `current_units` |  |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -327,21 +328,21 @@ Create an instance: `$historical = $client->Historical();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `array` |  |
-| `daily_unit` | `array` |  |
+| `daily_units` | `array` |  |
 | `elevation` | `float` |  |
-| `generationtime_m` | `float` |  |
+| `generationtime_ms` | `float` |  |
 | `hourly` | `array` |  |
-| `hourly_unit` | `array` |  |
+| `hourly_units` | `array` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `int` |  |
+| `utc_offset_seconds` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Historical record (throws on error).
+// load() returns the ENTITY — call data_get() for the Historical record (throws on error).
 $historical = $client->Historical()->load();
 ```
 
@@ -361,20 +362,20 @@ Create an instance: `$marine_forecast = $client->MarineForecast();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `array` |  |
-| `daily_unit` | `array` |  |
-| `generationtime_m` | `float` |  |
+| `daily_units` | `array` |  |
+| `generationtime_ms` | `float` |  |
 | `hourly` | `array` |  |
-| `hourly_unit` | `array` |  |
+| `hourly_units` | `array` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `int` |  |
+| `utc_offset_seconds` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare MarineForecast record (throws on error).
+// load() returns the ENTITY — call data_get() for the MarineForecast record (throws on error).
 $marine_forecast = $client->MarineForecast()->load();
 ```
 
@@ -394,23 +395,23 @@ Create an instance: `$weather_forecast = $client->WeatherForecast();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `array` |  |
-| `current_unit` | `array` |  |
+| `current_units` | `array` |  |
 | `daily` | `array` |  |
-| `daily_unit` | `array` |  |
+| `daily_units` | `array` |  |
 | `elevation` | `float` |  |
-| `generationtime_m` | `float` |  |
+| `generationtime_ms` | `float` |  |
 | `hourly` | `array` |  |
-| `hourly_unit` | `array` |  |
+| `hourly_units` | `array` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `int` |  |
+| `utc_offset_seconds` | `int` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare WeatherForecast record (throws on error).
+// load() returns the ENTITY — call data_get() for the WeatherForecast record (throws on error).
 $weather_forecast = $client->WeatherForecast()->load();
 ```
 
@@ -491,11 +492,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$historical = $client->Historical();
-$historical->load();
+$marineforecast = $client->MarineForecast();
+$marineforecast->load();
 
-// $historical->data_get() now returns the historical data from the last load
-// $historical->match_get() returns the last match criteria
+// $marineforecast->data_get() now returns the marineforecast data from the last load
+// $marineforecast->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -3,44 +3,44 @@
     "historical": {
       "HISTORICAL00": {
         "daily": {},
-        "daily_unit": {},
+        "daily_units": {},
         "elevation": 112,
-        "generationtime_m": 113,
+        "generationtime_ms": 113,
         "hourly": {},
-        "hourly_unit": {},
+        "hourly_units": {},
         "latitude": 116,
         "longitude": 117,
         "timezone": "s76",
         "timezone_abbreviation": "s77",
-        "utc_offset_second": "s78",
+        "utc_offset_seconds": "s78",
         "id": "HISTORICAL00"
       },
       "HISTORICAL01": {
         "daily": {},
-        "daily_unit": {},
+        "daily_units": {},
         "elevation": 222,
-        "generationtime_m": 223,
+        "generationtime_ms": 223,
         "hourly": {},
-        "hourly_unit": {},
+        "hourly_units": {},
         "latitude": 226,
         "longitude": 227,
         "timezone": "se4",
         "timezone_abbreviation": "se5",
-        "utc_offset_second": "se6",
+        "utc_offset_seconds": "se6",
         "id": "HISTORICAL01"
       },
       "HISTORICAL02": {
         "daily": {},
-        "daily_unit": {},
+        "daily_units": {},
         "elevation": 332,
-        "generationtime_m": 333,
+        "generationtime_ms": 333,
         "hourly": {},
-        "hourly_unit": {},
+        "hourly_units": {},
         "latitude": 336,
         "longitude": 337,
         "timezone": "s152",
         "timezone_abbreviation": "s153",
-        "utc_offset_second": "s154",
+        "utc_offset_seconds": "s154",
         "id": "HISTORICAL02"
       }
     }
@@ -49,16 +49,16 @@
     "historical": {
       "historical_ref01": {
         "daily": {},
-        "daily_unit": {},
+        "daily_units": {},
         "elevation": 442,
-        "generationtime_m": 443,
+        "generationtime_ms": 443,
         "hourly": {},
-        "hourly_unit": {},
+        "hourly_units": {},
         "latitude": 446,
         "longitude": 447,
         "timezone": "s1c0",
         "timezone_abbreviation": "s1c1",
-        "utc_offset_second": "s1c2"
+        "utc_offset_seconds": "s1c2"
       }
     }
   }

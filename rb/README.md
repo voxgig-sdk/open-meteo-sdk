@@ -36,7 +36,7 @@ client = OpenMeteoSDK.new({
 
 ```ruby
 begin
-  # load returns the bare Historical record (raises on error).
+  # load returns the ENTITY — call data_get for the Historical record (raises on error).
   historical = client.Historical.load()
   puts historical
 rescue => err
@@ -51,7 +51,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  historical = client.Historical.load()
+  marineforecast = client.MarineForecast.load()
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,9 +119,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = OpenMeteoSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-historical = client.Historical.load()
-puts historical
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+marineforecast = client.MarineForecast.load()
+puts marineforecast
 ```
 
 ### Use a custom fetch function
@@ -241,16 +242,16 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -261,15 +262,15 @@ API path: `/v1/historical`
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
-| `generationtime_m` |  |
+| `daily_units` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -280,18 +281,18 @@ API path: `/v1/marine-weather`
 | Field | Description |
 | --- | --- |
 | `current` |  |
-| `current_unit` |  |
+| `current_units` |  |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -317,21 +318,21 @@ Create an instance: `historical = client.Historical`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `Hash` |  |
-| `daily_unit` | `Hash` |  |
+| `daily_units` | `Hash` |  |
 | `elevation` | `Float` |  |
-| `generationtime_m` | `Float` |  |
+| `generationtime_ms` | `Float` |  |
 | `hourly` | `Hash` |  |
-| `hourly_unit` | `Hash` |  |
+| `hourly_units` | `Hash` |  |
 | `latitude` | `Float` |  |
 | `longitude` | `Float` |  |
 | `timezone` | `String` |  |
 | `timezone_abbreviation` | `String` |  |
-| `utc_offset_second` | `Integer` |  |
+| `utc_offset_seconds` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Historical record (raises on error).
+# load returns the ENTITY — call data_get for the Historical record (raises on error).
 historical = client.Historical.load()
 ```
 
@@ -351,20 +352,20 @@ Create an instance: `marine_forecast = client.MarineForecast`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `Hash` |  |
-| `daily_unit` | `Hash` |  |
-| `generationtime_m` | `Float` |  |
+| `daily_units` | `Hash` |  |
+| `generationtime_ms` | `Float` |  |
 | `hourly` | `Hash` |  |
-| `hourly_unit` | `Hash` |  |
+| `hourly_units` | `Hash` |  |
 | `latitude` | `Float` |  |
 | `longitude` | `Float` |  |
 | `timezone` | `String` |  |
 | `timezone_abbreviation` | `String` |  |
-| `utc_offset_second` | `Integer` |  |
+| `utc_offset_seconds` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare MarineForecast record (raises on error).
+# load returns the ENTITY — call data_get for the MarineForecast record (raises on error).
 marine_forecast = client.MarineForecast.load()
 ```
 
@@ -384,23 +385,23 @@ Create an instance: `weather_forecast = client.WeatherForecast`
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `Hash` |  |
-| `current_unit` | `Hash` |  |
+| `current_units` | `Hash` |  |
 | `daily` | `Hash` |  |
-| `daily_unit` | `Hash` |  |
+| `daily_units` | `Hash` |  |
 | `elevation` | `Float` |  |
-| `generationtime_m` | `Float` |  |
+| `generationtime_ms` | `Float` |  |
 | `hourly` | `Hash` |  |
-| `hourly_unit` | `Hash` |  |
+| `hourly_units` | `Hash` |  |
 | `latitude` | `Float` |  |
 | `longitude` | `Float` |  |
 | `timezone` | `String` |  |
 | `timezone_abbreviation` | `String` |  |
-| `utc_offset_second` | `Integer` |  |
+| `utc_offset_seconds` | `Integer` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare WeatherForecast record (raises on error).
+# load returns the ENTITY — call data_get for the WeatherForecast record (raises on error).
 weather_forecast = client.WeatherForecast.load()
 ```
 
@@ -481,11 +482,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-historical = client.Historical
-historical.load()
+marineforecast = client.MarineForecast
+marineforecast.load()
 
-# historical.data_get now returns the historical data from the last load
-# historical.match_get returns the last match criteria
+# marineforecast.data_get now returns the marineforecast data from the last load
+# marineforecast.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

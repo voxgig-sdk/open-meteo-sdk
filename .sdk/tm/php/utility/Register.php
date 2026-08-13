@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ OpenMeteoUtility::setRegistrar(function (OpenMeteoUtility $u): void {
     $u->prepare_params = [OpenMeteoPrepareParams::class, 'call'];
     $u->prepare_path = [OpenMeteoPreparePath::class, 'call'];
     $u->prepare_query = [OpenMeteoPrepareQuery::class, 'call'];
+    $u->graphql_body = [OpenMeteoGraphql::class, 'body'];
+    $u->graphql_errors = [OpenMeteoGraphql::class, 'errors'];
     $u->result_basic = [OpenMeteoResultBasic::class, 'call'];
     $u->result_body = [OpenMeteoResultBody::class, 'call'];
     $u->result_headers = [OpenMeteoResultHeaders::class, 'call'];

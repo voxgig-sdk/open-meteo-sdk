@@ -69,12 +69,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-historical, err := client.Historical(nil).Load(nil, nil)
+marineforecast, err := client.MarineForecast(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = historical
+_ = marineforecast
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -138,13 +138,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-historical, err := client.Historical(nil).Load(
+marineForecast, err := client.MarineForecast(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(historical) // the returned mock data
+fmt.Println(marineForecast) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -266,16 +266,16 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"daily"` |  |
-| `"daily_unit"` |  |
+| `"daily_units"` |  |
 | `"elevation"` |  |
-| `"generationtime_m"` |  |
+| `"generationtime_ms"` |  |
 | `"hourly"` |  |
-| `"hourly_unit"` |  |
+| `"hourly_units"` |  |
 | `"latitude"` |  |
 | `"longitude"` |  |
 | `"timezone"` |  |
 | `"timezone_abbreviation"` |  |
-| `"utc_offset_second"` |  |
+| `"utc_offset_seconds"` |  |
 
 Operations: Load.
 
@@ -286,15 +286,15 @@ API path: `/v1/historical`
 | Field | Description |
 | --- | --- |
 | `"daily"` |  |
-| `"daily_unit"` |  |
-| `"generationtime_m"` |  |
+| `"daily_units"` |  |
+| `"generationtime_ms"` |  |
 | `"hourly"` |  |
-| `"hourly_unit"` |  |
+| `"hourly_units"` |  |
 | `"latitude"` |  |
 | `"longitude"` |  |
 | `"timezone"` |  |
 | `"timezone_abbreviation"` |  |
-| `"utc_offset_second"` |  |
+| `"utc_offset_seconds"` |  |
 
 Operations: Load.
 
@@ -305,18 +305,18 @@ API path: `/v1/marine-weather`
 | Field | Description |
 | --- | --- |
 | `"current"` |  |
-| `"current_unit"` |  |
+| `"current_units"` |  |
 | `"daily"` |  |
-| `"daily_unit"` |  |
+| `"daily_units"` |  |
 | `"elevation"` |  |
-| `"generationtime_m"` |  |
+| `"generationtime_ms"` |  |
 | `"hourly"` |  |
-| `"hourly_unit"` |  |
+| `"hourly_units"` |  |
 | `"latitude"` |  |
 | `"longitude"` |  |
 | `"timezone"` |  |
 | `"timezone_abbreviation"` |  |
-| `"utc_offset_second"` |  |
+| `"utc_offset_seconds"` |  |
 
 Operations: Load.
 
@@ -342,16 +342,16 @@ Create an instance: `historical := client.Historical(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `map[string]any` |  |
-| `daily_unit` | `map[string]any` |  |
+| `daily_units` | `map[string]any` |  |
 | `elevation` | `float64` |  |
-| `generationtime_m` | `float64` |  |
+| `generationtime_ms` | `float64` |  |
 | `hourly` | `map[string]any` |  |
-| `hourly_unit` | `map[string]any` |  |
+| `hourly_units` | `map[string]any` |  |
 | `latitude` | `float64` |  |
 | `longitude` | `float64` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `int` |  |
+| `utc_offset_seconds` | `int` |  |
 
 #### Example: Load
 
@@ -379,15 +379,15 @@ Create an instance: `marineForecast := client.MarineForecast(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `map[string]any` |  |
-| `daily_unit` | `map[string]any` |  |
-| `generationtime_m` | `float64` |  |
+| `daily_units` | `map[string]any` |  |
+| `generationtime_ms` | `float64` |  |
 | `hourly` | `map[string]any` |  |
-| `hourly_unit` | `map[string]any` |  |
+| `hourly_units` | `map[string]any` |  |
 | `latitude` | `float64` |  |
 | `longitude` | `float64` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `int` |  |
+| `utc_offset_seconds` | `int` |  |
 
 #### Example: Load
 
@@ -415,18 +415,18 @@ Create an instance: `weatherForecast := client.WeatherForecast(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `map[string]any` |  |
-| `current_unit` | `map[string]any` |  |
+| `current_units` | `map[string]any` |  |
 | `daily` | `map[string]any` |  |
-| `daily_unit` | `map[string]any` |  |
+| `daily_units` | `map[string]any` |  |
 | `elevation` | `float64` |  |
-| `generationtime_m` | `float64` |  |
+| `generationtime_ms` | `float64` |  |
 | `hourly` | `map[string]any` |  |
-| `hourly_unit` | `map[string]any` |  |
+| `hourly_units` | `map[string]any` |  |
 | `latitude` | `float64` |  |
 | `longitude` | `float64` |  |
 | `timezone` | `string` |  |
 | `timezone_abbreviation` | `string` |  |
-| `utc_offset_second` | `int` |  |
+| `utc_offset_seconds` | `int` |  |
 
 #### Example: Load
 
@@ -512,11 +512,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-historical := client.Historical(nil)
-historical.Load(nil, nil)
+marineforecast := client.MarineForecast(nil)
+marineforecast.Load(nil, nil)
 
-// historical.Data() now returns the historical data from the last load
-// historical.Match() returns the last match criteria
+// marineforecast.Data() now returns the marineforecast data from the last load
+// marineforecast.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

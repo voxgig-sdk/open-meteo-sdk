@@ -43,8 +43,8 @@ class OpenMeteoTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('OPENMETEO_TEST_LIVE');
-        $override = self::getenv('OPENMETEO_TEST_OVERRIDE');
+        $live = self::getenv('OPEN_METEO_TEST_LIVE');
+        $override = self::getenv('OPEN_METEO_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class OpenMeteoTestRunner
             }
         }
 
-        $explain = self::getenv('OPENMETEO_TEST_EXPLAIN');
+        $explain = self::getenv('OPEN_METEO_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['OPENMETEO_TEST_EXPLAIN'] = $explain;
+            $m['OPEN_METEO_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

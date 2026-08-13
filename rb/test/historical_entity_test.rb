@@ -26,7 +26,7 @@ class HistoricalEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set OPENMETEO_TEST_HISTORICAL_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set OPEN_METEO_TEST_HISTORICAL_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -74,39 +74,39 @@ def historical_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["OPENMETEO_TEST_HISTORICAL_ENTID"]
+  entid_env_raw = ENV["OPEN_METEO_TEST_HISTORICAL_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "OPENMETEO_TEST_HISTORICAL_ENTID" => idmap,
-    "OPENMETEO_TEST_LIVE" => "FALSE",
-    "OPENMETEO_TEST_EXPLAIN" => "FALSE",
-    "OPENMETEO_APIKEY" => "NONE",
+    "OPEN_METEO_TEST_HISTORICAL_ENTID" => idmap,
+    "OPEN_METEO_TEST_LIVE" => "FALSE",
+    "OPEN_METEO_TEST_EXPLAIN" => "FALSE",
+    "OPEN_METEO_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["OPENMETEO_TEST_HISTORICAL_ENTID"])
+    env["OPEN_METEO_TEST_HISTORICAL_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["OPENMETEO_TEST_LIVE"] == "TRUE"
+  if env["OPEN_METEO_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["OPENMETEO_APIKEY"],
+        "apikey" => env["OPEN_METEO_APIKEY"],
       },
       extra || {},
     ])
     client = OpenMeteoSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["OPENMETEO_TEST_LIVE"] == "TRUE"
+  live = env["OPEN_METEO_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["OPENMETEO_TEST_EXPLAIN"] == "TRUE",
+    explain: env["OPEN_METEO_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,

@@ -8,83 +8,83 @@
 
 ---@class Historical
 ---@field daily? table
----@field daily_unit? table
+---@field daily_units? table
 ---@field elevation? number
----@field generationtime_m? number
+---@field generationtime_ms? number
 ---@field hourly? table
----@field hourly_unit? table
+---@field hourly_units? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field timezone? string
 ---@field timezone_abbreviation? string
----@field utc_offset_second? number
+---@field utc_offset_seconds? number
 
 ---@class HistoricalLoadMatch
 ---@field daily? table
----@field daily_unit? table
+---@field daily_units? table
 ---@field elevation? number
----@field generationtime_m? number
+---@field generationtime_ms? number
 ---@field hourly? table
----@field hourly_unit? table
+---@field hourly_units? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field timezone? string
 ---@field timezone_abbreviation? string
----@field utc_offset_second? number
+---@field utc_offset_seconds? number
 
 ---@class MarineForecast
 ---@field daily? table
----@field daily_unit? table
----@field generationtime_m? number
+---@field daily_units? table
+---@field generationtime_ms? number
 ---@field hourly? table
----@field hourly_unit? table
+---@field hourly_units? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field timezone? string
 ---@field timezone_abbreviation? string
----@field utc_offset_second? number
+---@field utc_offset_seconds? number
 
 ---@class MarineForecastLoadMatch
 ---@field daily? table
----@field daily_unit? table
----@field generationtime_m? number
+---@field daily_units? table
+---@field generationtime_ms? number
 ---@field hourly? table
----@field hourly_unit? table
+---@field hourly_units? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field timezone? string
 ---@field timezone_abbreviation? string
----@field utc_offset_second? number
+---@field utc_offset_seconds? number
 
 ---@class WeatherForecast
 ---@field current? table
----@field current_unit? table
+---@field current_units? table
 ---@field daily? table
----@field daily_unit? table
+---@field daily_units? table
 ---@field elevation? number
----@field generationtime_m? number
+---@field generationtime_ms? number
 ---@field hourly? table
----@field hourly_unit? table
+---@field hourly_units? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field timezone? string
 ---@field timezone_abbreviation? string
----@field utc_offset_second? number
+---@field utc_offset_seconds? number
 
 ---@class WeatherForecastLoadMatch
 ---@field current? table
----@field current_unit? table
+---@field current_units? table
 ---@field daily? table
----@field daily_unit? table
+---@field daily_units? table
 ---@field elevation? number
----@field generationtime_m? number
+---@field generationtime_ms? number
 ---@field hourly? table
----@field hourly_unit? table
+---@field hourly_units? table
 ---@field latitude? number
 ---@field longitude? number
 ---@field timezone? string
 ---@field timezone_abbreviation? string
----@field utc_offset_second? number
+---@field utc_offset_seconds? number
 
 local M = {}
 

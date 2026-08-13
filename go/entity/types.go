@@ -6,98 +6,102 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/open-meteo-sdk/go/core"
+)
 
 // Historical is the typed data model for the historical entity.
 type Historical struct {
 	Daily *map[string]any `json:"daily,omitempty"`
-	DailyUnit *map[string]any `json:"daily_unit,omitempty"`
+	DailyUnits *map[string]any `json:"daily_units,omitempty"`
 	Elevation *float64 `json:"elevation,omitempty"`
-	GenerationtimeM *float64 `json:"generationtime_m,omitempty"`
+	GenerationtimeMs *float64 `json:"generationtime_ms,omitempty"`
 	Hourly *map[string]any `json:"hourly,omitempty"`
-	HourlyUnit *map[string]any `json:"hourly_unit,omitempty"`
+	HourlyUnits *map[string]any `json:"hourly_units,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
 	TimezoneAbbreviation *string `json:"timezone_abbreviation,omitempty"`
-	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
+	UtcOffsetSeconds *int `json:"utc_offset_seconds,omitempty"`
 }
 
 // HistoricalLoadMatch is the typed request payload for Historical.LoadTyped.
 type HistoricalLoadMatch struct {
 	Daily *map[string]any `json:"daily,omitempty"`
-	DailyUnit *map[string]any `json:"daily_unit,omitempty"`
+	DailyUnits *map[string]any `json:"daily_units,omitempty"`
 	Elevation *float64 `json:"elevation,omitempty"`
-	GenerationtimeM *float64 `json:"generationtime_m,omitempty"`
+	GenerationtimeMs *float64 `json:"generationtime_ms,omitempty"`
 	Hourly *map[string]any `json:"hourly,omitempty"`
-	HourlyUnit *map[string]any `json:"hourly_unit,omitempty"`
+	HourlyUnits *map[string]any `json:"hourly_units,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
 	TimezoneAbbreviation *string `json:"timezone_abbreviation,omitempty"`
-	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
+	UtcOffsetSeconds *int `json:"utc_offset_seconds,omitempty"`
 }
 
 // MarineForecast is the typed data model for the marine_forecast entity.
 type MarineForecast struct {
 	Daily *map[string]any `json:"daily,omitempty"`
-	DailyUnit *map[string]any `json:"daily_unit,omitempty"`
-	GenerationtimeM *float64 `json:"generationtime_m,omitempty"`
+	DailyUnits *map[string]any `json:"daily_units,omitempty"`
+	GenerationtimeMs *float64 `json:"generationtime_ms,omitempty"`
 	Hourly *map[string]any `json:"hourly,omitempty"`
-	HourlyUnit *map[string]any `json:"hourly_unit,omitempty"`
+	HourlyUnits *map[string]any `json:"hourly_units,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
 	TimezoneAbbreviation *string `json:"timezone_abbreviation,omitempty"`
-	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
+	UtcOffsetSeconds *int `json:"utc_offset_seconds,omitempty"`
 }
 
 // MarineForecastLoadMatch is the typed request payload for MarineForecast.LoadTyped.
 type MarineForecastLoadMatch struct {
 	Daily *map[string]any `json:"daily,omitempty"`
-	DailyUnit *map[string]any `json:"daily_unit,omitempty"`
-	GenerationtimeM *float64 `json:"generationtime_m,omitempty"`
+	DailyUnits *map[string]any `json:"daily_units,omitempty"`
+	GenerationtimeMs *float64 `json:"generationtime_ms,omitempty"`
 	Hourly *map[string]any `json:"hourly,omitempty"`
-	HourlyUnit *map[string]any `json:"hourly_unit,omitempty"`
+	HourlyUnits *map[string]any `json:"hourly_units,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
 	TimezoneAbbreviation *string `json:"timezone_abbreviation,omitempty"`
-	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
+	UtcOffsetSeconds *int `json:"utc_offset_seconds,omitempty"`
 }
 
 // WeatherForecast is the typed data model for the weather_forecast entity.
 type WeatherForecast struct {
 	Current *map[string]any `json:"current,omitempty"`
-	CurrentUnit *map[string]any `json:"current_unit,omitempty"`
+	CurrentUnits *map[string]any `json:"current_units,omitempty"`
 	Daily *map[string]any `json:"daily,omitempty"`
-	DailyUnit *map[string]any `json:"daily_unit,omitempty"`
+	DailyUnits *map[string]any `json:"daily_units,omitempty"`
 	Elevation *float64 `json:"elevation,omitempty"`
-	GenerationtimeM *float64 `json:"generationtime_m,omitempty"`
+	GenerationtimeMs *float64 `json:"generationtime_ms,omitempty"`
 	Hourly *map[string]any `json:"hourly,omitempty"`
-	HourlyUnit *map[string]any `json:"hourly_unit,omitempty"`
+	HourlyUnits *map[string]any `json:"hourly_units,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
 	TimezoneAbbreviation *string `json:"timezone_abbreviation,omitempty"`
-	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
+	UtcOffsetSeconds *int `json:"utc_offset_seconds,omitempty"`
 }
 
 // WeatherForecastLoadMatch is the typed request payload for WeatherForecast.LoadTyped.
 type WeatherForecastLoadMatch struct {
 	Current *map[string]any `json:"current,omitempty"`
-	CurrentUnit *map[string]any `json:"current_unit,omitempty"`
+	CurrentUnits *map[string]any `json:"current_units,omitempty"`
 	Daily *map[string]any `json:"daily,omitempty"`
-	DailyUnit *map[string]any `json:"daily_unit,omitempty"`
+	DailyUnits *map[string]any `json:"daily_units,omitempty"`
 	Elevation *float64 `json:"elevation,omitempty"`
-	GenerationtimeM *float64 `json:"generationtime_m,omitempty"`
+	GenerationtimeMs *float64 `json:"generationtime_ms,omitempty"`
 	Hourly *map[string]any `json:"hourly,omitempty"`
-	HourlyUnit *map[string]any `json:"hourly_unit,omitempty"`
+	HourlyUnits *map[string]any `json:"hourly_units,omitempty"`
 	Latitude *float64 `json:"latitude,omitempty"`
 	Longitude *float64 `json:"longitude,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
 	TimezoneAbbreviation *string `json:"timezone_abbreviation,omitempty"`
-	UtcOffsetSecond *int `json:"utc_offset_second,omitempty"`
+	UtcOffsetSeconds *int `json:"utc_offset_seconds,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the
@@ -112,12 +116,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -129,12 +147,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

@@ -26,8 +26,8 @@ import {
 describe('HistoricalEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when OPENMETEO_TEST_LIVE=TRUE.
-  afterEach(liveDelay('OPENMETEO_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when OPEN_METEO_TEST_LIVE=TRUE.
+  afterEach(liveDelay('OPEN_METEO_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OpenMeteoSDK.test()
@@ -62,7 +62,7 @@ describe('HistoricalEntity', async () => {
     // LOAD
     const historical_ref01_ent = client.Historical()
     const historical_ref01_match_dt0: any = {}
-    const historical_ref01_data_dt0 = await historical_ref01_ent.load(historical_ref01_match_dt0)
+    const historical_ref01_data_dt0 = (await historical_ref01_ent.load(historical_ref01_match_dt0)).data()
     assert(null != historical_ref01_data_dt0)
 
 

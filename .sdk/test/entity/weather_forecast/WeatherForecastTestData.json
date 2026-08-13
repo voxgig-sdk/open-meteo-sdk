@@ -3,50 +3,50 @@
     "weather_forecast": {
       "WEATHER_FORECAST00": {
         "current": {},
-        "current_unit": {},
+        "current_units": {},
         "daily": {},
-        "daily_unit": {},
+        "daily_units": {},
         "elevation": 134,
-        "generationtime_m": 135,
+        "generationtime_ms": 135,
         "hourly": {},
-        "hourly_unit": {},
+        "hourly_units": {},
         "latitude": 138,
         "longitude": 139,
         "timezone": "s8c",
         "timezone_abbreviation": "s8d",
-        "utc_offset_second": "s8e",
+        "utc_offset_seconds": "s8e",
         "id": "WEATHER_FORECAST00"
       },
       "WEATHER_FORECAST01": {
         "current": {},
-        "current_unit": {},
+        "current_units": {},
         "daily": {},
-        "daily_unit": {},
+        "daily_units": {},
         "elevation": 264,
-        "generationtime_m": 265,
+        "generationtime_ms": 265,
         "hourly": {},
-        "hourly_unit": {},
+        "hourly_units": {},
         "latitude": 268,
         "longitude": 269,
         "timezone": "s10e",
         "timezone_abbreviation": "s10f",
-        "utc_offset_second": "s110",
+        "utc_offset_seconds": "s110",
         "id": "WEATHER_FORECAST01"
       },
       "WEATHER_FORECAST02": {
         "current": {},
-        "current_unit": {},
+        "current_units": {},
         "daily": {},
-        "daily_unit": {},
+        "daily_units": {},
         "elevation": 394,
-        "generationtime_m": 395,
+        "generationtime_ms": 395,
         "hourly": {},
-        "hourly_unit": {},
+        "hourly_units": {},
         "latitude": 398,
         "longitude": 399,
         "timezone": "s190",
         "timezone_abbreviation": "s191",
-        "utc_offset_second": "s192",
+        "utc_offset_seconds": "s192",
         "id": "WEATHER_FORECAST02"
       }
     }
@@ -55,18 +55,18 @@
     "weather_forecast": {
       "weather_forecast_ref01": {
         "current": {},
-        "current_unit": {},
+        "current_units": {},
         "daily": {},
-        "daily_unit": {},
+        "daily_units": {},
         "elevation": 524,
-        "generationtime_m": 525,
+        "generationtime_ms": 525,
         "hourly": {},
-        "hourly_unit": {},
+        "hourly_units": {},
         "latitude": 528,
         "longitude": 529,
         "timezone": "s212",
         "timezone_abbreviation": "s213",
-        "utc_offset_second": "s214"
+        "utc_offset_seconds": "s214"
       }
     }
   }

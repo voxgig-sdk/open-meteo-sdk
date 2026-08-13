@@ -11,7 +11,7 @@ main: kit: entity: historical: {
       type: "`$OBJECT`"
     }
     {
-      name: "daily_unit"
+      name: "daily_units"
       req: false
       type: "`$OBJECT`"
     }
@@ -21,7 +21,7 @@ main: kit: entity: historical: {
       type: "`$NUMBER`"
     }
     {
-      name: "generationtime_m"
+      name: "generationtime_ms"
       req: false
       type: "`$NUMBER`"
     }
@@ -31,7 +31,7 @@ main: kit: entity: historical: {
       type: "`$OBJECT`"
     }
     {
-      name: "hourly_unit"
+      name: "hourly_units"
       req: false
       type: "`$OBJECT`"
     }
@@ -56,7 +56,7 @@ main: kit: entity: historical: {
       type: "`$STRING`"
     }
     {
-      name: "utc_offset_second"
+      name: "utc_offset_seconds"
       req: false
       type: "`$INTEGER`"
     }

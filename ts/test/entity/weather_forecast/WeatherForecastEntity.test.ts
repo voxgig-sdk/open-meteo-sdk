@@ -26,8 +26,8 @@ import {
 describe('WeatherForecastEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when OPENMETEO_TEST_LIVE=TRUE.
-  afterEach(liveDelay('OPENMETEO_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when OPEN_METEO_TEST_LIVE=TRUE.
+  afterEach(liveDelay('OPEN_METEO_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = OpenMeteoSDK.test()
@@ -62,7 +62,7 @@ describe('WeatherForecastEntity', async () => {
     // LOAD
     const weather_forecast_ref01_ent = client.WeatherForecast()
     const weather_forecast_ref01_match_dt0: any = {}
-    const weather_forecast_ref01_data_dt0 = await weather_forecast_ref01_ent.load(weather_forecast_ref01_match_dt0)
+    const weather_forecast_ref01_data_dt0 = (await weather_forecast_ref01_ent.load(weather_forecast_ref01_match_dt0)).data()
     assert(null != weather_forecast_ref01_data_dt0)
 
 

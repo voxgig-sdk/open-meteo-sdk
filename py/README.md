@@ -41,7 +41,7 @@ client = OpenMeteoSDK({
 
 ### 3. Load a historical
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -58,8 +58,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    historical = client.Historical().load()
-    print(historical)
+    marineforecast = client.MarineForecast().load()
+    print(marineforecast)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = OpenMeteoSDK.test()
 
-# Entity ops return the bare record and raise on error.
-historical = client.Historical().load()
-# historical contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+marineforecast = client.MarineForecast().load()
+# marineforecast contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -225,7 +226,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -248,16 +249,16 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -268,15 +269,15 @@ API path: `/v1/historical`
 | Field | Description |
 | --- | --- |
 | `daily` |  |
-| `daily_unit` |  |
-| `generationtime_m` |  |
+| `daily_units` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -287,18 +288,18 @@ API path: `/v1/marine-weather`
 | Field | Description |
 | --- | --- |
 | `current` |  |
-| `current_unit` |  |
+| `current_units` |  |
 | `daily` |  |
-| `daily_unit` |  |
+| `daily_units` |  |
 | `elevation` |  |
-| `generationtime_m` |  |
+| `generationtime_ms` |  |
 | `hourly` |  |
-| `hourly_unit` |  |
+| `hourly_units` |  |
 | `latitude` |  |
 | `longitude` |  |
 | `timezone` |  |
 | `timezone_abbreviation` |  |
-| `utc_offset_second` |  |
+| `utc_offset_seconds` |  |
 
 Operations: Load.
 
@@ -324,16 +325,16 @@ Create an instance: `historical = client.Historical()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `dict` |  |
-| `daily_unit` | `dict` |  |
+| `daily_units` | `dict` |  |
 | `elevation` | `float` |  |
-| `generationtime_m` | `float` |  |
+| `generationtime_ms` | `float` |  |
 | `hourly` | `dict` |  |
-| `hourly_unit` | `dict` |  |
+| `hourly_units` | `dict` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
 | `timezone` | `str` |  |
 | `timezone_abbreviation` | `str` |  |
-| `utc_offset_second` | `int` |  |
+| `utc_offset_seconds` | `int` |  |
 
 #### Example: Load
 
@@ -357,15 +358,15 @@ Create an instance: `marine_forecast = client.MarineForecast()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `daily` | `dict` |  |
-| `daily_unit` | `dict` |  |
-| `generationtime_m` | `float` |  |
+| `daily_units` | `dict` |  |
+| `generationtime_ms` | `float` |  |
 | `hourly` | `dict` |  |
-| `hourly_unit` | `dict` |  |
+| `hourly_units` | `dict` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
 | `timezone` | `str` |  |
 | `timezone_abbreviation` | `str` |  |
-| `utc_offset_second` | `int` |  |
+| `utc_offset_seconds` | `int` |  |
 
 #### Example: Load
 
@@ -389,18 +390,18 @@ Create an instance: `weather_forecast = client.WeatherForecast()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `dict` |  |
-| `current_unit` | `dict` |  |
+| `current_units` | `dict` |  |
 | `daily` | `dict` |  |
-| `daily_unit` | `dict` |  |
+| `daily_units` | `dict` |  |
 | `elevation` | `float` |  |
-| `generationtime_m` | `float` |  |
+| `generationtime_ms` | `float` |  |
 | `hourly` | `dict` |  |
-| `hourly_unit` | `dict` |  |
+| `hourly_units` | `dict` |  |
 | `latitude` | `float` |  |
 | `longitude` | `float` |  |
 | `timezone` | `str` |  |
 | `timezone_abbreviation` | `str` |  |
-| `utc_offset_second` | `int` |  |
+| `utc_offset_seconds` | `int` |  |
 
 #### Example: Load
 
@@ -484,11 +485,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-historical = client.Historical()
-historical.load()
+marineforecast = client.MarineForecast()
+marineforecast.load()
 
-# historical.data_get() now returns the historical data from the last load
-# historical.match_get() returns the last match criteria
+# marineforecast.data_get() now returns the marineforecast data from the last load
+# marineforecast.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

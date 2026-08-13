@@ -97,16 +97,16 @@ historical = client.Historical()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `daily` | `dict` | No |  |
-| `daily_unit` | `dict` | No |  |
+| `daily_units` | `dict` | No |  |
 | `elevation` | `float` | No |  |
-| `generationtime_m` | `float` | No |  |
+| `generationtime_ms` | `float` | No |  |
 | `hourly` | `dict` | No |  |
-| `hourly_unit` | `dict` | No |  |
+| `hourly_units` | `dict` | No |  |
 | `latitude` | `float` | No |  |
 | `longitude` | `float` | No |  |
 | `timezone` | `str` | No |  |
 | `timezone_abbreviation` | `str` | No |  |
-| `utc_offset_second` | `int` | No |  |
+| `utc_offset_seconds` | `int` | No |  |
 
 ### Operations
 
@@ -158,15 +158,15 @@ marine_forecast = client.MarineForecast()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `daily` | `dict` | No |  |
-| `daily_unit` | `dict` | No |  |
-| `generationtime_m` | `float` | No |  |
+| `daily_units` | `dict` | No |  |
+| `generationtime_ms` | `float` | No |  |
 | `hourly` | `dict` | No |  |
-| `hourly_unit` | `dict` | No |  |
+| `hourly_units` | `dict` | No |  |
 | `latitude` | `float` | No |  |
 | `longitude` | `float` | No |  |
 | `timezone` | `str` | No |  |
 | `timezone_abbreviation` | `str` | No |  |
-| `utc_offset_second` | `int` | No |  |
+| `utc_offset_seconds` | `int` | No |  |
 
 ### Operations
 
@@ -218,18 +218,18 @@ weather_forecast = client.WeatherForecast()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `dict` | No |  |
-| `current_unit` | `dict` | No |  |
+| `current_units` | `dict` | No |  |
 | `daily` | `dict` | No |  |
-| `daily_unit` | `dict` | No |  |
+| `daily_units` | `dict` | No |  |
 | `elevation` | `float` | No |  |
-| `generationtime_m` | `float` | No |  |
+| `generationtime_ms` | `float` | No |  |
 | `hourly` | `dict` | No |  |
-| `hourly_unit` | `dict` | No |  |
+| `hourly_units` | `dict` | No |  |
 | `latitude` | `float` | No |  |
 | `longitude` | `float` | No |  |
 | `timezone` | `str` | No |  |
 | `timezone_abbreviation` | `str` | No |  |
-| `utc_offset_second` | `int` | No |  |
+| `utc_offset_seconds` | `int` | No |  |
 
 ### Operations
 

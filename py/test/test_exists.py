@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# OpenMeteo SDK exists test
 
 import pytest
 from openmeteo_sdk import OpenMeteoSDK

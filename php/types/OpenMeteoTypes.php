@@ -16,97 +16,97 @@ declare(strict_types=1);
 class Historical
 {
     public ?array $daily = null;
-    public ?array $daily_unit = null;
+    public ?array $daily_units = null;
     public ?float $elevation = null;
-    public ?float $generationtime_m = null;
+    public ?float $generationtime_ms = null;
     public ?array $hourly = null;
-    public ?array $hourly_unit = null;
+    public ?array $hourly_units = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
     public ?string $timezone = null;
     public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_second = null;
+    public ?int $utc_offset_seconds = null;
 }
 
 /** Request payload for Historical#load. */
 class HistoricalLoadMatch
 {
     public ?array $daily = null;
-    public ?array $daily_unit = null;
+    public ?array $daily_units = null;
     public ?float $elevation = null;
-    public ?float $generationtime_m = null;
+    public ?float $generationtime_ms = null;
     public ?array $hourly = null;
-    public ?array $hourly_unit = null;
+    public ?array $hourly_units = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
     public ?string $timezone = null;
     public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_second = null;
+    public ?int $utc_offset_seconds = null;
 }
 
 /** MarineForecast entity data model. */
 class MarineForecast
 {
     public ?array $daily = null;
-    public ?array $daily_unit = null;
-    public ?float $generationtime_m = null;
+    public ?array $daily_units = null;
+    public ?float $generationtime_ms = null;
     public ?array $hourly = null;
-    public ?array $hourly_unit = null;
+    public ?array $hourly_units = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
     public ?string $timezone = null;
     public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_second = null;
+    public ?int $utc_offset_seconds = null;
 }
 
 /** Request payload for MarineForecast#load. */
 class MarineForecastLoadMatch
 {
     public ?array $daily = null;
-    public ?array $daily_unit = null;
-    public ?float $generationtime_m = null;
+    public ?array $daily_units = null;
+    public ?float $generationtime_ms = null;
     public ?array $hourly = null;
-    public ?array $hourly_unit = null;
+    public ?array $hourly_units = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
     public ?string $timezone = null;
     public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_second = null;
+    public ?int $utc_offset_seconds = null;
 }
 
 /** WeatherForecast entity data model. */
 class WeatherForecast
 {
     public ?array $current = null;
-    public ?array $current_unit = null;
+    public ?array $current_units = null;
     public ?array $daily = null;
-    public ?array $daily_unit = null;
+    public ?array $daily_units = null;
     public ?float $elevation = null;
-    public ?float $generationtime_m = null;
+    public ?float $generationtime_ms = null;
     public ?array $hourly = null;
-    public ?array $hourly_unit = null;
+    public ?array $hourly_units = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
     public ?string $timezone = null;
     public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_second = null;
+    public ?int $utc_offset_seconds = null;
 }
 
 /** Request payload for WeatherForecast#load. */
 class WeatherForecastLoadMatch
 {
     public ?array $current = null;
-    public ?array $current_unit = null;
+    public ?array $current_units = null;
     public ?array $daily = null;
-    public ?array $daily_unit = null;
+    public ?array $daily_units = null;
     public ?float $elevation = null;
-    public ?float $generationtime_m = null;
+    public ?float $generationtime_ms = null;
     public ?array $hourly = null;
-    public ?array $hourly_unit = null;
+    public ?array $hourly_units = null;
     public ?float $latitude = null;
     public ?float $longitude = null;
     public ?string $timezone = null;
     public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_second = null;
+    public ?int $utc_offset_seconds = null;
 }
 

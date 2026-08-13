@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = OpenMeteoSDK.test()
-const historical = await client.Historical().load()
-// historical is a bare Historical populated with mock data
-console.log(historical)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = OpenMeteoSDK.test({
+  entity: {
+    marine_forecast: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const marineforecast = await client.MarineForecast().load()
+// marineforecast is the MarineForecast entity, populated with mock data
+// — call marineforecast.data() for the record itself
+console.log(marineforecast)
 ```
 
 ### Python
 
 ```python
 client = OpenMeteoSDK.test()
-historical = client.Historical().load()
-print(historical)
+marineforecast = client.MarineForecast().load()
+print(marineforecast)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(historical)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = OpenMeteoSDK::test([
-    "entity" => ["historical" => ["test01" => []]],
+    "entity" => ["marineforecast" => ["test01" => []]],
 ]);
-$historical = $client->Historical()->load();
+$marineforecast = $client->MarineForecast()->load();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.Historical(nil).Load(
+result, err := client.MarineForecast(nil).Load(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.Historical(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = OpenMeteoSDK.test({
-  "entity" => { "historical" => { "test01" => {} } },
+  "entity" => { "marineforecast" => { "test01" => {} } },
 })
-historical = client.Historical.load()
+marineforecast = client.MarineForecast.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:Historical():load()
+local result, err = client:MarineForecast():load()
 ```
 
 ## Packages
@@ -191,7 +200,7 @@ $client = new OpenMeteoSDK([
 ]);
 
 
-// Load a specific historical (returns the bare record; throws on error)
+// Load a specific historical (returns the ENTITY; call data_get() for the record; throws on error)
 $historical = $client->Historical()->load();
 print_r($historical);
 ```
@@ -223,7 +232,7 @@ client = OpenMeteoSDK.new({
 })
 
 
-# Load a specific historical (returns the bare record; raises on error)
+# Load a specific historical (returns the ENTITY; call data_get for the record)
 historical = client.Historical.load()
 puts historical
 ```
@@ -359,6 +368,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://open-meteo.com/en/docs](https://open-meteo.com/en/docs)
 

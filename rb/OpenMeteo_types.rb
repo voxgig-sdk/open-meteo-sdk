@@ -13,19 +13,19 @@
 # @!attribute [rw] daily
 #   @return [Hash, nil]
 #
-# @!attribute [rw] daily_unit
+# @!attribute [rw] daily_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] elevation
 #   @return [Float, nil]
 #
-# @!attribute [rw] generationtime_m
+# @!attribute [rw] generationtime_ms
 #   @return [Float, nil]
 #
 # @!attribute [rw] hourly
 #   @return [Hash, nil]
 #
-# @!attribute [rw] hourly_unit
+# @!attribute [rw] hourly_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] latitude
@@ -40,20 +40,20 @@
 # @!attribute [rw] timezone_abbreviation
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_offset_second
+# @!attribute [rw] utc_offset_seconds
 #   @return [Integer, nil]
 Historical = Struct.new(
   :daily,
-  :daily_unit,
+  :daily_units,
   :elevation,
-  :generationtime_m,
+  :generationtime_ms,
   :hourly,
-  :hourly_unit,
+  :hourly_units,
   :latitude,
   :longitude,
   :timezone,
   :timezone_abbreviation,
-  :utc_offset_second,
+  :utc_offset_seconds,
   keyword_init: true
 )
 
@@ -62,19 +62,19 @@ Historical = Struct.new(
 # @!attribute [rw] daily
 #   @return [Hash, nil]
 #
-# @!attribute [rw] daily_unit
+# @!attribute [rw] daily_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] elevation
 #   @return [Float, nil]
 #
-# @!attribute [rw] generationtime_m
+# @!attribute [rw] generationtime_ms
 #   @return [Float, nil]
 #
 # @!attribute [rw] hourly
 #   @return [Hash, nil]
 #
-# @!attribute [rw] hourly_unit
+# @!attribute [rw] hourly_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] latitude
@@ -89,20 +89,20 @@ Historical = Struct.new(
 # @!attribute [rw] timezone_abbreviation
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_offset_second
+# @!attribute [rw] utc_offset_seconds
 #   @return [Integer, nil]
 HistoricalLoadMatch = Struct.new(
   :daily,
-  :daily_unit,
+  :daily_units,
   :elevation,
-  :generationtime_m,
+  :generationtime_ms,
   :hourly,
-  :hourly_unit,
+  :hourly_units,
   :latitude,
   :longitude,
   :timezone,
   :timezone_abbreviation,
-  :utc_offset_second,
+  :utc_offset_seconds,
   keyword_init: true
 )
 
@@ -111,16 +111,16 @@ HistoricalLoadMatch = Struct.new(
 # @!attribute [rw] daily
 #   @return [Hash, nil]
 #
-# @!attribute [rw] daily_unit
+# @!attribute [rw] daily_units
 #   @return [Hash, nil]
 #
-# @!attribute [rw] generationtime_m
+# @!attribute [rw] generationtime_ms
 #   @return [Float, nil]
 #
 # @!attribute [rw] hourly
 #   @return [Hash, nil]
 #
-# @!attribute [rw] hourly_unit
+# @!attribute [rw] hourly_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] latitude
@@ -135,19 +135,19 @@ HistoricalLoadMatch = Struct.new(
 # @!attribute [rw] timezone_abbreviation
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_offset_second
+# @!attribute [rw] utc_offset_seconds
 #   @return [Integer, nil]
 MarineForecast = Struct.new(
   :daily,
-  :daily_unit,
-  :generationtime_m,
+  :daily_units,
+  :generationtime_ms,
   :hourly,
-  :hourly_unit,
+  :hourly_units,
   :latitude,
   :longitude,
   :timezone,
   :timezone_abbreviation,
-  :utc_offset_second,
+  :utc_offset_seconds,
   keyword_init: true
 )
 
@@ -156,16 +156,16 @@ MarineForecast = Struct.new(
 # @!attribute [rw] daily
 #   @return [Hash, nil]
 #
-# @!attribute [rw] daily_unit
+# @!attribute [rw] daily_units
 #   @return [Hash, nil]
 #
-# @!attribute [rw] generationtime_m
+# @!attribute [rw] generationtime_ms
 #   @return [Float, nil]
 #
 # @!attribute [rw] hourly
 #   @return [Hash, nil]
 #
-# @!attribute [rw] hourly_unit
+# @!attribute [rw] hourly_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] latitude
@@ -180,19 +180,19 @@ MarineForecast = Struct.new(
 # @!attribute [rw] timezone_abbreviation
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_offset_second
+# @!attribute [rw] utc_offset_seconds
 #   @return [Integer, nil]
 MarineForecastLoadMatch = Struct.new(
   :daily,
-  :daily_unit,
-  :generationtime_m,
+  :daily_units,
+  :generationtime_ms,
   :hourly,
-  :hourly_unit,
+  :hourly_units,
   :latitude,
   :longitude,
   :timezone,
   :timezone_abbreviation,
-  :utc_offset_second,
+  :utc_offset_seconds,
   keyword_init: true
 )
 
@@ -201,25 +201,25 @@ MarineForecastLoadMatch = Struct.new(
 # @!attribute [rw] current
 #   @return [Hash, nil]
 #
-# @!attribute [rw] current_unit
+# @!attribute [rw] current_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] daily
 #   @return [Hash, nil]
 #
-# @!attribute [rw] daily_unit
+# @!attribute [rw] daily_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] elevation
 #   @return [Float, nil]
 #
-# @!attribute [rw] generationtime_m
+# @!attribute [rw] generationtime_ms
 #   @return [Float, nil]
 #
 # @!attribute [rw] hourly
 #   @return [Hash, nil]
 #
-# @!attribute [rw] hourly_unit
+# @!attribute [rw] hourly_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] latitude
@@ -234,22 +234,22 @@ MarineForecastLoadMatch = Struct.new(
 # @!attribute [rw] timezone_abbreviation
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_offset_second
+# @!attribute [rw] utc_offset_seconds
 #   @return [Integer, nil]
 WeatherForecast = Struct.new(
   :current,
-  :current_unit,
+  :current_units,
   :daily,
-  :daily_unit,
+  :daily_units,
   :elevation,
-  :generationtime_m,
+  :generationtime_ms,
   :hourly,
-  :hourly_unit,
+  :hourly_units,
   :latitude,
   :longitude,
   :timezone,
   :timezone_abbreviation,
-  :utc_offset_second,
+  :utc_offset_seconds,
   keyword_init: true
 )
 
@@ -258,25 +258,25 @@ WeatherForecast = Struct.new(
 # @!attribute [rw] current
 #   @return [Hash, nil]
 #
-# @!attribute [rw] current_unit
+# @!attribute [rw] current_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] daily
 #   @return [Hash, nil]
 #
-# @!attribute [rw] daily_unit
+# @!attribute [rw] daily_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] elevation
 #   @return [Float, nil]
 #
-# @!attribute [rw] generationtime_m
+# @!attribute [rw] generationtime_ms
 #   @return [Float, nil]
 #
 # @!attribute [rw] hourly
 #   @return [Hash, nil]
 #
-# @!attribute [rw] hourly_unit
+# @!attribute [rw] hourly_units
 #   @return [Hash, nil]
 #
 # @!attribute [rw] latitude
@@ -291,22 +291,22 @@ WeatherForecast = Struct.new(
 # @!attribute [rw] timezone_abbreviation
 #   @return [String, nil]
 #
-# @!attribute [rw] utc_offset_second
+# @!attribute [rw] utc_offset_seconds
 #   @return [Integer, nil]
 WeatherForecastLoadMatch = Struct.new(
   :current,
-  :current_unit,
+  :current_units,
   :daily,
-  :daily_unit,
+  :daily_units,
   :elevation,
-  :generationtime_m,
+  :generationtime_ms,
   :hourly,
-  :hourly_unit,
+  :hourly_units,
   :latitude,
   :longitude,
   :timezone,
   :timezone_abbreviation,
-  :utc_offset_second,
+  :utc_offset_seconds,
   keyword_init: true
 )
 

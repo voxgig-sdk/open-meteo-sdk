@@ -103,16 +103,16 @@ historical = client.Historical
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `daily` | `Hash` | No |  |
-| `daily_unit` | `Hash` | No |  |
+| `daily_units` | `Hash` | No |  |
 | `elevation` | `Float` | No |  |
-| `generationtime_m` | `Float` | No |  |
+| `generationtime_ms` | `Float` | No |  |
 | `hourly` | `Hash` | No |  |
-| `hourly_unit` | `Hash` | No |  |
+| `hourly_units` | `Hash` | No |  |
 | `latitude` | `Float` | No |  |
 | `longitude` | `Float` | No |  |
 | `timezone` | `String` | No |  |
 | `timezone_abbreviation` | `String` | No |  |
-| `utc_offset_second` | `Integer` | No |  |
+| `utc_offset_seconds` | `Integer` | No |  |
 
 ### Operations
 
@@ -165,15 +165,15 @@ marine_forecast = client.MarineForecast
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `daily` | `Hash` | No |  |
-| `daily_unit` | `Hash` | No |  |
-| `generationtime_m` | `Float` | No |  |
+| `daily_units` | `Hash` | No |  |
+| `generationtime_ms` | `Float` | No |  |
 | `hourly` | `Hash` | No |  |
-| `hourly_unit` | `Hash` | No |  |
+| `hourly_units` | `Hash` | No |  |
 | `latitude` | `Float` | No |  |
 | `longitude` | `Float` | No |  |
 | `timezone` | `String` | No |  |
 | `timezone_abbreviation` | `String` | No |  |
-| `utc_offset_second` | `Integer` | No |  |
+| `utc_offset_seconds` | `Integer` | No |  |
 
 ### Operations
 
@@ -226,18 +226,18 @@ weather_forecast = client.WeatherForecast
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `Hash` | No |  |
-| `current_unit` | `Hash` | No |  |
+| `current_units` | `Hash` | No |  |
 | `daily` | `Hash` | No |  |
-| `daily_unit` | `Hash` | No |  |
+| `daily_units` | `Hash` | No |  |
 | `elevation` | `Float` | No |  |
-| `generationtime_m` | `Float` | No |  |
+| `generationtime_ms` | `Float` | No |  |
 | `hourly` | `Hash` | No |  |
-| `hourly_unit` | `Hash` | No |  |
+| `hourly_units` | `Hash` | No |  |
 | `latitude` | `Float` | No |  |
 | `longitude` | `Float` | No |  |
 | `timezone` | `String` | No |  |
 | `timezone_abbreviation` | `String` | No |  |
-| `utc_offset_second` | `Integer` | No |  |
+| `utc_offset_seconds` | `Integer` | No |  |
 
 ### Operations
 

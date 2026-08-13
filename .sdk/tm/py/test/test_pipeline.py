@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import OpenMeteoSDK
-from core.error import OpenMeteoError
-from core.result import OpenMeteoResult
-from core.response import OpenMeteoResponse
-from core.spec import OpenMeteoSpec
-from feature.base_feature import OpenMeteoBaseFeature
+from projectname_sdk.core.error import OpenMeteoError
+from projectname_sdk.core.result import OpenMeteoResult
+from projectname_sdk.core.response import OpenMeteoResponse
+from projectname_sdk.core.spec import OpenMeteoSpec
+from projectname_sdk.feature.base_feature import OpenMeteoBaseFeature
 
 
 def _client():

@@ -66,16 +66,16 @@ def weather_forecast_direct_setup(mockres)
   calls = []
 
   env = Runner.env_override({
-    "OPENMETEO_TEST_WEATHER_FORECAST_ENTID" => {},
-    "OPENMETEO_TEST_LIVE" => "FALSE",
-    "OPENMETEO_APIKEY" => "NONE",
+    "OPEN_METEO_TEST_WEATHER_FORECAST_ENTID" => {},
+    "OPEN_METEO_TEST_LIVE" => "FALSE",
+    "OPEN_METEO_APIKEY" => "NONE",
   })
 
-  live = env["OPENMETEO_TEST_LIVE"] == "TRUE"
+  live = env["OPEN_METEO_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["OPENMETEO_APIKEY"],
+      "apikey" => env["OPEN_METEO_APIKEY"],
     }
     client = OpenMeteoSDK.new(merged_opts)
     return {

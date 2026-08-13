@@ -33,7 +33,7 @@ class MarineForecastEntityTest extends TestCase
         // The basic flow consumes synthetic IDs from the fixture. In live mode
         // without an *_ENTID env override, those IDs hit the live API and 4xx.
         if (!empty($setup["synthetic_only"])) {
-            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set OPENMETEO_TEST_MARINE_FORECAST_ENTID JSON to run live");
+            $this->markTestSkipped("live entity test uses synthetic IDs from fixture — set OPEN_METEO_TEST_MARINE_FORECAST_ENTID JSON to run live");
             return;
         }
         $client = $setup["client"];
@@ -77,39 +77,39 @@ function marine_forecast_basic_setup($extra)
     // Detect ENTID env override before envOverride consumes it. When live
     // mode is on without a real override, the basic test runs against synthetic
     // IDs from the fixture and 4xx's. Surface this so the test can skip.
-    $entid_env_raw = getenv("OPENMETEO_TEST_MARINE_FORECAST_ENTID");
+    $entid_env_raw = getenv("OPEN_METEO_TEST_MARINE_FORECAST_ENTID");
     $idmap_overridden = $entid_env_raw !== false && str_starts_with(trim($entid_env_raw), "{");
 
     $env = Runner::env_override([
-        "OPENMETEO_TEST_MARINE_FORECAST_ENTID" => $idmap,
-        "OPENMETEO_TEST_LIVE" => "FALSE",
-        "OPENMETEO_TEST_EXPLAIN" => "FALSE",
-        "OPENMETEO_APIKEY" => "NONE",
+        "OPEN_METEO_TEST_MARINE_FORECAST_ENTID" => $idmap,
+        "OPEN_METEO_TEST_LIVE" => "FALSE",
+        "OPEN_METEO_TEST_EXPLAIN" => "FALSE",
+        "OPEN_METEO_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
-        $env["OPENMETEO_TEST_MARINE_FORECAST_ENTID"]);
+        $env["OPEN_METEO_TEST_MARINE_FORECAST_ENTID"]);
     if ($idmap_resolved === null) {
         $idmap_resolved = Helpers::to_map($idmap);
     }
 
-    if ($env["OPENMETEO_TEST_LIVE"] === "TRUE") {
+    if ($env["OPEN_METEO_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["OPENMETEO_APIKEY"],
+                "apikey" => $env["OPEN_METEO_APIKEY"],
             ],
             $extra ?? [],
         ]);
         $client = new OpenMeteoSDK(Helpers::to_map($merged_opts));
     }
 
-    $live = $env["OPENMETEO_TEST_LIVE"] === "TRUE";
+    $live = $env["OPEN_METEO_TEST_LIVE"] === "TRUE";
     return [
         "client" => $client,
         "data" => $entity_data,
         "idmap" => $idmap_resolved,
         "env" => $env,
-        "explain" => $env["OPENMETEO_TEST_EXPLAIN"] === "TRUE",
+        "explain" => $env["OPEN_METEO_TEST_EXPLAIN"] === "TRUE",
         "live" => $live,
         "synthetic_only" => $live && !$idmap_overridden,
         "now" => (int)(microtime(true) * 1000),

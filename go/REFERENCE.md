@@ -108,16 +108,16 @@ fmt.Println(historical.GetName()) // "historical"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `daily` | `map[string]any` | No |  |
-| `daily_unit` | `map[string]any` | No |  |
+| `daily_units` | `map[string]any` | No |  |
 | `elevation` | `float64` | No |  |
-| `generationtime_m` | `float64` | No |  |
+| `generationtime_ms` | `float64` | No |  |
 | `hourly` | `map[string]any` | No |  |
-| `hourly_unit` | `map[string]any` | No |  |
+| `hourly_units` | `map[string]any` | No |  |
 | `latitude` | `float64` | No |  |
 | `longitude` | `float64` | No |  |
 | `timezone` | `string` | No |  |
 | `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_second` | `int` | No |  |
+| `utc_offset_seconds` | `int` | No |  |
 
 ### Operations
 
@@ -169,15 +169,15 @@ fmt.Println(marineForecast.GetName()) // "marine_forecast"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `daily` | `map[string]any` | No |  |
-| `daily_unit` | `map[string]any` | No |  |
-| `generationtime_m` | `float64` | No |  |
+| `daily_units` | `map[string]any` | No |  |
+| `generationtime_ms` | `float64` | No |  |
 | `hourly` | `map[string]any` | No |  |
-| `hourly_unit` | `map[string]any` | No |  |
+| `hourly_units` | `map[string]any` | No |  |
 | `latitude` | `float64` | No |  |
 | `longitude` | `float64` | No |  |
 | `timezone` | `string` | No |  |
 | `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_second` | `int` | No |  |
+| `utc_offset_seconds` | `int` | No |  |
 
 ### Operations
 
@@ -229,18 +229,18 @@ fmt.Println(weatherForecast.GetName()) // "weather_forecast"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `map[string]any` | No |  |
-| `current_unit` | `map[string]any` | No |  |
+| `current_units` | `map[string]any` | No |  |
 | `daily` | `map[string]any` | No |  |
-| `daily_unit` | `map[string]any` | No |  |
+| `daily_units` | `map[string]any` | No |  |
 | `elevation` | `float64` | No |  |
-| `generationtime_m` | `float64` | No |  |
+| `generationtime_ms` | `float64` | No |  |
 | `hourly` | `map[string]any` | No |  |
-| `hourly_unit` | `map[string]any` | No |  |
+| `hourly_units` | `map[string]any` | No |  |
 | `latitude` | `float64` | No |  |
 | `longitude` | `float64` | No |  |
 | `timezone` | `string` | No |  |
 | `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_second` | `int` | No |  |
+| `utc_offset_seconds` | `int` | No |  |
 
 ### Operations
 

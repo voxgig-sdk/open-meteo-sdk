@@ -44,7 +44,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'daily_unit',
+              'name' => 'daily_units',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 1,
@@ -58,7 +58,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'generationtime_m',
+              'name' => 'generationtime_ms',
               'req' => false,
               'type' => '`$NUMBER`',
               'index$' => 3,
@@ -72,7 +72,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'hourly_unit',
+              'name' => 'hourly_units',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 5,
@@ -107,7 +107,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'utc_offset_second',
+              'name' => 'utc_offset_seconds',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 10,
@@ -218,6 +218,7 @@ class OpenMeteoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/historical',
                   'parts' => [
@@ -264,14 +265,14 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'daily_unit',
+              'name' => 'daily_units',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'generationtime_m',
+              'name' => 'generationtime_ms',
               'req' => false,
               'type' => '`$NUMBER`',
               'index$' => 2,
@@ -285,7 +286,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'hourly_unit',
+              'name' => 'hourly_units',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 4,
@@ -320,7 +321,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'utc_offset_second',
+              'name' => 'utc_offset_seconds',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 9,
@@ -406,6 +407,7 @@ class OpenMeteoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/marine-weather',
                   'parts' => [
@@ -449,7 +451,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'current_unit',
+              'name' => 'current_units',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 1,
@@ -463,7 +465,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'daily_unit',
+              'name' => 'daily_units',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 3,
@@ -477,7 +479,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'generationtime_m',
+              'name' => 'generationtime_ms',
               'req' => false,
               'type' => '`$NUMBER`',
               'index$' => 5,
@@ -491,7 +493,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'hourly_unit',
+              'name' => 'hourly_units',
               'req' => false,
               'type' => '`$OBJECT`',
               'index$' => 7,
@@ -526,7 +528,7 @@ class OpenMeteoConfig
             ],
             [
               'active' => true,
-              'name' => 'utc_offset_second',
+              'name' => 'utc_offset_seconds',
               'req' => false,
               'type' => '`$INTEGER`',
               'index$' => 12,
@@ -768,6 +770,7 @@ class OpenMeteoConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/v1/forecast',
                   'parts' => [
