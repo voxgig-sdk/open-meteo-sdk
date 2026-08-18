@@ -23,6 +23,7 @@ build = {
   modules = {
     ["open-meteo_sdk"] = "open-meteo_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

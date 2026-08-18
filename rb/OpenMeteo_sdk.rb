@@ -28,7 +28,7 @@ class OpenMeteoSDK
     utility = OpenMeteoUtility.new
     @_utility = utility
 
-    config = OpenMeteoConfig.make_config
+    config = OpenMeteoConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

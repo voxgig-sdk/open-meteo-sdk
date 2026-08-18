@@ -1,7 +1,30 @@
 # OpenMeteo SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "OpenMeteo",
@@ -31,81 +54,48 @@ def make_config():
       "historical": {
         "fields": [
           {
-            "active": True,
             "name": "daily",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "daily_units",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "elevation",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "generationtime_ms",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "hourly",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "hourly_units",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "latitude",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "longitude",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "timezone",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "timezone_abbreviation",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "utc_offset_seconds",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 10,
           },
         ],
         "name": "historical",
@@ -115,19 +105,15 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "daily",
                       "orig": "daily",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "end_date",
                       "orig": "end_date",
@@ -135,15 +121,12 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "hourly",
                       "orig": "hourly",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "latitude",
                       "orig": "latitude",
@@ -151,7 +134,6 @@ def make_config():
                       "type": "`$NUMBER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "longitude",
                       "orig": "longitude",
@@ -159,16 +141,13 @@ def make_config():
                       "type": "`$NUMBER`",
                     },
                     {
-                      "active": True,
                       "example": "mm",
                       "kind": "query",
                       "name": "precipitation_unit",
                       "orig": "precipitation_unit",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "start_date",
                       "orig": "start_date",
@@ -176,39 +155,31 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "celsius",
                       "kind": "query",
                       "name": "temperature_unit",
                       "orig": "temperature_unit",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "iso8601",
                       "kind": "query",
                       "name": "timeformat",
                       "orig": "timeformat",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "GMT",
                       "kind": "query",
                       "name": "timezone",
                       "orig": "timezone",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "kmh",
                       "kind": "query",
                       "name": "wind_speed_unit",
                       "orig": "wind_speed_unit",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -239,10 +210,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -252,74 +221,44 @@ def make_config():
       "marine_forecast": {
         "fields": [
           {
-            "active": True,
             "name": "daily",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "daily_units",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "generationtime_ms",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "hourly",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "hourly_units",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "latitude",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "longitude",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "timezone",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "timezone_abbreviation",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "utc_offset_seconds",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 9,
           },
         ],
         "name": "marine_forecast",
@@ -329,36 +268,28 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "daily",
                       "orig": "daily",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": 7,
                       "kind": "query",
                       "name": "forecast_day",
                       "orig": "forecast_day",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "hourly",
                       "orig": "hourly",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "latitude",
                       "orig": "latitude",
@@ -366,7 +297,6 @@ def make_config():
                       "type": "`$NUMBER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "longitude",
                       "orig": "longitude",
@@ -374,30 +304,24 @@ def make_config():
                       "type": "`$NUMBER`",
                     },
                     {
-                      "active": True,
                       "example": 0,
                       "kind": "query",
                       "name": "past_day",
                       "orig": "past_day",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "example": "iso8601",
                       "kind": "query",
                       "name": "timeformat",
                       "orig": "timeformat",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "GMT",
                       "kind": "query",
                       "name": "timezone",
                       "orig": "timezone",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -425,10 +349,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -438,95 +360,56 @@ def make_config():
       "weather_forecast": {
         "fields": [
           {
-            "active": True,
             "name": "current",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "current_units",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "daily",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "daily_units",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "elevation",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "generationtime_ms",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "hourly",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "hourly_units",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "latitude",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "longitude",
-            "req": False,
             "type": "`$NUMBER`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "timezone",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "timezone_abbreviation",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "utc_offset_seconds",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 12,
           },
         ],
         "name": "weather_forecast",
@@ -536,112 +419,86 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "apikey",
                       "orig": "apikey",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "land",
                       "kind": "query",
                       "name": "cell_selection",
                       "orig": "cell_selection",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "current",
                       "orig": "current",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "daily",
                       "orig": "daily",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "elevation",
                       "orig": "elevation",
-                      "reqd": False,
                       "type": "`$NUMBER`",
                     },
                     {
-                      "active": True,
                       "example": "2022-06-30",
                       "kind": "query",
                       "name": "end_date",
                       "orig": "end_date",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2022-06-30T12:00",
                       "kind": "query",
                       "name": "end_hour",
                       "orig": "end_hour",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2022-06-30T12:00",
                       "kind": "query",
                       "name": "end_minutely_15",
                       "orig": "end_minutely_15",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": 7,
                       "kind": "query",
                       "name": "forecast_day",
                       "orig": "forecast_day",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "forecast_hour",
                       "orig": "forecast_hour",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "forecast_minutely_15",
                       "orig": "forecast_minutely_15",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "hourly",
                       "orig": "hourly",
-                      "reqd": False,
                       "type": "`$ARRAY`",
                     },
                     {
-                      "active": True,
                       "example": 52.52,
                       "kind": "query",
                       "name": "latitude",
@@ -650,7 +507,6 @@ def make_config():
                       "type": "`$NUMBER`",
                     },
                     {
-                      "active": True,
                       "example": 13.41,
                       "kind": "query",
                       "name": "longitude",
@@ -659,108 +515,84 @@ def make_config():
                       "type": "`$NUMBER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "model",
                       "orig": "model",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": 0,
                       "kind": "query",
                       "name": "past_day",
                       "orig": "past_day",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "past_hour",
                       "orig": "past_hour",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "past_minutely_15",
                       "orig": "past_minutely_15",
-                      "reqd": False,
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "example": "mm",
                       "kind": "query",
                       "name": "precipitation_unit",
                       "orig": "precipitation_unit",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2022-06-30",
                       "kind": "query",
                       "name": "start_date",
                       "orig": "start_date",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2022-06-30T12:00",
                       "kind": "query",
                       "name": "start_hour",
                       "orig": "start_hour",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "2022-06-30T12:00",
                       "kind": "query",
                       "name": "start_minutely_15",
                       "orig": "start_minutely_15",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "celsius",
                       "kind": "query",
                       "name": "temperature_unit",
                       "orig": "temperature_unit",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "iso8601",
                       "kind": "query",
                       "name": "timeformat",
                       "orig": "timeformat",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "auto",
                       "kind": "query",
                       "name": "timezone",
                       "orig": "timezone",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "kmh",
                       "kind": "query",
                       "name": "wind_speed_unit",
                       "orig": "wind_speed_unit",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -806,10 +638,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {

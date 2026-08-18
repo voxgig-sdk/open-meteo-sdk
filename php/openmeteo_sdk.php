@@ -40,7 +40,7 @@ class OpenMeteoSDK
         $utility = new OpenMeteoUtility();
         $this->_utility = $utility;
 
-        $config = OpenMeteoConfig::make_config();
+        $config = OpenMeteoConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
