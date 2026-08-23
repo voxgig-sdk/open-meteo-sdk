@@ -287,19 +287,19 @@ API path: `/v1/marine-weather`
 
 | Field | Description |
 | --- | --- |
-| `current` |  |
-| `current_units` |  |
-| `daily` |  |
-| `daily_units` |  |
-| `elevation` |  |
-| `generationtime_ms` |  |
-| `hourly` |  |
-| `hourly_units` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `timezone` |  |
-| `timezone_abbreviation` |  |
-| `utc_offset_seconds` |  |
+| `current` | Current weather conditions |
+| `current_units` | Units for current weather variables |
+| `daily` | Daily weather data |
+| `daily_units` | Units for daily weather variables |
+| `elevation` | Elevation in meters above sea level |
+| `generationtime_ms` | Generation time of the weather data in milliseconds |
+| `hourly` | Hourly weather data |
+| `hourly_units` | Units for hourly weather variables |
+| `latitude` | WGS84 latitude of the location |
+| `longitude` | WGS84 longitude of the location |
+| `timezone` | Timezone identifier |
+| `timezone_abbreviation` | Timezone abbreviation |
+| `utc_offset_seconds` | UTC offset in seconds |
 
 Operations: Load.
 
@@ -389,19 +389,19 @@ Create an instance: `weather_forecast = client.WeatherForecast()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `current` | `dict` |  |
-| `current_units` | `dict` |  |
-| `daily` | `dict` |  |
-| `daily_units` | `dict` |  |
-| `elevation` | `float` |  |
-| `generationtime_ms` | `float` |  |
-| `hourly` | `dict` |  |
-| `hourly_units` | `dict` |  |
-| `latitude` | `float` |  |
-| `longitude` | `float` |  |
-| `timezone` | `str` |  |
-| `timezone_abbreviation` | `str` |  |
-| `utc_offset_seconds` | `int` |  |
+| `current` | `dict` | Current weather conditions |
+| `current_units` | `dict` | Units for current weather variables |
+| `daily` | `dict` | Daily weather data |
+| `daily_units` | `dict` | Units for daily weather variables |
+| `elevation` | `float` | Elevation in meters above sea level |
+| `generationtime_ms` | `float` | Generation time of the weather data in milliseconds |
+| `hourly` | `dict` | Hourly weather data |
+| `hourly_units` | `dict` | Units for hourly weather variables |
+| `latitude` | `float` | WGS84 latitude of the location |
+| `longitude` | `float` | WGS84 longitude of the location |
+| `timezone` | `str` | Timezone identifier |
+| `timezone_abbreviation` | `str` | Timezone abbreviation |
+| `utc_offset_seconds` | `int` | UTC offset in seconds |
 
 #### Example: Load
 

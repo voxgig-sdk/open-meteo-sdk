@@ -222,19 +222,19 @@ local weather_forecast = client:WeatherForecast(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `table` | No |  |
-| `current_units` | `table` | No |  |
-| `daily` | `table` | No |  |
-| `daily_units` | `table` | No |  |
-| `elevation` | `number` | No |  |
-| `generationtime_ms` | `number` | No |  |
-| `hourly` | `table` | No |  |
-| `hourly_units` | `table` | No |  |
-| `latitude` | `number` | No |  |
-| `longitude` | `number` | No |  |
-| `timezone` | `string` | No |  |
-| `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_seconds` | `number` | No |  |
+| `current` | `table` | No | Current weather conditions |
+| `current_units` | `table` | No | Units for current weather variables |
+| `daily` | `table` | No | Daily weather data |
+| `daily_units` | `table` | No | Units for daily weather variables |
+| `elevation` | `number` | No | Elevation in meters above sea level |
+| `generationtime_ms` | `number` | No | Generation time of the weather data in milliseconds |
+| `hourly` | `table` | No | Hourly weather data |
+| `hourly_units` | `table` | No | Units for hourly weather variables |
+| `latitude` | `number` | No | WGS84 latitude of the location |
+| `longitude` | `number` | No | WGS84 longitude of the location |
+| `timezone` | `string` | No | Timezone identifier |
+| `timezone_abbreviation` | `string` | No | Timezone abbreviation |
+| `utc_offset_seconds` | `number` | No | UTC offset in seconds |
 
 ### Operations
 

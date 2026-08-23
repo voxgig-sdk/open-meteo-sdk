@@ -270,19 +270,19 @@ API path: `/v1/marine-weather`
 
 | Field | Description |
 | --- | --- |
-| `current` |  |
-| `current_units` |  |
-| `daily` |  |
-| `daily_units` |  |
-| `elevation` |  |
-| `generationtime_ms` |  |
-| `hourly` |  |
-| `hourly_units` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `timezone` |  |
-| `timezone_abbreviation` |  |
-| `utc_offset_seconds` |  |
+| `current` | Current weather conditions |
+| `current_units` | Units for current weather variables |
+| `daily` | Daily weather data |
+| `daily_units` | Units for daily weather variables |
+| `elevation` | Elevation in meters above sea level |
+| `generationtime_ms` | Generation time of the weather data in milliseconds |
+| `hourly` | Hourly weather data |
+| `hourly_units` | Units for hourly weather variables |
+| `latitude` | WGS84 latitude of the location |
+| `longitude` | WGS84 longitude of the location |
+| `timezone` | Timezone identifier |
+| `timezone_abbreviation` | Timezone abbreviation |
+| `utc_offset_seconds` | UTC offset in seconds |
 
 Operations: Load.
 
@@ -372,19 +372,19 @@ Create an instance: `local weather_forecast = client:WeatherForecast(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `current` | `table` |  |
-| `current_units` | `table` |  |
-| `daily` | `table` |  |
-| `daily_units` | `table` |  |
-| `elevation` | `number` |  |
-| `generationtime_ms` | `number` |  |
-| `hourly` | `table` |  |
-| `hourly_units` | `table` |  |
-| `latitude` | `number` |  |
-| `longitude` | `number` |  |
-| `timezone` | `string` |  |
-| `timezone_abbreviation` | `string` |  |
-| `utc_offset_seconds` | `number` |  |
+| `current` | `table` | Current weather conditions |
+| `current_units` | `table` | Units for current weather variables |
+| `daily` | `table` | Daily weather data |
+| `daily_units` | `table` | Units for daily weather variables |
+| `elevation` | `number` | Elevation in meters above sea level |
+| `generationtime_ms` | `number` | Generation time of the weather data in milliseconds |
+| `hourly` | `table` | Hourly weather data |
+| `hourly_units` | `table` | Units for hourly weather variables |
+| `latitude` | `number` | WGS84 latitude of the location |
+| `longitude` | `number` | WGS84 longitude of the location |
+| `timezone` | `string` | Timezone identifier |
+| `timezone_abbreviation` | `string` | Timezone abbreviation |
+| `utc_offset_seconds` | `number` | UTC offset in seconds |
 
 #### Example: Load
 

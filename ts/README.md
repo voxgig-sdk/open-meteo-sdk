@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -332,19 +332,19 @@ API path: `/v1/marine-weather`
 
 | Field | Description |
 | --- | --- |
-| `current` |  |
-| `current_units` |  |
-| `daily` |  |
-| `daily_units` |  |
-| `elevation` |  |
-| `generationtime_ms` |  |
-| `hourly` |  |
-| `hourly_units` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `timezone` |  |
-| `timezone_abbreviation` |  |
-| `utc_offset_seconds` |  |
+| `current` | Current weather conditions |
+| `current_units` | Units for current weather variables |
+| `daily` | Daily weather data |
+| `daily_units` | Units for daily weather variables |
+| `elevation` | Elevation in meters above sea level |
+| `generationtime_ms` | Generation time of the weather data in milliseconds |
+| `hourly` | Hourly weather data |
+| `hourly_units` | Units for hourly weather variables |
+| `latitude` | WGS84 latitude of the location |
+| `longitude` | WGS84 longitude of the location |
+| `timezone` | Timezone identifier |
+| `timezone_abbreviation` | Timezone abbreviation |
+| `utc_offset_seconds` | UTC offset in seconds |
 
 Operations: load.
 
@@ -434,19 +434,19 @@ Create an instance: `const weather_forecast = client.WeatherForecast()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `current` | `Record<string, any>` |  |
-| `current_units` | `Record<string, any>` |  |
-| `daily` | `Record<string, any>` |  |
-| `daily_units` | `Record<string, any>` |  |
-| `elevation` | `number` |  |
-| `generationtime_ms` | `number` |  |
-| `hourly` | `Record<string, any>` |  |
-| `hourly_units` | `Record<string, any>` |  |
-| `latitude` | `number` |  |
-| `longitude` | `number` |  |
-| `timezone` | `string` |  |
-| `timezone_abbreviation` | `string` |  |
-| `utc_offset_seconds` | `number` |  |
+| `current` | `Record<string, any>` | Current weather conditions |
+| `current_units` | `Record<string, any>` | Units for current weather variables |
+| `daily` | `Record<string, any>` | Daily weather data |
+| `daily_units` | `Record<string, any>` | Units for daily weather variables |
+| `elevation` | `number` | Elevation in meters above sea level |
+| `generationtime_ms` | `number` | Generation time of the weather data in milliseconds |
+| `hourly` | `Record<string, any>` | Hourly weather data |
+| `hourly_units` | `Record<string, any>` | Units for hourly weather variables |
+| `latitude` | `number` | WGS84 latitude of the location |
+| `longitude` | `number` | WGS84 longitude of the location |
+| `timezone` | `string` | Timezone identifier |
+| `timezone_abbreviation` | `string` | Timezone abbreviation |
+| `utc_offset_seconds` | `number` | UTC offset in seconds |
 
 #### Example: Load
 

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "OpenMeteo",
+			"slug": "open-meteo",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -344,54 +347,67 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "current",
+						"short": "Current weather conditions",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "current_units",
+						"short": "Units for current weather variables",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "daily",
+						"short": "Daily weather data",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "daily_units",
+						"short": "Units for daily weather variables",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "elevation",
+						"short": "Elevation in meters above sea level",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "generationtime_ms",
+						"short": "Generation time of the weather data in milliseconds",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "hourly",
+						"short": "Hourly weather data",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "hourly_units",
+						"short": "Units for hourly weather variables",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "latitude",
+						"short": "WGS84 latitude of the location",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "longitude",
+						"short": "WGS84 longitude of the location",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "timezone",
+						"short": "Timezone identifier",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "timezone_abbreviation",
+						"short": "Timezone abbreviation",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "utc_offset_seconds",
+						"short": "UTC offset in seconds",
 						"type": "`$INTEGER`",
 					},
 				},

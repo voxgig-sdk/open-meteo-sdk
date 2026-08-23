@@ -224,19 +224,19 @@ $weather_forecast = $client->WeatherForecast();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `array` | No |  |
-| `current_units` | `array` | No |  |
-| `daily` | `array` | No |  |
-| `daily_units` | `array` | No |  |
-| `elevation` | `float` | No |  |
-| `generationtime_ms` | `float` | No |  |
-| `hourly` | `array` | No |  |
-| `hourly_units` | `array` | No |  |
-| `latitude` | `float` | No |  |
-| `longitude` | `float` | No |  |
-| `timezone` | `string` | No |  |
-| `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_seconds` | `int` | No |  |
+| `current` | `array` | No | Current weather conditions |
+| `current_units` | `array` | No | Units for current weather variables |
+| `daily` | `array` | No | Daily weather data |
+| `daily_units` | `array` | No | Units for daily weather variables |
+| `elevation` | `float` | No | Elevation in meters above sea level |
+| `generationtime_ms` | `float` | No | Generation time of the weather data in milliseconds |
+| `hourly` | `array` | No | Hourly weather data |
+| `hourly_units` | `array` | No | Units for hourly weather variables |
+| `latitude` | `float` | No | WGS84 latitude of the location |
+| `longitude` | `float` | No | WGS84 longitude of the location |
+| `timezone` | `string` | No | Timezone identifier |
+| `timezone_abbreviation` | `string` | No | Timezone abbreviation |
+| `utc_offset_seconds` | `int` | No | UTC offset in seconds |
 
 ### Operations
 

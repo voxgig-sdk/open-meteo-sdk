@@ -6,7 +6,7 @@ The Golang SDK for the OpenMeteo API — an entity-oriented client using standar
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Historical(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -304,19 +304,19 @@ API path: `/v1/marine-weather`
 
 | Field | Description |
 | --- | --- |
-| `"current"` |  |
-| `"current_units"` |  |
-| `"daily"` |  |
-| `"daily_units"` |  |
-| `"elevation"` |  |
-| `"generationtime_ms"` |  |
-| `"hourly"` |  |
-| `"hourly_units"` |  |
-| `"latitude"` |  |
-| `"longitude"` |  |
-| `"timezone"` |  |
-| `"timezone_abbreviation"` |  |
-| `"utc_offset_seconds"` |  |
+| `"current"` | Current weather conditions |
+| `"current_units"` | Units for current weather variables |
+| `"daily"` | Daily weather data |
+| `"daily_units"` | Units for daily weather variables |
+| `"elevation"` | Elevation in meters above sea level |
+| `"generationtime_ms"` | Generation time of the weather data in milliseconds |
+| `"hourly"` | Hourly weather data |
+| `"hourly_units"` | Units for hourly weather variables |
+| `"latitude"` | WGS84 latitude of the location |
+| `"longitude"` | WGS84 longitude of the location |
+| `"timezone"` | Timezone identifier |
+| `"timezone_abbreviation"` | Timezone abbreviation |
+| `"utc_offset_seconds"` | UTC offset in seconds |
 
 Operations: Load.
 
@@ -414,19 +414,19 @@ Create an instance: `weatherForecast := client.WeatherForecast(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `current` | `map[string]any` |  |
-| `current_units` | `map[string]any` |  |
-| `daily` | `map[string]any` |  |
-| `daily_units` | `map[string]any` |  |
-| `elevation` | `float64` |  |
-| `generationtime_ms` | `float64` |  |
-| `hourly` | `map[string]any` |  |
-| `hourly_units` | `map[string]any` |  |
-| `latitude` | `float64` |  |
-| `longitude` | `float64` |  |
-| `timezone` | `string` |  |
-| `timezone_abbreviation` | `string` |  |
-| `utc_offset_seconds` | `int` |  |
+| `current` | `map[string]any` | Current weather conditions |
+| `current_units` | `map[string]any` | Units for current weather variables |
+| `daily` | `map[string]any` | Daily weather data |
+| `daily_units` | `map[string]any` | Units for daily weather variables |
+| `elevation` | `float64` | Elevation in meters above sea level |
+| `generationtime_ms` | `float64` | Generation time of the weather data in milliseconds |
+| `hourly` | `map[string]any` | Hourly weather data |
+| `hourly_units` | `map[string]any` | Units for hourly weather variables |
+| `latitude` | `float64` | WGS84 latitude of the location |
+| `longitude` | `float64` | WGS84 longitude of the location |
+| `timezone` | `string` | Timezone identifier |
+| `timezone_abbreviation` | `string` | Timezone abbreviation |
+| `utc_offset_seconds` | `int` | UTC offset in seconds |
 
 #### Example: Load
 

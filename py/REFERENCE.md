@@ -217,19 +217,19 @@ weather_forecast = client.WeatherForecast()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `dict` | No |  |
-| `current_units` | `dict` | No |  |
-| `daily` | `dict` | No |  |
-| `daily_units` | `dict` | No |  |
-| `elevation` | `float` | No |  |
-| `generationtime_ms` | `float` | No |  |
-| `hourly` | `dict` | No |  |
-| `hourly_units` | `dict` | No |  |
-| `latitude` | `float` | No |  |
-| `longitude` | `float` | No |  |
-| `timezone` | `str` | No |  |
-| `timezone_abbreviation` | `str` | No |  |
-| `utc_offset_seconds` | `int` | No |  |
+| `current` | `dict` | No | Current weather conditions |
+| `current_units` | `dict` | No | Units for current weather variables |
+| `daily` | `dict` | No | Daily weather data |
+| `daily_units` | `dict` | No | Units for daily weather variables |
+| `elevation` | `float` | No | Elevation in meters above sea level |
+| `generationtime_ms` | `float` | No | Generation time of the weather data in milliseconds |
+| `hourly` | `dict` | No | Hourly weather data |
+| `hourly_units` | `dict` | No | Units for hourly weather variables |
+| `latitude` | `float` | No | WGS84 latitude of the location |
+| `longitude` | `float` | No | WGS84 longitude of the location |
+| `timezone` | `str` | No | Timezone identifier |
+| `timezone_abbreviation` | `str` | No | Timezone abbreviation |
+| `utc_offset_seconds` | `int` | No | UTC offset in seconds |
 
 ### Operations
 

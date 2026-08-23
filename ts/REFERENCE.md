@@ -260,19 +260,19 @@ const weather_forecast = client.WeatherForecast()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `Record<string, any>` | No |  |
-| `current_units` | `Record<string, any>` | No |  |
-| `daily` | `Record<string, any>` | No |  |
-| `daily_units` | `Record<string, any>` | No |  |
-| `elevation` | `number` | No |  |
-| `generationtime_ms` | `number` | No |  |
-| `hourly` | `Record<string, any>` | No |  |
-| `hourly_units` | `Record<string, any>` | No |  |
-| `latitude` | `number` | No |  |
-| `longitude` | `number` | No |  |
-| `timezone` | `string` | No |  |
-| `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_seconds` | `number` | No |  |
+| `current` | `Record<string, any>` | No | Current weather conditions |
+| `current_units` | `Record<string, any>` | No | Units for current weather variables |
+| `daily` | `Record<string, any>` | No | Daily weather data |
+| `daily_units` | `Record<string, any>` | No | Units for daily weather variables |
+| `elevation` | `number` | No | Elevation in meters above sea level |
+| `generationtime_ms` | `number` | No | Generation time of the weather data in milliseconds |
+| `hourly` | `Record<string, any>` | No | Hourly weather data |
+| `hourly_units` | `Record<string, any>` | No | Units for hourly weather variables |
+| `latitude` | `number` | No | WGS84 latitude of the location |
+| `longitude` | `number` | No | WGS84 longitude of the location |
+| `timezone` | `string` | No | Timezone identifier |
+| `timezone_abbreviation` | `string` | No | Timezone abbreviation |
+| `utc_offset_seconds` | `number` | No | UTC offset in seconds |
 
 ### Operations
 

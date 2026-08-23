@@ -225,19 +225,19 @@ weather_forecast = client.WeatherForecast
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `Hash` | No |  |
-| `current_units` | `Hash` | No |  |
-| `daily` | `Hash` | No |  |
-| `daily_units` | `Hash` | No |  |
-| `elevation` | `Float` | No |  |
-| `generationtime_ms` | `Float` | No |  |
-| `hourly` | `Hash` | No |  |
-| `hourly_units` | `Hash` | No |  |
-| `latitude` | `Float` | No |  |
-| `longitude` | `Float` | No |  |
-| `timezone` | `String` | No |  |
-| `timezone_abbreviation` | `String` | No |  |
-| `utc_offset_seconds` | `Integer` | No |  |
+| `current` | `Hash` | No | Current weather conditions |
+| `current_units` | `Hash` | No | Units for current weather variables |
+| `daily` | `Hash` | No | Daily weather data |
+| `daily_units` | `Hash` | No | Units for daily weather variables |
+| `elevation` | `Float` | No | Elevation in meters above sea level |
+| `generationtime_ms` | `Float` | No | Generation time of the weather data in milliseconds |
+| `hourly` | `Hash` | No | Hourly weather data |
+| `hourly_units` | `Hash` | No | Units for hourly weather variables |
+| `latitude` | `Float` | No | WGS84 latitude of the location |
+| `longitude` | `Float` | No | WGS84 longitude of the location |
+| `timezone` | `String` | No | Timezone identifier |
+| `timezone_abbreviation` | `String` | No | Timezone abbreviation |
+| `utc_offset_seconds` | `Integer` | No | UTC offset in seconds |
 
 ### Operations
 

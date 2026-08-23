@@ -280,19 +280,19 @@ API path: `/v1/marine-weather`
 
 | Field | Description |
 | --- | --- |
-| `current` |  |
-| `current_units` |  |
-| `daily` |  |
-| `daily_units` |  |
-| `elevation` |  |
-| `generationtime_ms` |  |
-| `hourly` |  |
-| `hourly_units` |  |
-| `latitude` |  |
-| `longitude` |  |
-| `timezone` |  |
-| `timezone_abbreviation` |  |
-| `utc_offset_seconds` |  |
+| `current` | Current weather conditions |
+| `current_units` | Units for current weather variables |
+| `daily` | Daily weather data |
+| `daily_units` | Units for daily weather variables |
+| `elevation` | Elevation in meters above sea level |
+| `generationtime_ms` | Generation time of the weather data in milliseconds |
+| `hourly` | Hourly weather data |
+| `hourly_units` | Units for hourly weather variables |
+| `latitude` | WGS84 latitude of the location |
+| `longitude` | WGS84 longitude of the location |
+| `timezone` | Timezone identifier |
+| `timezone_abbreviation` | Timezone abbreviation |
+| `utc_offset_seconds` | UTC offset in seconds |
 
 Operations: Load.
 
@@ -384,19 +384,19 @@ Create an instance: `weather_forecast = client.WeatherForecast`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `current` | `Hash` |  |
-| `current_units` | `Hash` |  |
-| `daily` | `Hash` |  |
-| `daily_units` | `Hash` |  |
-| `elevation` | `Float` |  |
-| `generationtime_ms` | `Float` |  |
-| `hourly` | `Hash` |  |
-| `hourly_units` | `Hash` |  |
-| `latitude` | `Float` |  |
-| `longitude` | `Float` |  |
-| `timezone` | `String` |  |
-| `timezone_abbreviation` | `String` |  |
-| `utc_offset_seconds` | `Integer` |  |
+| `current` | `Hash` | Current weather conditions |
+| `current_units` | `Hash` | Units for current weather variables |
+| `daily` | `Hash` | Daily weather data |
+| `daily_units` | `Hash` | Units for daily weather variables |
+| `elevation` | `Float` | Elevation in meters above sea level |
+| `generationtime_ms` | `Float` | Generation time of the weather data in milliseconds |
+| `hourly` | `Hash` | Hourly weather data |
+| `hourly_units` | `Hash` | Units for hourly weather variables |
+| `latitude` | `Float` | WGS84 latitude of the location |
+| `longitude` | `Float` | WGS84 longitude of the location |
+| `timezone` | `String` | Timezone identifier |
+| `timezone_abbreviation` | `String` | Timezone abbreviation |
+| `utc_offset_seconds` | `Integer` | UTC offset in seconds |
 
 #### Example: Load
 

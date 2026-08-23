@@ -228,19 +228,19 @@ fmt.Println(weatherForecast.GetName()) // "weather_forecast"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | `map[string]any` | No |  |
-| `current_units` | `map[string]any` | No |  |
-| `daily` | `map[string]any` | No |  |
-| `daily_units` | `map[string]any` | No |  |
-| `elevation` | `float64` | No |  |
-| `generationtime_ms` | `float64` | No |  |
-| `hourly` | `map[string]any` | No |  |
-| `hourly_units` | `map[string]any` | No |  |
-| `latitude` | `float64` | No |  |
-| `longitude` | `float64` | No |  |
-| `timezone` | `string` | No |  |
-| `timezone_abbreviation` | `string` | No |  |
-| `utc_offset_seconds` | `int` | No |  |
+| `current` | `map[string]any` | No | Current weather conditions |
+| `current_units` | `map[string]any` | No | Units for current weather variables |
+| `daily` | `map[string]any` | No | Daily weather data |
+| `daily_units` | `map[string]any` | No | Units for daily weather variables |
+| `elevation` | `float64` | No | Elevation in meters above sea level |
+| `generationtime_ms` | `float64` | No | Generation time of the weather data in milliseconds |
+| `hourly` | `map[string]any` | No | Hourly weather data |
+| `hourly_units` | `map[string]any` | No | Units for hourly weather variables |
+| `latitude` | `float64` | No | WGS84 latitude of the location |
+| `longitude` | `float64` | No | WGS84 longitude of the location |
+| `timezone` | `string` | No | Timezone identifier |
+| `timezone_abbreviation` | `string` | No | Timezone abbreviation |
+| `utc_offset_seconds` | `int` | No | UTC offset in seconds |
 
 ### Operations
 

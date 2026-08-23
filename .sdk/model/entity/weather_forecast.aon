@@ -8,66 +8,79 @@ main: kit: entity: weather_forecast: {
     {
       name: "current"
       req: false
+      short: "Current weather conditions"
       type: "`$OBJECT`"
     }
     {
       name: "current_units"
       req: false
+      short: "Units for current weather variables"
       type: "`$OBJECT`"
     }
     {
       name: "daily"
       req: false
+      short: "Daily weather data"
       type: "`$OBJECT`"
     }
     {
       name: "daily_units"
       req: false
+      short: "Units for daily weather variables"
       type: "`$OBJECT`"
     }
     {
       name: "elevation"
       req: false
+      short: "Elevation in meters above sea level"
       type: "`$NUMBER`"
     }
     {
       name: "generationtime_ms"
       req: false
+      short: "Generation time of the weather data in milliseconds"
       type: "`$NUMBER`"
     }
     {
       name: "hourly"
       req: false
+      short: "Hourly weather data"
       type: "`$OBJECT`"
     }
     {
       name: "hourly_units"
       req: false
+      short: "Units for hourly weather variables"
       type: "`$OBJECT`"
     }
     {
       name: "latitude"
       req: false
+      short: "WGS84 latitude of the location"
       type: "`$NUMBER`"
     }
     {
       name: "longitude"
       req: false
+      short: "WGS84 longitude of the location"
       type: "`$NUMBER`"
     }
     {
       name: "timezone"
       req: false
+      short: "Timezone identifier"
       type: "`$STRING`"
     }
     {
       name: "timezone_abbreviation"
       req: false
+      short: "Timezone abbreviation"
       type: "`$STRING`"
     }
     {
       name: "utc_offset_seconds"
       req: false
+      short: "UTC offset in seconds"
       type: "`$INTEGER`"
     }
   ]

@@ -19,6 +19,9 @@ module OpenMeteoConfig
     {
       "main" => {
         "name" => "OpenMeteo",
+        "slug" => "open-meteo",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -352,54 +355,67 @@ module OpenMeteoConfig
           "fields" => [
             {
               "name" => "current",
+              "short" => "Current weather conditions",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "current_units",
+              "short" => "Units for current weather variables",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "daily",
+              "short" => "Daily weather data",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "daily_units",
+              "short" => "Units for daily weather variables",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "elevation",
+              "short" => "Elevation in meters above sea level",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "generationtime_ms",
+              "short" => "Generation time of the weather data in milliseconds",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "hourly",
+              "short" => "Hourly weather data",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "hourly_units",
+              "short" => "Units for hourly weather variables",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "latitude",
+              "short" => "WGS84 latitude of the location",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "longitude",
+              "short" => "WGS84 longitude of the location",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "timezone",
+              "short" => "Timezone identifier",
               "type" => "`$STRING`",
             },
             {
               "name" => "timezone_abbreviation",
+              "short" => "Timezone abbreviation",
               "type" => "`$STRING`",
             },
             {
               "name" => "utc_offset_seconds",
+              "short" => "UTC offset in seconds",
               "type" => "`$INTEGER`",
             },
           ],
