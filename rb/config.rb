@@ -28,6 +28,7 @@ module OpenMeteoConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
