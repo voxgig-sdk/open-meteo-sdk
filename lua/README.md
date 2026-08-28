@@ -38,7 +38,7 @@ local client = sdk.new({
 ### 3. Load a historical
 
 ```lua
-local historical, err = client:Historical():load()
+local historical, err = client:Historical():load({ end_date = "example_end_date", latitude = 1, longitude = 1, start_date = "example_start_date" })
 if err then error(err) end
 print(historical)
 ```
@@ -50,7 +50,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local marineforecast, err = client:MarineForecast():load()
+local marineforecast, err = client:MarineForecast():load({ latitude = 1, longitude = 1 })
 if err then error(err) end
 ```
 
@@ -108,7 +108,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:MarineForecast():load()
+local result, err = client:MarineForecast():load({ latitude = 1, longitude = 1 })
 -- result is the returned data; err is set on failure
 ```
 
@@ -322,7 +322,7 @@ Create an instance: `local historical = client:Historical(nil)`
 #### Example: Load
 
 ```lua
-local historical, err = client:Historical():load()
+local historical, err = client:Historical():load({ end_date = "end_date", latitude = 1, longitude = 1, start_date = "start_date" })
 ```
 
 
@@ -354,7 +354,7 @@ Create an instance: `local marine_forecast = client:MarineForecast(nil)`
 #### Example: Load
 
 ```lua
-local marine_forecast, err = client:MarineForecast():load()
+local marine_forecast, err = client:MarineForecast():load({ latitude = 1, longitude = 1 })
 ```
 
 
@@ -389,8 +389,31 @@ Create an instance: `local weather_forecast = client:WeatherForecast(nil)`
 #### Example: Load
 
 ```lua
-local weather_forecast, err = client:WeatherForecast():load()
+local weather_forecast, err = client:WeatherForecast():load({ latitude = 1, longitude = 1 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -470,7 +493,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local marineforecast = client:MarineForecast()
-marineforecast:load()
+marineforecast:load({ latitude = 1, longitude = 1 })
 
 -- marineforecast:data_get() now returns the marineforecast data from the last load
 -- marineforecast:match_get() returns the last match criteria

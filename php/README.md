@@ -38,7 +38,7 @@ $client = new OpenMeteoSDK([
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the Historical record (throws on error).
-    $historical = $client->Historical()->load();
+    $historical = $client->Historical()->load(["end_date" => "example_end_date", "latitude" => 1, "longitude" => 1, "start_date" => "example_start_date"]);
     print_r($historical);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $marineforecast = $client->MarineForecast()->load();
+    $marineforecast = $client->MarineForecast()->load(["latitude" => 1, "longitude" => 1]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -127,7 +127,7 @@ $client = OpenMeteoSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$marineforecast = $client->MarineForecast()->load();
+$marineforecast = $client->MarineForecast()->load(["latitude" => 1, "longitude" => 1]);
 print_r($marineforecast);
 ```
 
@@ -343,7 +343,7 @@ Create an instance: `$historical = $client->Historical();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Historical record (throws on error).
-$historical = $client->Historical()->load();
+$historical = $client->Historical()->load(["end_date" => "end_date", "latitude" => 1, "longitude" => 1, "start_date" => "start_date"]);
 ```
 
 
@@ -376,7 +376,7 @@ Create an instance: `$marine_forecast = $client->MarineForecast();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the MarineForecast record (throws on error).
-$marine_forecast = $client->MarineForecast()->load();
+$marine_forecast = $client->MarineForecast()->load(["latitude" => 1, "longitude" => 1]);
 ```
 
 
@@ -412,8 +412,31 @@ Create an instance: `$weather_forecast = $client->WeatherForecast();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the WeatherForecast record (throws on error).
-$weather_forecast = $client->WeatherForecast()->load();
+$weather_forecast = $client->WeatherForecast()->load(["latitude" => 1, "longitude" => 1]);
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -493,7 +516,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $marineforecast = $client->MarineForecast();
-$marineforecast->load();
+$marineforecast->load(["latitude" => 1, "longitude" => 1]);
 
 // $marineforecast->data_get() now returns the marineforecast data from the last load
 // $marineforecast->match_get() returns the last match criteria

@@ -29,17 +29,17 @@ type Historical struct {
 
 // HistoricalLoadMatch is the typed request payload for Historical.LoadTyped.
 type HistoricalLoadMatch struct {
-	Daily *map[string]any `json:"daily,omitempty"`
-	DailyUnits *map[string]any `json:"daily_units,omitempty"`
-	Elevation *float64 `json:"elevation,omitempty"`
-	GenerationtimeMs *float64 `json:"generationtime_ms,omitempty"`
-	Hourly *map[string]any `json:"hourly,omitempty"`
-	HourlyUnits *map[string]any `json:"hourly_units,omitempty"`
-	Latitude *float64 `json:"latitude,omitempty"`
-	Longitude *float64 `json:"longitude,omitempty"`
+	Daily *[]any `json:"daily,omitempty"`
+	EndDate string `json:"end_date"`
+	Hourly *[]any `json:"hourly,omitempty"`
+	Latitude float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+	PrecipitationUnit *string `json:"precipitation_unit,omitempty"`
+	StartDate string `json:"start_date"`
+	TemperatureUnit *string `json:"temperature_unit,omitempty"`
+	Timeformat *string `json:"timeformat,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
-	TimezoneAbbreviation *string `json:"timezone_abbreviation,omitempty"`
-	UtcOffsetSeconds *int `json:"utc_offset_seconds,omitempty"`
+	WindSpeedUnit *string `json:"wind_speed_unit,omitempty"`
 }
 
 // MarineForecast is the typed data model for the marine_forecast entity.
@@ -58,16 +58,14 @@ type MarineForecast struct {
 
 // MarineForecastLoadMatch is the typed request payload for MarineForecast.LoadTyped.
 type MarineForecastLoadMatch struct {
-	Daily *map[string]any `json:"daily,omitempty"`
-	DailyUnits *map[string]any `json:"daily_units,omitempty"`
-	GenerationtimeMs *float64 `json:"generationtime_ms,omitempty"`
-	Hourly *map[string]any `json:"hourly,omitempty"`
-	HourlyUnits *map[string]any `json:"hourly_units,omitempty"`
-	Latitude *float64 `json:"latitude,omitempty"`
-	Longitude *float64 `json:"longitude,omitempty"`
+	Daily *[]any `json:"daily,omitempty"`
+	ForecastDay *int `json:"forecast_day,omitempty"`
+	Hourly *[]any `json:"hourly,omitempty"`
+	Latitude float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+	PastDay *int `json:"past_day,omitempty"`
+	Timeformat *string `json:"timeformat,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
-	TimezoneAbbreviation *string `json:"timezone_abbreviation,omitempty"`
-	UtcOffsetSeconds *int `json:"utc_offset_seconds,omitempty"`
 }
 
 // WeatherForecast is the typed data model for the weather_forecast entity.
@@ -89,19 +87,32 @@ type WeatherForecast struct {
 
 // WeatherForecastLoadMatch is the typed request payload for WeatherForecast.LoadTyped.
 type WeatherForecastLoadMatch struct {
-	Current *map[string]any `json:"current,omitempty"`
-	CurrentUnits *map[string]any `json:"current_units,omitempty"`
-	Daily *map[string]any `json:"daily,omitempty"`
-	DailyUnits *map[string]any `json:"daily_units,omitempty"`
+	Apikey *string `json:"apikey,omitempty"`
+	CellSelection *string `json:"cell_selection,omitempty"`
+	Current *[]any `json:"current,omitempty"`
+	Daily *[]any `json:"daily,omitempty"`
 	Elevation *float64 `json:"elevation,omitempty"`
-	GenerationtimeMs *float64 `json:"generationtime_ms,omitempty"`
-	Hourly *map[string]any `json:"hourly,omitempty"`
-	HourlyUnits *map[string]any `json:"hourly_units,omitempty"`
-	Latitude *float64 `json:"latitude,omitempty"`
-	Longitude *float64 `json:"longitude,omitempty"`
+	EndDate *string `json:"end_date,omitempty"`
+	EndHour *string `json:"end_hour,omitempty"`
+	EndMinutely15 *string `json:"end_minutely_15,omitempty"`
+	ForecastDay *int `json:"forecast_day,omitempty"`
+	ForecastHour *int `json:"forecast_hour,omitempty"`
+	ForecastMinutely15 *int `json:"forecast_minutely_15,omitempty"`
+	Hourly *[]any `json:"hourly,omitempty"`
+	Latitude float64 `json:"latitude"`
+	Longitude float64 `json:"longitude"`
+	Model *string `json:"model,omitempty"`
+	PastDay *int `json:"past_day,omitempty"`
+	PastHour *int `json:"past_hour,omitempty"`
+	PastMinutely15 *int `json:"past_minutely_15,omitempty"`
+	PrecipitationUnit *string `json:"precipitation_unit,omitempty"`
+	StartDate *string `json:"start_date,omitempty"`
+	StartHour *string `json:"start_hour,omitempty"`
+	StartMinutely15 *string `json:"start_minutely_15,omitempty"`
+	TemperatureUnit *string `json:"temperature_unit,omitempty"`
+	Timeformat *string `json:"timeformat,omitempty"`
 	Timezone *string `json:"timezone,omitempty"`
-	TimezoneAbbreviation *string `json:"timezone_abbreviation,omitempty"`
-	UtcOffsetSeconds *int `json:"utc_offset_seconds,omitempty"`
+	WindSpeedUnit *string `json:"wind_speed_unit,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

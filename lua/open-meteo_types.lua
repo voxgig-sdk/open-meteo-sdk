@@ -21,16 +21,16 @@
 
 ---@class HistoricalLoadMatch
 ---@field daily? table
----@field daily_units? table
----@field elevation? number
----@field generationtime_ms? number
+---@field end_date string
 ---@field hourly? table
----@field hourly_units? table
----@field latitude? number
----@field longitude? number
+---@field latitude number
+---@field longitude number
+---@field precipitation_unit? string
+---@field start_date string
+---@field temperature_unit? string
+---@field timeformat? string
 ---@field timezone? string
----@field timezone_abbreviation? string
----@field utc_offset_seconds? number
+---@field wind_speed_unit? string
 
 ---@class MarineForecast
 ---@field daily? table
@@ -46,15 +46,13 @@
 
 ---@class MarineForecastLoadMatch
 ---@field daily? table
----@field daily_units? table
----@field generationtime_ms? number
+---@field forecast_day? number
 ---@field hourly? table
----@field hourly_units? table
----@field latitude? number
----@field longitude? number
+---@field latitude number
+---@field longitude number
+---@field past_day? number
+---@field timeformat? string
 ---@field timezone? string
----@field timezone_abbreviation? string
----@field utc_offset_seconds? number
 
 ---@class WeatherForecast
 ---@field current? table
@@ -72,19 +70,32 @@
 ---@field utc_offset_seconds? number
 
 ---@class WeatherForecastLoadMatch
+---@field apikey? string
+---@field cell_selection? string
 ---@field current? table
----@field current_units? table
 ---@field daily? table
----@field daily_units? table
 ---@field elevation? number
----@field generationtime_ms? number
+---@field end_date? string
+---@field end_hour? string
+---@field end_minutely_15? string
+---@field forecast_day? number
+---@field forecast_hour? number
+---@field forecast_minutely_15? number
 ---@field hourly? table
----@field hourly_units? table
----@field latitude? number
----@field longitude? number
+---@field latitude number
+---@field longitude number
+---@field model? string
+---@field past_day? number
+---@field past_hour? number
+---@field past_minutely_15? number
+---@field precipitation_unit? string
+---@field start_date? string
+---@field start_hour? string
+---@field start_minutely_15? string
+---@field temperature_unit? string
+---@field timeformat? string
 ---@field timezone? string
----@field timezone_abbreviation? string
----@field utc_offset_seconds? number
+---@field wind_speed_unit? string
 
 local M = {}
 

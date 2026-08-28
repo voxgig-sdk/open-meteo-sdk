@@ -54,7 +54,7 @@ func main() {
     })
 
     // Load a single historical — the value is the loaded record.
-    historical, err := client.Historical(nil).Load(nil, nil)
+    historical, err := client.Historical(nil).Load(map[string]any{"end_date": "example_end_date", "latitude": 1, "longitude": 1, "start_date": "example_start_date"}, nil)
     if err != nil {
         panic(err)
     }
@@ -69,7 +69,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-marineforecast, err := client.MarineForecast(nil).Load(nil, nil)
+marineforecast, err := client.MarineForecast(nil).Load(map[string]any{"latitude": 1, "longitude": 1}, nil)
 if err != nil {
     // handle err
     return
@@ -139,7 +139,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 marineForecast, err := client.MarineForecast(nil).Load(
-    nil, nil,
+    map[string]any{"latitude": 1, "longitude": 1}, nil,
 )
 if err != nil {
     panic(err)
@@ -356,7 +356,7 @@ Create an instance: `historical := client.Historical(nil)`
 #### Example: Load
 
 ```go
-historical, err := client.Historical(nil).Load(nil, nil)
+historical, err := client.Historical(nil).Load(map[string]any{"end_date": "end_date", "latitude": 1, "longitude": 1, "start_date": "start_date"}, nil)
 if err != nil {
     panic(err)
 }
@@ -392,7 +392,7 @@ Create an instance: `marineForecast := client.MarineForecast(nil)`
 #### Example: Load
 
 ```go
-marineForecast, err := client.MarineForecast(nil).Load(nil, nil)
+marineForecast, err := client.MarineForecast(nil).Load(map[string]any{"latitude": 1, "longitude": 1}, nil)
 if err != nil {
     panic(err)
 }
@@ -431,12 +431,35 @@ Create an instance: `weatherForecast := client.WeatherForecast(nil)`
 #### Example: Load
 
 ```go
-weatherForecast, err := client.WeatherForecast(nil).Load(nil, nil)
+weatherForecast, err := client.WeatherForecast(nil).Load(map[string]any{"latitude": 1, "longitude": 1}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(weatherForecast) // the loaded record
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -513,7 +536,7 @@ stores the returned data and match criteria internally.
 
 ```go
 marineforecast := client.MarineForecast(nil)
-marineforecast.Load(nil, nil)
+marineforecast.Load(map[string]any{"latitude": 1, "longitude": 1}, nil)
 
 // marineforecast.Data() now returns the marineforecast data from the last load
 // marineforecast.Match() returns the last match criteria

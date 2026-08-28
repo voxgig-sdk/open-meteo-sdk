@@ -32,16 +32,16 @@ class Historical
 class HistoricalLoadMatch
 {
     public ?array $daily = null;
-    public ?array $daily_units = null;
-    public ?float $elevation = null;
-    public ?float $generationtime_ms = null;
+    public string $end_date;
     public ?array $hourly = null;
-    public ?array $hourly_units = null;
-    public ?float $latitude = null;
-    public ?float $longitude = null;
+    public float $latitude;
+    public float $longitude;
+    public ?string $precipitation_unit = null;
+    public string $start_date;
+    public ?string $temperature_unit = null;
+    public ?string $timeformat = null;
     public ?string $timezone = null;
-    public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_seconds = null;
+    public ?string $wind_speed_unit = null;
 }
 
 /** MarineForecast entity data model. */
@@ -63,15 +63,13 @@ class MarineForecast
 class MarineForecastLoadMatch
 {
     public ?array $daily = null;
-    public ?array $daily_units = null;
-    public ?float $generationtime_ms = null;
+    public ?int $forecast_day = null;
     public ?array $hourly = null;
-    public ?array $hourly_units = null;
-    public ?float $latitude = null;
-    public ?float $longitude = null;
+    public float $latitude;
+    public float $longitude;
+    public ?int $past_day = null;
+    public ?string $timeformat = null;
     public ?string $timezone = null;
-    public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_seconds = null;
 }
 
 /** WeatherForecast entity data model. */
@@ -95,18 +93,31 @@ class WeatherForecast
 /** Request payload for WeatherForecast#load. */
 class WeatherForecastLoadMatch
 {
+    public ?string $apikey = null;
+    public ?string $cell_selection = null;
     public ?array $current = null;
-    public ?array $current_units = null;
     public ?array $daily = null;
-    public ?array $daily_units = null;
     public ?float $elevation = null;
-    public ?float $generationtime_ms = null;
+    public ?string $end_date = null;
+    public ?string $end_hour = null;
+    public ?string $end_minutely_15 = null;
+    public ?int $forecast_day = null;
+    public ?int $forecast_hour = null;
+    public ?int $forecast_minutely_15 = null;
     public ?array $hourly = null;
-    public ?array $hourly_units = null;
-    public ?float $latitude = null;
-    public ?float $longitude = null;
+    public float $latitude;
+    public float $longitude;
+    public ?string $model = null;
+    public ?int $past_day = null;
+    public ?int $past_hour = null;
+    public ?int $past_minutely_15 = null;
+    public ?string $precipitation_unit = null;
+    public ?string $start_date = null;
+    public ?string $start_hour = null;
+    public ?string $start_minutely_15 = null;
+    public ?string $temperature_unit = null;
+    public ?string $timeformat = null;
     public ?string $timezone = null;
-    public ?string $timezone_abbreviation = null;
-    public ?int $utc_offset_seconds = null;
+    public ?string $wind_speed_unit = null;
 }
 
