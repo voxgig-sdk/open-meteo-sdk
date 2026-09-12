@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -85,10 +96,12 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "float",
           "name": "elevation",
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "generationtime_ms",
           "type": "`$NUMBER`"
         },
@@ -101,10 +114,12 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "float",
           "name": "latitude",
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "longitude",
           "type": "`$NUMBER`"
         },
@@ -210,9 +225,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/v1/historical",
-              "parts": [
-                "v1",
-                "historical"
+              "segments": [
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "historical"
+                }
               ],
               "select": {
                 "exist": [
@@ -232,7 +251,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "v1",
+                "historical"
+              ]
             }
           ]
         }
@@ -252,6 +275,7 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "float",
           "name": "generationtime_ms",
           "type": "`$NUMBER`"
         },
@@ -264,10 +288,12 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "float",
           "name": "latitude",
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "longitude",
           "type": "`$NUMBER`"
         },
@@ -352,9 +378,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/v1/marine-weather",
-              "parts": [
-                "v1",
-                "marine-weather"
+              "segments": [
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "marine-weather"
+                }
               ],
               "select": {
                 "exist": [
@@ -371,7 +401,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "v1",
+                "marine-weather"
+              ]
             }
           ]
         }
@@ -403,11 +437,13 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "float",
           "name": "elevation",
           "short": "Elevation in meters above sea level",
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "generationtime_ms",
           "short": "Generation time of the weather data in milliseconds",
           "type": "`$NUMBER`"
@@ -423,11 +459,13 @@ class Config {
           "type": "`$OBJECT`"
         },
         {
+          "format": "float",
           "name": "latitude",
           "short": "WGS84 latitude of the location",
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "longitude",
           "short": "WGS84 longitude of the location",
           "type": "`$NUMBER`"
@@ -636,9 +674,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/v1/forecast",
-              "parts": [
-                "v1",
-                "forecast"
+              "segments": [
+                {
+                  "lit": "v1"
+                },
+                {
+                  "lit": "forecast"
+                }
               ],
               "select": {
                 "exist": [
@@ -673,7 +715,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "v1",
+                "forecast"
+              ]
             }
           ]
         }
@@ -689,6 +735,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

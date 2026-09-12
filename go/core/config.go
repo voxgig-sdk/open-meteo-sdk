@@ -49,10 +49,12 @@ func MakeConfig() map[string]any {
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "elevation",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "generationtime_ms",
 						"type": "`$NUMBER`",
 					},
@@ -65,10 +67,12 @@ func MakeConfig() map[string]any {
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "latitude",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "longitude",
 						"type": "`$NUMBER`",
 					},
@@ -174,9 +178,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/historical",
-								"parts": []any{
-									"v1",
-									"historical",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "historical",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -197,6 +205,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"v1",
+									"historical",
+								},
 							},
 						},
 					},
@@ -216,6 +228,7 @@ func MakeConfig() map[string]any {
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "generationtime_ms",
 						"type": "`$NUMBER`",
 					},
@@ -228,10 +241,12 @@ func MakeConfig() map[string]any {
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "latitude",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "longitude",
 						"type": "`$NUMBER`",
 					},
@@ -316,9 +331,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/marine-weather",
-								"parts": []any{
-									"v1",
-									"marine-weather",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "marine-weather",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -335,6 +354,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"v1",
+									"marine-weather",
 								},
 							},
 						},
@@ -367,11 +390,13 @@ func MakeConfig() map[string]any {
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "elevation",
 						"short": "Elevation in meters above sea level",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "generationtime_ms",
 						"short": "Generation time of the weather data in milliseconds",
 						"type": "`$NUMBER`",
@@ -387,11 +412,13 @@ func MakeConfig() map[string]any {
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "latitude",
 						"short": "WGS84 latitude of the location",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "longitude",
 						"short": "WGS84 longitude of the location",
 						"type": "`$NUMBER`",
@@ -600,9 +627,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/v1/forecast",
-								"parts": []any{
-									"v1",
-									"forecast",
+								"segments": []any{
+									map[string]any{
+										"lit": "v1",
+									},
+									map[string]any{
+										"lit": "forecast",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -638,6 +669,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"v1",
+									"forecast",
+								},
 							},
 						},
 					},
@@ -648,6 +683,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

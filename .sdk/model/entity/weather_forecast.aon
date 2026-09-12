@@ -30,12 +30,14 @@ main: kit: entity: weather_forecast: {
       type: "`$OBJECT`"
     }
     {
+      format: "float"
       name: "elevation"
       req: false
       short: "Elevation in meters above sea level"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "generationtime_ms"
       req: false
       short: "Generation time of the weather data in milliseconds"
@@ -54,12 +56,14 @@ main: kit: entity: weather_forecast: {
       type: "`$OBJECT`"
     }
     {
+      format: "float"
       name: "latitude"
       req: false
       short: "WGS84 latitude of the location"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "longitude"
       req: false
       short: "WGS84 longitude of the location"
@@ -295,9 +299,13 @@ main: kit: entity: weather_forecast: {
           }
           method: "GET"
           orig: "/v1/forecast"
-          parts: [
-            "v1"
-            "forecast"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "forecast"
+            }
           ]
           select: {
             exist: [

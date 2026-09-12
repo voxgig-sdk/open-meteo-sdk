@@ -16,11 +16,13 @@ main: kit: entity: historical: {
       type: "`$OBJECT`"
     }
     {
+      format: "float"
       name: "elevation"
       req: false
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "generationtime_ms"
       req: false
       type: "`$NUMBER`"
@@ -36,11 +38,13 @@ main: kit: entity: historical: {
       type: "`$OBJECT`"
     }
     {
+      format: "float"
       name: "latitude"
       req: false
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "longitude"
       req: false
       type: "`$NUMBER`"
@@ -156,9 +160,13 @@ main: kit: entity: historical: {
           }
           method: "GET"
           orig: "/v1/historical"
-          parts: [
-            "v1"
-            "historical"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "historical"
+            }
           ]
           select: {
             exist: [

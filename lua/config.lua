@@ -45,10 +45,12 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "float",
             ["name"] = "elevation",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "generationtime_ms",
             ["type"] = "`$NUMBER`",
           },
@@ -61,10 +63,12 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "float",
             ["name"] = "latitude",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "longitude",
             ["type"] = "`$NUMBER`",
           },
@@ -170,9 +174,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/v1/historical",
-                ["parts"] = {
-                  "v1",
-                  "historical",
+                ["segments"] = {
+                  {
+                    ["lit"] = "v1",
+                  },
+                  {
+                    ["lit"] = "historical",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -193,6 +201,10 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "v1",
+                  "historical",
+                },
               },
             },
           },
@@ -212,6 +224,7 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "float",
             ["name"] = "generationtime_ms",
             ["type"] = "`$NUMBER`",
           },
@@ -224,10 +237,12 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "float",
             ["name"] = "latitude",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "longitude",
             ["type"] = "`$NUMBER`",
           },
@@ -312,9 +327,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/v1/marine-weather",
-                ["parts"] = {
-                  "v1",
-                  "marine-weather",
+                ["segments"] = {
+                  {
+                    ["lit"] = "v1",
+                  },
+                  {
+                    ["lit"] = "marine-weather",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -331,6 +350,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "v1",
+                  "marine-weather",
                 },
               },
             },
@@ -363,11 +386,13 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "float",
             ["name"] = "elevation",
             ["short"] = "Elevation in meters above sea level",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "generationtime_ms",
             ["short"] = "Generation time of the weather data in milliseconds",
             ["type"] = "`$NUMBER`",
@@ -383,11 +408,13 @@ local function make_config()
             ["type"] = "`$OBJECT`",
           },
           {
+            ["format"] = "float",
             ["name"] = "latitude",
             ["short"] = "WGS84 latitude of the location",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "longitude",
             ["short"] = "WGS84 longitude of the location",
             ["type"] = "`$NUMBER`",
@@ -596,9 +623,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/v1/forecast",
-                ["parts"] = {
-                  "v1",
-                  "forecast",
+                ["segments"] = {
+                  {
+                    ["lit"] = "v1",
+                  },
+                  {
+                    ["lit"] = "forecast",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -633,6 +664,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "v1",
+                  "forecast",
                 },
               },
             },

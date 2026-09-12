@@ -58,15 +58,18 @@ def _historical_direct_setup(mockres):
     env = runner.env_override({
         "OPEN_METEO_TEST_HISTORICAL_ENTID": {},
         "OPEN_METEO_TEST_LIVE": "FALSE",
-        "OPEN_METEO_APIKEY": "NONE",
+        "OPEN_METEO_APIKEY": "",
     })
 
     live = env.get("OPEN_METEO_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("OPEN_METEO_APIKEY"),
-        }
+        })
         client = OpenMeteoSDK(merged_opts)
         return {
             "client": client,

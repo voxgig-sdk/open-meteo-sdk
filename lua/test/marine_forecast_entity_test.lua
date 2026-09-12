@@ -91,7 +91,7 @@ function marine_forecast_basic_setup(extra)
     ["OPEN_METEO_TEST_MARINE_FORECAST_ENTID"] = idmap,
     ["OPEN_METEO_TEST_LIVE"] = "FALSE",
     ["OPEN_METEO_TEST_EXPLAIN"] = "FALSE",
-    ["OPEN_METEO_APIKEY"] = "NONE",
+    ["OPEN_METEO_APIKEY"] = "",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +102,9 @@ function marine_forecast_basic_setup(extra)
 
   if env["OPEN_METEO_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
+      -- FIRST, so the generated fields below win: sdk-test-control.json's
+      -- test.client.options adds to the live client, it does not redirect it.
+      runner.live_client_options(),
       {
         apikey = env["OPEN_METEO_APIKEY"],
       },

@@ -16,6 +16,7 @@ main: kit: entity: marine_forecast: {
       type: "`$OBJECT`"
     }
     {
+      format: "float"
       name: "generationtime_ms"
       req: false
       type: "`$NUMBER`"
@@ -31,11 +32,13 @@ main: kit: entity: marine_forecast: {
       type: "`$OBJECT`"
     }
     {
+      format: "float"
       name: "latitude"
       req: false
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "longitude"
       req: false
       type: "`$NUMBER`"
@@ -129,9 +132,13 @@ main: kit: entity: marine_forecast: {
           }
           method: "GET"
           orig: "/v1/marine-weather"
-          parts: [
-            "v1"
-            "marine-weather"
+          segments: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "marine-weather"
+            }
           ]
           select: {
             exist: [
