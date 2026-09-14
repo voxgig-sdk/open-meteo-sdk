@@ -105,7 +105,7 @@ local result, err = client:MarineForecast():load({ latitude = 1, longitude = 1 }
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/releases) |
+| TypeScript | `@voxgig-sdk/open-meteo-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/releases) |
 | Python | `voxgig-sdk-open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/releases) |
 | PHP | `voxgig-sdk/open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/open-meteo-sdk/go` | `go get github.com/voxgig-sdk/open-meteo-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:MarineForecast():load({ latitude = 1, longitude = 1 }
 ### TypeScript
 
 ```ts
-import { OpenMeteoSDK } from '@voxgig-sdk/open-meteo'
+import { OpenMeteoSDK } from '@voxgig-sdk/open-meteo-sdk'
 
 const client = new OpenMeteoSDK({
   apikey: process.env.OPEN_METEO_APIKEY,

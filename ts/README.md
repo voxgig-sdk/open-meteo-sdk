@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { OpenMeteoSDK } from '@voxgig-sdk/open-meteo'
+import { OpenMeteoSDK } from '@voxgig-sdk/open-meteo-sdk'
 
 const client = new OpenMeteoSDK({
   apikey: process.env.OPEN_METEO_APIKEY,
@@ -537,7 +537,7 @@ open-meteo/
 Import the SDK from the package root:
 
 ```ts
-import { OpenMeteoSDK } from '@voxgig-sdk/open-meteo'
+import { OpenMeteoSDK } from '@voxgig-sdk/open-meteo-sdk'
 ```
 
 ### Entity state
