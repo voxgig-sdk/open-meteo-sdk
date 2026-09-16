@@ -1,12 +1,18 @@
 # OpenMeteo SDK feature factory
 
 from openmeteo_sdk.feature.base_feature import OpenMeteoBaseFeature
+from openmeteo_sdk.feature.ratelimit_feature import OpenMeteoRatelimitFeature
+from openmeteo_sdk.feature.retry_feature import OpenMeteoRetryFeature
 from openmeteo_sdk.feature.test_feature import OpenMeteoTestFeature
+from openmeteo_sdk.feature.timeout_feature import OpenMeteoTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: OpenMeteoBaseFeature(),
+    "ratelimit": lambda: OpenMeteoRatelimitFeature(),
+    "retry": lambda: OpenMeteoRetryFeature(),
     "test": lambda: OpenMeteoTestFeature(),
+    "timeout": lambda: OpenMeteoTimeoutFeature(),
 }
 
 
