@@ -105,12 +105,12 @@ local result, err = client:MarineForecast():load({ latitude = 1, longitude = 1 }
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/open-meteo-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/releases) |
-| Python | `voxgig-sdk-open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/releases) |
-| PHP | `voxgig-sdk/open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/releases) |
+| TypeScript | `@voxgig-sdk/open-meteo-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/tags) |
+| Python | `voxgig-sdk-open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/tags) |
+| PHP | `voxgig-sdk/open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/open-meteo-sdk/go` | `go get github.com/voxgig-sdk/open-meteo-sdk/go@latest` |
-| Ruby | `voxgig-sdk-open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/releases) |
-| Lua | `voxgig-sdk-open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/releases) |
+| Ruby | `voxgig-sdk-open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/tags) |
+| Lua | `voxgig-sdk-open-meteo` | publish pending — [install from git tag](https://github.com/voxgig-sdk/open-meteo-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/open-meteo-sdk/go-cli` | `go install github.com/voxgig-sdk/open-meteo-sdk/go-cli/cmd/open-meteo@latest` |
 | Go MCP server | `github.com/voxgig-sdk/open-meteo-sdk/go-mcp` | `go get github.com/voxgig-sdk/open-meteo-sdk/go-mcp@latest` |
 

@@ -103,6 +103,8 @@ class OpenMeteoConfig
                 "base" => "https://api.open-meteo.com",
                 "auth" => [
                     "prefix" => "",
+                    "in" => "query",
+                    "name" => "apikey",
                 ],
                 "headers" => [
           'content-type' => 'application/json',

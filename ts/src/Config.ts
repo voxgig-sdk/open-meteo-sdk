@@ -123,6 +123,8 @@ class Config {
 
     auth: {
       prefix: '',
+      in: 'query',
+      name: 'apikey',
     },
 
     headers: {
@@ -131,15 +133,15 @@ class Config {
 
     entity: {
       
-      historical: {
-      },
-
-      marine_forecast: {
-      },
-
-      weather_forecast: {
-      },
-
+        historical: {
+        },
+  
+        marine_forecast: {
+        },
+  
+        weather_forecast: {
+        },
+  
     }
   }
 
