@@ -1,0 +1,181 @@
+# Entity: marine_forecast
+
+main: kit: entity: marine_forecast: {
+
+  alias: field: {}
+
+  fields: {
+    daily: {
+      h: "Daily"
+      n: "daily"
+      r: false
+      t: "`$OBJECT`"
+    }
+    daily_units: {
+      h: "Daily Units"
+      n: "daily_units"
+      r: false
+      t: "`$OBJECT`"
+    }
+    generationtime_ms: {
+      fo: "float"
+      h: "Generationtime Ms"
+      n: "generationtime_ms"
+      r: false
+      t: "`$NUMBER`"
+    }
+    hourly: {
+      h: "Hourly"
+      n: "hourly"
+      r: false
+      t: "`$OBJECT`"
+    }
+    hourly_units: {
+      h: "Hourly Units"
+      n: "hourly_units"
+      r: false
+      t: "`$OBJECT`"
+    }
+    latitude: {
+      fo: "float"
+      h: "Latitude"
+      n: "latitude"
+      r: false
+      t: "`$NUMBER`"
+    }
+    longitude: {
+      fo: "float"
+      h: "Longitude"
+      n: "longitude"
+      r: false
+      t: "`$NUMBER`"
+    }
+    timezone: {
+      h: "Timezone"
+      n: "timezone"
+      r: false
+      t: "`$STRING`"
+    }
+    timezone_abbreviation: {
+      h: "Timezone Abbreviation"
+      n: "timezone_abbreviation"
+      r: false
+      t: "`$STRING`"
+    }
+    utc_offset_seconds: {
+      h: "Utc Offset Seconds"
+      n: "utc_offset_seconds"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "marine_forecast"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/marine-weather"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "daily"
+                or: "daily"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: 7
+                k: "query"
+                n: "forecast_day"
+                or: "forecast_day"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "hourly"
+                or: "hourly"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "latitude"
+                or: "latitude"
+                r: true
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "longitude"
+                or: "longitude"
+                r: true
+                t: "`$NUMBER`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "past_day"
+                or: "past_day"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "iso8601"
+                k: "query"
+                n: "timeformat"
+                or: "timeformat"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "GMT"
+                k: "query"
+                n: "timezone"
+                or: "timezone"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/marine-weather"
+          q: {
+            exist: [
+              "daily"
+              "forecast_day"
+              "hourly"
+              "latitude"
+              "longitude"
+              "past_day"
+              "timeformat"
+              "timezone"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "marine-weather"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

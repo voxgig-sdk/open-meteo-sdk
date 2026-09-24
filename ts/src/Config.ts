@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -151,50 +144,61 @@ class Config {
       "fields": [
         {
           "name": "daily",
+          "title": "Daily",
           "type": "`$OBJECT`"
         },
         {
           "name": "daily_units",
+          "title": "Daily Units",
           "type": "`$OBJECT`"
         },
         {
-          "format": "float",
           "name": "elevation",
-          "type": "`$NUMBER`"
+          "title": "Elevation",
+          "type": "`$NUMBER`",
+          "format": "float"
         },
         {
-          "format": "float",
           "name": "generationtime_ms",
-          "type": "`$NUMBER`"
+          "title": "Generationtime Ms",
+          "type": "`$NUMBER`",
+          "format": "float"
         },
         {
           "name": "hourly",
+          "title": "Hourly",
           "type": "`$OBJECT`"
         },
         {
           "name": "hourly_units",
+          "title": "Hourly Units",
           "type": "`$OBJECT`"
         },
         {
-          "format": "float",
           "name": "latitude",
-          "type": "`$NUMBER`"
+          "title": "Latitude",
+          "type": "`$NUMBER`",
+          "format": "float"
         },
         {
-          "format": "float",
           "name": "longitude",
-          "type": "`$NUMBER`"
+          "title": "Longitude",
+          "type": "`$NUMBER`",
+          "format": "float"
         },
         {
           "name": "timezone",
+          "title": "Timezone",
           "type": "`$STRING`"
         },
         {
           "name": "timezone_abbreviation",
+          "title": "Timezone Abbreviation",
           "type": "`$STRING`"
         },
         {
           "name": "utc_offset_seconds",
+          "title": "Utc Offset Seconds",
           "type": "`$INTEGER`"
         }
       ],
@@ -205,85 +209,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "daily",
-                    "orig": "daily",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "end_date",
-                    "orig": "end_date",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "hourly",
-                    "orig": "hourly",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "latitude",
-                    "orig": "latitude",
-                    "reqd": true,
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "longitude",
-                    "orig": "longitude",
-                    "reqd": true,
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "example": "mm",
-                    "kind": "query",
-                    "name": "precipitation_unit",
-                    "orig": "precipitation_unit",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "start_date",
-                    "orig": "start_date",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "celsius",
-                    "kind": "query",
-                    "name": "temperature_unit",
-                    "orig": "temperature_unit",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "iso8601",
-                    "kind": "query",
-                    "name": "timeformat",
-                    "orig": "timeformat",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "GMT",
-                    "kind": "query",
-                    "name": "timezone",
-                    "orig": "timezone",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "kmh",
-                    "kind": "query",
-                    "name": "wind_speed_unit",
-                    "orig": "wind_speed_unit",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/v1/historical",
@@ -295,6 +220,94 @@ class Config {
                   "lit": "historical"
                 }
               ],
+              "parts": [
+                "v1",
+                "historical"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "daily",
+                    "orig": "daily",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "end_date",
+                    "orig": "end_date",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true
+                  },
+                  {
+                    "name": "hourly",
+                    "orig": "hourly",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "latitude",
+                    "orig": "latitude",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "reqd": true
+                  },
+                  {
+                    "name": "longitude",
+                    "orig": "longitude",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "reqd": true
+                  },
+                  {
+                    "name": "precipitation_unit",
+                    "orig": "precipitation_unit",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "mm"
+                  },
+                  {
+                    "name": "start_date",
+                    "orig": "start_date",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "reqd": true
+                  },
+                  {
+                    "name": "temperature_unit",
+                    "orig": "temperature_unit",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "celsius"
+                  },
+                  {
+                    "name": "timeformat",
+                    "orig": "timeformat",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "iso8601"
+                  },
+                  {
+                    "name": "timezone",
+                    "orig": "timezone",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "GMT"
+                  },
+                  {
+                    "name": "wind_speed_unit",
+                    "orig": "wind_speed_unit",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "kmh"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "daily",
@@ -309,15 +322,7 @@ class Config {
                   "timezone",
                   "wind_speed_unit"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "v1",
-                "historical"
-              ]
+              }
             }
           ]
         }
@@ -330,45 +335,55 @@ class Config {
       "fields": [
         {
           "name": "daily",
+          "title": "Daily",
           "type": "`$OBJECT`"
         },
         {
           "name": "daily_units",
+          "title": "Daily Units",
           "type": "`$OBJECT`"
         },
         {
-          "format": "float",
           "name": "generationtime_ms",
-          "type": "`$NUMBER`"
+          "title": "Generationtime Ms",
+          "type": "`$NUMBER`",
+          "format": "float"
         },
         {
           "name": "hourly",
+          "title": "Hourly",
           "type": "`$OBJECT`"
         },
         {
           "name": "hourly_units",
+          "title": "Hourly Units",
           "type": "`$OBJECT`"
         },
         {
-          "format": "float",
           "name": "latitude",
-          "type": "`$NUMBER`"
+          "title": "Latitude",
+          "type": "`$NUMBER`",
+          "format": "float"
         },
         {
-          "format": "float",
           "name": "longitude",
-          "type": "`$NUMBER`"
+          "title": "Longitude",
+          "type": "`$NUMBER`",
+          "format": "float"
         },
         {
           "name": "timezone",
+          "title": "Timezone",
           "type": "`$STRING`"
         },
         {
           "name": "timezone_abbreviation",
+          "title": "Timezone Abbreviation",
           "type": "`$STRING`"
         },
         {
           "name": "utc_offset_seconds",
+          "title": "Utc Offset Seconds",
           "type": "`$INTEGER`"
         }
       ],
@@ -379,64 +394,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "daily",
-                    "orig": "daily",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": 7,
-                    "kind": "query",
-                    "name": "forecast_day",
-                    "orig": "forecast_day",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "hourly",
-                    "orig": "hourly",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "latitude",
-                    "orig": "latitude",
-                    "reqd": true,
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "longitude",
-                    "orig": "longitude",
-                    "reqd": true,
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "past_day",
-                    "orig": "past_day",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": "iso8601",
-                    "kind": "query",
-                    "name": "timeformat",
-                    "orig": "timeformat",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "GMT",
-                    "kind": "query",
-                    "name": "timezone",
-                    "orig": "timezone",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/v1/marine-weather",
@@ -448,6 +405,73 @@ class Config {
                   "lit": "marine-weather"
                 }
               ],
+              "parts": [
+                "v1",
+                "marine-weather"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "daily",
+                    "orig": "daily",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "forecast_day",
+                    "orig": "forecast_day",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 7
+                  },
+                  {
+                    "name": "hourly",
+                    "orig": "hourly",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "latitude",
+                    "orig": "latitude",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "reqd": true
+                  },
+                  {
+                    "name": "longitude",
+                    "orig": "longitude",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "reqd": true
+                  },
+                  {
+                    "name": "past_day",
+                    "orig": "past_day",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "timeformat",
+                    "orig": "timeformat",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "iso8601"
+                  },
+                  {
+                    "name": "timezone",
+                    "orig": "timezone",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "GMT"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "daily",
@@ -459,15 +483,7 @@ class Config {
                   "timeformat",
                   "timezone"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "v1",
-                "marine-weather"
-              ]
+              }
             }
           ]
         }
@@ -480,72 +496,85 @@ class Config {
       "fields": [
         {
           "name": "current",
-          "short": "Current weather conditions",
-          "type": "`$OBJECT`"
+          "title": "Current",
+          "type": "`$OBJECT`",
+          "short": "Current weather conditions"
         },
         {
           "name": "current_units",
-          "short": "Units for current weather variables",
-          "type": "`$OBJECT`"
+          "title": "Current Units",
+          "type": "`$OBJECT`",
+          "short": "Units for current weather variables"
         },
         {
           "name": "daily",
-          "short": "Daily weather data",
-          "type": "`$OBJECT`"
+          "title": "Daily",
+          "type": "`$OBJECT`",
+          "short": "Daily weather data"
         },
         {
           "name": "daily_units",
-          "short": "Units for daily weather variables",
-          "type": "`$OBJECT`"
+          "title": "Daily Units",
+          "type": "`$OBJECT`",
+          "short": "Units for daily weather variables"
         },
         {
-          "format": "float",
           "name": "elevation",
+          "title": "Elevation",
+          "type": "`$NUMBER`",
           "short": "Elevation in meters above sea level",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
-          "format": "float",
           "name": "generationtime_ms",
+          "title": "Generationtime Ms",
+          "type": "`$NUMBER`",
           "short": "Generation time of the weather data in milliseconds",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
           "name": "hourly",
-          "short": "Hourly weather data",
-          "type": "`$OBJECT`"
+          "title": "Hourly",
+          "type": "`$OBJECT`",
+          "short": "Hourly weather data"
         },
         {
           "name": "hourly_units",
-          "short": "Units for hourly weather variables",
-          "type": "`$OBJECT`"
+          "title": "Hourly Units",
+          "type": "`$OBJECT`",
+          "short": "Units for hourly weather variables"
         },
         {
-          "format": "float",
           "name": "latitude",
+          "title": "Latitude",
+          "type": "`$NUMBER`",
           "short": "WGS84 latitude of the location",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
-          "format": "float",
           "name": "longitude",
+          "title": "Longitude",
+          "type": "`$NUMBER`",
           "short": "WGS84 longitude of the location",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
           "name": "timezone",
-          "short": "Timezone identifier",
-          "type": "`$STRING`"
+          "title": "Timezone",
+          "type": "`$STRING`",
+          "short": "Timezone identifier"
         },
         {
           "name": "timezone_abbreviation",
-          "short": "Timezone abbreviation",
-          "type": "`$STRING`"
+          "title": "Timezone Abbreviation",
+          "type": "`$STRING`",
+          "short": "Timezone abbreviation"
         },
         {
           "name": "utc_offset_seconds",
-          "short": "UTC offset in seconds",
-          "type": "`$INTEGER`"
+          "title": "Utc Offset Seconds",
+          "type": "`$INTEGER`",
+          "short": "UTC offset in seconds"
         }
       ],
       "name": "weather_forecast",
@@ -555,184 +584,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "kind": "query",
-                    "name": "apikey",
-                    "orig": "apikey",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "land",
-                    "kind": "query",
-                    "name": "cell_selection",
-                    "orig": "cell_selection",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "current",
-                    "orig": "current",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "daily",
-                    "orig": "daily",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "elevation",
-                    "orig": "elevation",
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "example": "2022-06-30",
-                    "kind": "query",
-                    "name": "end_date",
-                    "orig": "end_date",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2022-06-30T12:00",
-                    "kind": "query",
-                    "name": "end_hour",
-                    "orig": "end_hour",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2022-06-30T12:00",
-                    "kind": "query",
-                    "name": "end_minutely_15",
-                    "orig": "end_minutely_15",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 7,
-                    "kind": "query",
-                    "name": "forecast_day",
-                    "orig": "forecast_day",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "forecast_hour",
-                    "orig": "forecast_hour",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "forecast_minutely_15",
-                    "orig": "forecast_minutely_15",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "hourly",
-                    "orig": "hourly",
-                    "type": "`$ARRAY`"
-                  },
-                  {
-                    "example": 52.52,
-                    "kind": "query",
-                    "name": "latitude",
-                    "orig": "latitude",
-                    "reqd": true,
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "example": 13.41,
-                    "kind": "query",
-                    "name": "longitude",
-                    "orig": "longitude",
-                    "reqd": true,
-                    "type": "`$NUMBER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "model",
-                    "orig": "model",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": 0,
-                    "kind": "query",
-                    "name": "past_day",
-                    "orig": "past_day",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "past_hour",
-                    "orig": "past_hour",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "kind": "query",
-                    "name": "past_minutely_15",
-                    "orig": "past_minutely_15",
-                    "type": "`$INTEGER`"
-                  },
-                  {
-                    "example": "mm",
-                    "kind": "query",
-                    "name": "precipitation_unit",
-                    "orig": "precipitation_unit",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2022-06-30",
-                    "kind": "query",
-                    "name": "start_date",
-                    "orig": "start_date",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2022-06-30T12:00",
-                    "kind": "query",
-                    "name": "start_hour",
-                    "orig": "start_hour",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "2022-06-30T12:00",
-                    "kind": "query",
-                    "name": "start_minutely_15",
-                    "orig": "start_minutely_15",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "celsius",
-                    "kind": "query",
-                    "name": "temperature_unit",
-                    "orig": "temperature_unit",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "iso8601",
-                    "kind": "query",
-                    "name": "timeformat",
-                    "orig": "timeformat",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "auto",
-                    "kind": "query",
-                    "name": "timezone",
-                    "orig": "timezone",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "kmh",
-                    "kind": "query",
-                    "name": "wind_speed_unit",
-                    "orig": "wind_speed_unit",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/v1/forecast",
@@ -744,6 +595,193 @@ class Config {
                   "lit": "forecast"
                 }
               ],
+              "parts": [
+                "v1",
+                "forecast"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "apikey",
+                    "orig": "apikey",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "cell_selection",
+                    "orig": "cell_selection",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "land"
+                  },
+                  {
+                    "name": "current",
+                    "orig": "current",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "daily",
+                    "orig": "daily",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "elevation",
+                    "orig": "elevation",
+                    "type": "`$NUMBER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "end_date",
+                    "orig": "end_date",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2022-06-30"
+                  },
+                  {
+                    "name": "end_hour",
+                    "orig": "end_hour",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2022-06-30T12:00"
+                  },
+                  {
+                    "name": "end_minutely_15",
+                    "orig": "end_minutely_15",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2022-06-30T12:00"
+                  },
+                  {
+                    "name": "forecast_day",
+                    "orig": "forecast_day",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 7
+                  },
+                  {
+                    "name": "forecast_hour",
+                    "orig": "forecast_hour",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "forecast_minutely_15",
+                    "orig": "forecast_minutely_15",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "hourly",
+                    "orig": "hourly",
+                    "type": "`$ARRAY`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "latitude",
+                    "orig": "latitude",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": 52.52
+                  },
+                  {
+                    "name": "longitude",
+                    "orig": "longitude",
+                    "type": "`$NUMBER`",
+                    "kind": "query",
+                    "reqd": true,
+                    "example": 13.41
+                  },
+                  {
+                    "name": "model",
+                    "orig": "model",
+                    "type": "`$STRING`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "past_day",
+                    "orig": "past_day",
+                    "type": "`$INTEGER`",
+                    "kind": "query",
+                    "example": 0
+                  },
+                  {
+                    "name": "past_hour",
+                    "orig": "past_hour",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "past_minutely_15",
+                    "orig": "past_minutely_15",
+                    "type": "`$INTEGER`",
+                    "kind": "query"
+                  },
+                  {
+                    "name": "precipitation_unit",
+                    "orig": "precipitation_unit",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "mm"
+                  },
+                  {
+                    "name": "start_date",
+                    "orig": "start_date",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2022-06-30"
+                  },
+                  {
+                    "name": "start_hour",
+                    "orig": "start_hour",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2022-06-30T12:00"
+                  },
+                  {
+                    "name": "start_minutely_15",
+                    "orig": "start_minutely_15",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "2022-06-30T12:00"
+                  },
+                  {
+                    "name": "temperature_unit",
+                    "orig": "temperature_unit",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "celsius"
+                  },
+                  {
+                    "name": "timeformat",
+                    "orig": "timeformat",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "iso8601"
+                  },
+                  {
+                    "name": "timezone",
+                    "orig": "timezone",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "auto"
+                  },
+                  {
+                    "name": "wind_speed_unit",
+                    "orig": "wind_speed_unit",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "kmh"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "apikey",
@@ -773,15 +811,7 @@ class Config {
                   "timezone",
                   "wind_speed_unit"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "v1",
-                "forecast"
-              ]
+              }
             }
           ]
         }

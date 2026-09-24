@@ -1,0 +1,369 @@
+# Entity: weather_forecast
+
+main: kit: entity: weather_forecast: {
+
+  alias: field: {}
+
+  fields: {
+    current: {
+      h: "Current"
+      n: "current"
+      r: false
+      sh: "Current weather conditions"
+      t: "`$OBJECT`"
+    }
+    current_units: {
+      h: "Current Units"
+      n: "current_units"
+      r: false
+      sh: "Units for current weather variables"
+      t: "`$OBJECT`"
+    }
+    daily: {
+      h: "Daily"
+      n: "daily"
+      r: false
+      sh: "Daily weather data"
+      t: "`$OBJECT`"
+    }
+    daily_units: {
+      h: "Daily Units"
+      n: "daily_units"
+      r: false
+      sh: "Units for daily weather variables"
+      t: "`$OBJECT`"
+    }
+    elevation: {
+      fo: "float"
+      h: "Elevation"
+      n: "elevation"
+      r: false
+      sh: "Elevation in meters above sea level"
+      t: "`$NUMBER`"
+    }
+    generationtime_ms: {
+      fo: "float"
+      h: "Generationtime Ms"
+      n: "generationtime_ms"
+      r: false
+      sh: "Generation time of the weather data in milliseconds"
+      t: "`$NUMBER`"
+    }
+    hourly: {
+      h: "Hourly"
+      n: "hourly"
+      r: false
+      sh: "Hourly weather data"
+      t: "`$OBJECT`"
+    }
+    hourly_units: {
+      h: "Hourly Units"
+      n: "hourly_units"
+      r: false
+      sh: "Units for hourly weather variables"
+      t: "`$OBJECT`"
+    }
+    latitude: {
+      fo: "float"
+      h: "Latitude"
+      n: "latitude"
+      r: false
+      sh: "WGS84 latitude of the location"
+      t: "`$NUMBER`"
+    }
+    longitude: {
+      fo: "float"
+      h: "Longitude"
+      n: "longitude"
+      r: false
+      sh: "WGS84 longitude of the location"
+      t: "`$NUMBER`"
+    }
+    timezone: {
+      h: "Timezone"
+      n: "timezone"
+      r: false
+      sh: "Timezone identifier"
+      t: "`$STRING`"
+    }
+    timezone_abbreviation: {
+      h: "Timezone Abbreviation"
+      n: "timezone_abbreviation"
+      r: false
+      sh: "Timezone abbreviation"
+      t: "`$STRING`"
+    }
+    utc_offset_seconds: {
+      h: "Utc Offset Seconds"
+      n: "utc_offset_seconds"
+      r: false
+      sh: "UTC offset in seconds"
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "weather_forecast"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/forecast"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "apikey"
+                or: "apikey"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "land"
+                k: "query"
+                n: "cell_selection"
+                or: "cell_selection"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "current"
+                or: "current"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "daily"
+                or: "daily"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "elevation"
+                or: "elevation"
+                r: false
+                t: "`$NUMBER`"
+              }
+              {
+                ex: "2022-06-30"
+                k: "query"
+                n: "end_date"
+                or: "end_date"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2022-06-30T12:00"
+                k: "query"
+                n: "end_hour"
+                or: "end_hour"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2022-06-30T12:00"
+                k: "query"
+                n: "end_minutely_15"
+                or: "end_minutely_15"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 7
+                k: "query"
+                n: "forecast_day"
+                or: "forecast_day"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "forecast_hour"
+                or: "forecast_hour"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "forecast_minutely_15"
+                or: "forecast_minutely_15"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "hourly"
+                or: "hourly"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                ex: 52.52
+                k: "query"
+                n: "latitude"
+                or: "latitude"
+                r: true
+                t: "`$NUMBER`"
+              }
+              {
+                ex: 13.41
+                k: "query"
+                n: "longitude"
+                or: "longitude"
+                r: true
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "model"
+                or: "model"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: 0
+                k: "query"
+                n: "past_day"
+                or: "past_day"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "past_hour"
+                or: "past_hour"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "past_minutely_15"
+                or: "past_minutely_15"
+                r: false
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "mm"
+                k: "query"
+                n: "precipitation_unit"
+                or: "precipitation_unit"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2022-06-30"
+                k: "query"
+                n: "start_date"
+                or: "start_date"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2022-06-30T12:00"
+                k: "query"
+                n: "start_hour"
+                or: "start_hour"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "2022-06-30T12:00"
+                k: "query"
+                n: "start_minutely_15"
+                or: "start_minutely_15"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "celsius"
+                k: "query"
+                n: "temperature_unit"
+                or: "temperature_unit"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "iso8601"
+                k: "query"
+                n: "timeformat"
+                or: "timeformat"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "auto"
+                k: "query"
+                n: "timezone"
+                or: "timezone"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "kmh"
+                k: "query"
+                n: "wind_speed_unit"
+                or: "wind_speed_unit"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/forecast"
+          q: {
+            exist: [
+              "apikey"
+              "cell_selection"
+              "current"
+              "daily"
+              "elevation"
+              "end_date"
+              "end_hour"
+              "end_minutely_15"
+              "forecast_day"
+              "forecast_hour"
+              "forecast_minutely_15"
+              "hourly"
+              "latitude"
+              "longitude"
+              "model"
+              "past_day"
+              "past_hour"
+              "past_minutely_15"
+              "precipitation_unit"
+              "start_date"
+              "start_hour"
+              "start_minutely_15"
+              "temperature_unit"
+              "timeformat"
+              "timezone"
+              "wind_speed_unit"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "forecast"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

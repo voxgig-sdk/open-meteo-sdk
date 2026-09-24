@@ -1,0 +1,213 @@
+# Entity: historical
+
+main: kit: entity: historical: {
+
+  alias: field: {}
+
+  fields: {
+    daily: {
+      h: "Daily"
+      n: "daily"
+      r: false
+      t: "`$OBJECT`"
+    }
+    daily_units: {
+      h: "Daily Units"
+      n: "daily_units"
+      r: false
+      t: "`$OBJECT`"
+    }
+    elevation: {
+      fo: "float"
+      h: "Elevation"
+      n: "elevation"
+      r: false
+      t: "`$NUMBER`"
+    }
+    generationtime_ms: {
+      fo: "float"
+      h: "Generationtime Ms"
+      n: "generationtime_ms"
+      r: false
+      t: "`$NUMBER`"
+    }
+    hourly: {
+      h: "Hourly"
+      n: "hourly"
+      r: false
+      t: "`$OBJECT`"
+    }
+    hourly_units: {
+      h: "Hourly Units"
+      n: "hourly_units"
+      r: false
+      t: "`$OBJECT`"
+    }
+    latitude: {
+      fo: "float"
+      h: "Latitude"
+      n: "latitude"
+      r: false
+      t: "`$NUMBER`"
+    }
+    longitude: {
+      fo: "float"
+      h: "Longitude"
+      n: "longitude"
+      r: false
+      t: "`$NUMBER`"
+    }
+    timezone: {
+      h: "Timezone"
+      n: "timezone"
+      r: false
+      t: "`$STRING`"
+    }
+    timezone_abbreviation: {
+      h: "Timezone Abbreviation"
+      n: "timezone_abbreviation"
+      r: false
+      t: "`$STRING`"
+    }
+    utc_offset_seconds: {
+      h: "Utc Offset Seconds"
+      n: "utc_offset_seconds"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "historical"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /v1/historical"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "daily"
+                or: "daily"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "end_date"
+                or: "end_date"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "hourly"
+                or: "hourly"
+                r: false
+                t: "`$ARRAY`"
+              }
+              {
+                k: "query"
+                n: "latitude"
+                or: "latitude"
+                r: true
+                t: "`$NUMBER`"
+              }
+              {
+                k: "query"
+                n: "longitude"
+                or: "longitude"
+                r: true
+                t: "`$NUMBER`"
+              }
+              {
+                ex: "mm"
+                k: "query"
+                n: "precipitation_unit"
+                or: "precipitation_unit"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "start_date"
+                or: "start_date"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "celsius"
+                k: "query"
+                n: "temperature_unit"
+                or: "temperature_unit"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "iso8601"
+                k: "query"
+                n: "timeformat"
+                or: "timeformat"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "GMT"
+                k: "query"
+                n: "timezone"
+                or: "timezone"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "kmh"
+                k: "query"
+                n: "wind_speed_unit"
+                or: "wind_speed_unit"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/v1/historical"
+          q: {
+            exist: [
+              "daily"
+              "end_date"
+              "hourly"
+              "latitude"
+              "longitude"
+              "precipitation_unit"
+              "start_date"
+              "temperature_unit"
+              "timeformat"
+              "timezone"
+              "wind_speed_unit"
+            ]
+          }
+          s: [
+            {
+              lit: "v1"
+            }
+            {
+              lit: "historical"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
